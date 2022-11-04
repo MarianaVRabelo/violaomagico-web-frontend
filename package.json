@@ -1,0 +1,8 @@
+{
+  "name": "violaomagico-web-frontend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/MarianaVRabelo/violaomagico-web-frontend.git",
+  "author": "mariana rabelo <marianarabelo@cpejr.com.br>",
+  "license": "MIT"
+}
