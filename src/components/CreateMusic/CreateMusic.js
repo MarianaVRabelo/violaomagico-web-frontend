@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     Body,
     GuitarNeck,
@@ -13,8 +13,11 @@ import {
     OutsideDot,
     ContainerOutsideDots
   } from "./Styles";
+import WeirdButton from "../WeirdButton/WeirdButton";
 
 function CreateMusic() {
+const[chord, setChord] = useState([]);
+
         return(
             <Body>
                 <GuitarNeck>
@@ -62,10 +65,10 @@ function CreateMusic() {
                     </GuitarFrets>
                 </GuitarNeck>
                 <ContainerOutsideDots>
-                <OutsideDots><OutsideDot/><OutsideDot/><OutsideDot/><OutsideDot/></OutsideDots>
-                <OutsideDots><OutsideDot/><OutsideDot/><OutsideDot/><OutsideDot/></OutsideDots>
-                <OutsideDots><OutsideDot/><OutsideDot/><OutsideDot/><OutsideDot/></OutsideDots>
-                <OutsideDots><OutsideDot/><OutsideDot/><OutsideDot/><OutsideDot/></OutsideDots>
+                <OutsideDots><WeirdButton/><WeirdButton/><WeirdButton/><WeirdButton/></OutsideDots>
+                <OutsideDots><WeirdButton/><WeirdButton/><WeirdButton/><WeirdButton/></OutsideDots>
+                <OutsideDots><WeirdButton/><WeirdButton/><WeirdButton/><WeirdButton/></OutsideDots>
+                <OutsideDots><WeirdButton/><WeirdButton/><WeirdButton/><WeirdButton/></OutsideDots>
                 </ContainerOutsideDots>
                 <BotaoNovaBatida>NOVA BATIDA</BotaoNovaBatida>
             </Body>
