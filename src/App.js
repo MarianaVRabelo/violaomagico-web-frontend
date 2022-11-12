@@ -1,10 +1,10 @@
 import React from "react";
-import Routes from "./routes"
+import RoutesPage from "./routes"
 
 function App() {
     return (
         <div>
-            <Routes/>
+            <RoutesPage/>
         </div>
     );
 }

@@ -1,13 +1,15 @@
 import React from "react";
-import { Route } from "react-router-dom";
-import CreateMusic from "./components/CreateMusic";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import PageTest from "./pages/PageTest";
 
-function Routes() {
+function RoutesPage() {
     return(
-            <Routes>
-            <Route path="/create-music" component={CreateMusic}/>
-            </Routes>
+    <Router>
+        <Routes>
+            <Route path="/page-test" element={<PageTest/>} />
+        </Routes>
+    </Router>
     );
 }
 
-export default Routes;
+export default RoutesPage;
