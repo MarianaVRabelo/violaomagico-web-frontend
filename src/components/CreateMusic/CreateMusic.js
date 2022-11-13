@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
     Body,
     GuitarNeck,
@@ -6,17 +6,19 @@ import {
     String,
     GuitarFrets,
     Fret,
-    Dots,
     BotaoNovaBatida,
     Line,
     OutsideDots,
-    OutsideDot,
     ContainerOutsideDots
   } from "./Styles";
-import WeirdButton from "../WeirdButton/WeirdButton";
+import OutsideDot from "../OutsideDot/OutsideDot";
+import Dots from "../Dots/Dots";
+import { defaultChord } from "../../utils/ChordUtils";
+
 
 function CreateMusic() {
-const[chord, setChord] = useState([]);
+
+    const [ chord, setChord ] = useState(defaultChord);
 
         return(
             <Body>
@@ -31,12 +33,12 @@ const[chord, setChord] = useState([]);
                     </GuitarStrings>
                     <GuitarFrets>
                         <Fret>
-                        <Line><Dots/><Dots/><Dots/><Dots/></Line>
-                        <Line><Dots/><Dots/><Dots/><Dots/></Line>
-                        <Line><Dots/><Dots/><Dots/><Dots/></Line>
-                        <Line><Dots/><Dots/><Dots/><Dots/></Line>
-                        <Line><Dots/><Dots/><Dots/><Dots/></Line>
-                        <Line><Dots/><Dots/><Dots/><Dots/></Line>
+                        <Line><Dots setChord={setChord} chord={chord} position={0} note="e"/><Dots/><Dots/><Dots/></Line>
+                        <Line><Dots setChord={setChord} chord={chord} position={0} note="B"/><Dots/><Dots/><Dots/></Line>
+                        <Line><Dots setChord={setChord} chord={chord} position={0} note="G"/><Dots/><Dots/><Dots/></Line>
+                        <Line><Dots setChord={setChord} chord={chord} position={0} note="D"/><Dots/><Dots/><Dots/></Line>
+                        <Line><Dots setChord={setChord} chord={chord} position={0} note="A"/><Dots/><Dots/><Dots/></Line>
+                        <Line><Dots setChord={setChord} chord={chord} position={0} note="E"/><Dots/><Dots/><Dots/></Line>
                         </Fret>
                         <Fret>
                         <Line><Dots/><Dots/><Dots/><Dots/></Line>
@@ -65,12 +67,12 @@ const[chord, setChord] = useState([]);
                     </GuitarFrets>
                 </GuitarNeck>
                 <ContainerOutsideDots>
-                <OutsideDots><WeirdButton/><WeirdButton/><WeirdButton/><WeirdButton/></OutsideDots>
-                <OutsideDots><WeirdButton/><WeirdButton/><WeirdButton/><WeirdButton/></OutsideDots>
-                <OutsideDots><WeirdButton/><WeirdButton/><WeirdButton/><WeirdButton/></OutsideDots>
-                <OutsideDots><WeirdButton/><WeirdButton/><WeirdButton/><WeirdButton/></OutsideDots>
+                <OutsideDots><OutsideDot setChord={setChord} chord={chord} position={0}/><OutsideDot/><OutsideDot/><OutsideDot/></OutsideDots>
+                <OutsideDots><OutsideDot/><OutsideDot/><OutsideDot/><OutsideDot/></OutsideDots>
+                <OutsideDots><OutsideDot/><OutsideDot/><OutsideDot/><OutsideDot/></OutsideDots>
+                <OutsideDots><OutsideDot/><OutsideDot/><OutsideDot/><OutsideDot/></OutsideDots>
                 </ContainerOutsideDots>
-                <BotaoNovaBatida>NOVA BATIDA</BotaoNovaBatida>
+                <BotaoNovaBatida onClick={() => console.log(chord)}>NOVA BATIDA</BotaoNovaBatida>
             </Body>
         );
 }

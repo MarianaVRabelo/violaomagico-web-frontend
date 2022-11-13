@@ -7,7 +7,7 @@ export const Body = styled.div`
   justify-content: center;
   width: 100%;
   height: 100%;
-  background-color: #231709;
+  background-color: #302004;
 `;
 
 export const GuitarNeck = styled.div`
@@ -40,7 +40,7 @@ export const GuitarFrets = styled.div`
   display: flex;
   flex-direction: row;
   border-width: 3px;
-  border-right: none;
+  border-right: 0ch;
   border-style:solid;
 `;
 
@@ -68,17 +68,6 @@ export const Line = styled.div`
   background-color: #000000;
 `;
 
-export const Dots = styled.div`
-  width: 10px;
-  height: 10px;
-  background-color: aliceblue;
-  margin-left: 34px;
-  align-self: center;
-  border-radius: 50%;
-  border-style: solid;
-  border-width: 1px;
-`;
-
 export const ContainerOutsideDots = styled.div`
   display: flex;
   flex-direction: row;
@@ -89,17 +78,9 @@ export const ContainerOutsideDots = styled.div`
 
 export const OutsideDots = styled.div`
   display: flex;
-`;
-
-export const OutsideDot = styled.div`
-  width: 10px;
-  height: 10px;
-  background-color: aliceblue;
-  margin-left: 34px;
-  align-self: center;
-  border-radius: 50%;
-  border-style: solid;
-  border-width: 1px;
+  width: 17.7%;
+  margin-left: 33px;
+  justify-content: space-between;
 `;
 
 export const BotaoNovaBatida = styled.button`
