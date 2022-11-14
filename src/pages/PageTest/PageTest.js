@@ -1,12 +1,12 @@
 import React from "react";
-import CreateMusic from "../../components/CreateMusic/CreateMusic";
+import { CreateMusic } from "../../components";
 
 function Test() {
-    return (
-        <div>
-           <CreateMusic></CreateMusic>
-        </div>
-    );
+	return (
+		<div>
+			<CreateMusic></CreateMusic>
+		</div>
+	);
 }
 
 export default Test;

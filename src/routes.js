@@ -1,15 +1,21 @@
 import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import PageTest from "./pages/PageTest";
+import { Home, ContactUs, PageTest } from "./pages";
+import { Header } from "./components";
+import GlobalStyle from "./globalStyles";
 
 function RoutesPage() {
-    return(
-    <Router>
-        <Routes>
-            <Route path="/page-test" element={<PageTest/>} />
-        </Routes>
-    </Router>
-    );
+	return (
+		<Router>
+			<GlobalStyle />
+			<Header />
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/contact" element={<ContactUs />} />
+				<Route path="/page-test" element={<PageTest />} />
+			</Routes>
+		</Router>
+	);
 }
 
 export default RoutesPage;
