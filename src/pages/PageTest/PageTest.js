@@ -7,13 +7,17 @@ import {
 
 function Test() {
 
-    
+    const [ createMusic, setCreateMusic ] = useState([<CreateMusic key={0} />]);
 
+    let handleAddComponent = (e) => {
+        e.preventDefault()
+        setCreateMusic([...createMusic,<CreateMusic key={createMusic.length} />]);
+    }
 
     return (
         <Container>
-           <CreateMusic/>
-           <BotaoNovaBatida onClick={() => {console.log()}}>NOVA BATIDA</BotaoNovaBatida>
+           {createMusic}
+           <BotaoNovaBatida onClick={handleAddComponent}>NOVA BATIDA</BotaoNovaBatida>
         </Container>
     );
 }
