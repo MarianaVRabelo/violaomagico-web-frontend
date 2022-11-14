@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import CreateMusic from "../../components/CreateMusic/CreateMusic";
+import {
+    BotaoNovaBatida,
+    Container,
+  } from "./Styles";
 
 function Test() {
+
+    
+
+
     return (
-        <div>
-           <CreateMusic></CreateMusic>
-        </div>
+        <Container>
+           <CreateMusic/>
+           <BotaoNovaBatida onClick={() => {console.log()}}>NOVA BATIDA</BotaoNovaBatida>
+        </Container>
     );
 }
 

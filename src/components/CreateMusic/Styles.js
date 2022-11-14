@@ -1,21 +1,22 @@
 import styled from "styled-components";
 
-export const Body = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  background-color: #302004;
-`;
+// export const Body = styled.div`
+//   display: flex;
+//   align-items: center;
+//   flex-direction: column;
+//   justify-content: center;
+//   width: 100%;
+//   height: 100%;
+//   background-color: #302004;
+// `;
 
 export const GuitarNeck = styled.div`
   display: flex;
   flex-direction: row;
-  width: 70%;
+  width: 944px;
   margin-top: 2%;
   margin-bottom: 0.5%;
+  
 `;
 
 export const GuitarStrings = styled.div`
@@ -71,14 +72,15 @@ export const Line = styled.div`
 export const ContainerOutsideDots = styled.div`
   display: flex;
   flex-direction: row;
-  width: 63.75%;
+  width: 863px;
   justify-content: space-between;
   margin-bottom: 2%;
+
 `;
 
 export const OutsideDots = styled.div`
   display: flex;
-  width: 17.7%;
+  width: 152.5px;
   margin-left: 33px;
   justify-content: space-between;
 `;
