@@ -3,29 +3,38 @@ import {
     Button,
   } from "./Styles";
 import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
-//passar como props setState dos objetos das bolinha amarela
+
 function OutsideDot({setChord, chord, position}) {
 
-const [buttonState, setButtonState] = useState("S0");
+const [buttonState, setButtonState] = useState("empty");
 let auxChord = chord;
 
 function handleButtonChange() {
-    if (buttonState === "S0") {
-        setButtonState("S2"); 
-        auxChord[position] = true;
+    if (buttonState === "empty") {
+        setButtonState("s");
+        Object.keys(auxChord[position]).forEach((key) => {
+            if (key !== 'flow') auxChord[position][key] = true;
+            else auxChord[position][key] = 's';
+          });
         setChord(auxChord);
     }
-    else if (buttonState === "S2") {
-        setButtonState("S1");
-        auxChord[position] = true;
+    else if (buttonState === "s") {
+        setButtonState("d");
+        Object.keys(auxChord[position]).forEach((key) => {
+            if (key !== 'flow') auxChord[position][key] = true;
+            else auxChord[position][key] = 'd';
+          });
         setChord(auxChord);
     }
-    else if (buttonState === "S1") {
-        setButtonState("S0");
-        auxChord[position] = false;
+    else if (buttonState === "d") {
+        setButtonState("empty");
+        Object.keys(auxChord[position]).forEach((key) => {
+            if (key === 'flow') auxChord[position][key] = ' ';
+          });
         setChord(auxChord);
     }
 }
+
 
 // function selectAllDots() {
 //     if (buttonState === "up" || buttonState === "down") setDotState("selected")
@@ -34,8 +43,8 @@ function handleButtonChange() {
 
     return(
         <Button onClick={handleButtonChange} state={buttonState}>
-            {buttonState === "S2" && <FaArrowUp/>}
-            {buttonState === "S1" && <FaArrowDown/>}
+            {buttonState === "s" && <FaArrowUp/>}
+            {buttonState === "d" && <FaArrowDown/>}
         </Button>
     )
 }

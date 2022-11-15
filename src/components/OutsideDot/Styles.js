@@ -7,7 +7,7 @@ export const Button = styled.button`
     outline: none;
     cursor: pointer;
     ${({ state }) =>
-    state === 'S0'
+    state === 'empty'
       ? `width: 13px;
         height: 13px;
         background-color: white;
