@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
     Button,
   } from "./Styles";
@@ -6,45 +6,39 @@ import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
 
 function OutsideDot({setChord, chord, position}) {
 
-const [buttonState, setButtonState] = useState("empty");
 let auxChord = chord;
+const [ rerender, setRerender ] = useState(true);
+
+useEffect(() => {
+  setChord(auxChord)
+},[auxChord]);
 
 function handleButtonChange() {
-    if (buttonState === "empty") {
-        setButtonState("s");
+    if (auxChord[position].flow === "empty") {
         Object.keys(auxChord[position]).forEach((key) => {
-            if (key !== 'flow') auxChord[position][key] = true;
-            else auxChord[position][key] = 's';
-          });
-        setChord(auxChord);
+            if (key !== "flow") auxChord[position][key] = true;
+            else auxChord[position][key] = "s";
+          });      
     }
-    else if (buttonState === "s") {
-        setButtonState("d");
+    else if (auxChord[position].flow === "s") {
         Object.keys(auxChord[position]).forEach((key) => {
-            if (key !== 'flow') auxChord[position][key] = true;
-            else auxChord[position][key] = 'd';
+            if (key !== "flow") auxChord[position][key] = true;
+            else auxChord[position][key] = "d";
           });
-        setChord(auxChord);
     }
-    else if (buttonState === "d") {
-        setButtonState("empty");
+    else if (auxChord[position].flow === "d") {
         Object.keys(auxChord[position]).forEach((key) => {
-            if (key === 'flow') auxChord[position][key] = ' ';
+          if (key !== "flow") auxChord[position][key] = false;
+          else auxChord[position][key] = "empty";
           });
-        setChord(auxChord);
     }
+    setRerender(!rerender);
 }
 
-
-// function selectAllDots() {
-//     if (buttonState === "up" || buttonState === "down") setDotState("selected")
-// }
-
-
     return(
-        <Button onClick={handleButtonChange} state={buttonState}>
-            {buttonState === "s" && <FaArrowUp/>}
-            {buttonState === "d" && <FaArrowDown/>}
+        <Button onClick={handleButtonChange} state={(auxChord[position].flow)}>
+            {auxChord[position].flow === "s" && <FaArrowUp/>}
+            {auxChord[position].flow === "d" && <FaArrowDown/>}
         </Button>
     )
 }

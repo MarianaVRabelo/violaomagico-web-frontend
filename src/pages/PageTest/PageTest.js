@@ -17,7 +17,7 @@ function Test() {
     return (
         <Container>
            {createMusic}
-           <BotaoNovaBatida onClick={handleAddComponent}>NOVA BATIDA</BotaoNovaBatida>
+           <BotaoNovaBatida onClick={handleAddComponent}>NOVA LINHA</BotaoNovaBatida>
         </Container>
     );
 }

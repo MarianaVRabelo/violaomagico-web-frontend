@@ -7,10 +7,10 @@ export const Dot = styled.button`
     margin-left: 33px;
     cursor: pointer;
     ${({ state }) =>
-    state === ''
+    state
       ? `width: 13px;
         height: 13px;
-        background-color: white;
+        background-color: yellow;
         border-radius: 50%;
         border-style: solid;
         border-width: 1px;`
@@ -18,7 +18,7 @@ export const Dot = styled.button`
       : `
         width: 13px;
         height: 13px;
-        background-color: yellow;
+        background-color: white;
         border-radius: 50%;
         border-style: solid;
         border-width: 1px;`}

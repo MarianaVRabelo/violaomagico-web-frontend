@@ -5,24 +5,25 @@ import {
 
 function Dots({setChord, chord, position, note}) {
 
-    const [dotState, setDotState] = useState("")
     let auxChord = chord;
 
+    const [ rerender, setRerender ] = useState(true);
+
+
     function handleDotChange() {
-        if (dotState === "") {
-            setDotState("selected");
+        if (!auxChord[position][note]) {
             auxChord[position][note] = true;
             setChord(auxChord);
         }
-        else if (dotState === "selected") {
-            setDotState("");
+        else if (auxChord[position][note]) {
             auxChord[position][note] = false;
             setChord(auxChord);
         }
+        setRerender(!rerender);
     }
 
     return(
-        <Dot onClick={handleDotChange} state={dotState}/>
+        <Dot onClick={handleDotChange} state={auxChord[position][note]}/>
     )
 }
 

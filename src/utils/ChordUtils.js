@@ -6,7 +6,7 @@ export const defaultChord = [
         D:false,
         A:false,
         E:false,
-        flow: " "
+        flow: "empty"
     },
     {
         e:false,
@@ -15,7 +15,7 @@ export const defaultChord = [
         D:false,
         A:false,
         E:false,
-        flow: " "
+        flow: "empty"
     },
     {
         e:false,
@@ -24,7 +24,7 @@ export const defaultChord = [
         D:false,
         A:false,
         E:false,
-        flow: " "
+        flow: "empty"
     },
     {
         e:false,
@@ -33,7 +33,7 @@ export const defaultChord = [
         D:false,
         A:false,
         E:false,
-        flow: " "
+        flow: "empty"
     },
     {
         e:false,
@@ -42,7 +42,7 @@ export const defaultChord = [
         D:false,
         A:false,
         E:false,
-        flow: " "
+        flow: "empty"
     },
     {
         e:false,
@@ -51,7 +51,7 @@ export const defaultChord = [
         D:false,
         A:false,
         E:false,
-        flow: " "
+        flow: "empty"
     },
     {
         e:false,
@@ -60,7 +60,7 @@ export const defaultChord = [
         D:false,
         A:false,
         E:false,
-        flow: " "
+        flow: "empty"
     },
     {
         e:false,
@@ -69,7 +69,7 @@ export const defaultChord = [
         D:false,
         A:false,
         E:false,
-        flow: " "
+        flow: "empty"
     },
     {
         e:false,
@@ -78,7 +78,7 @@ export const defaultChord = [
         D:false,
         A:false,
         E:false,
-        flow: " "
+        flow: "empty"
     },
     {
         e:false,
@@ -87,7 +87,7 @@ export const defaultChord = [
         D:false,
         A:false,
         E:false,
-        flow: " "
+        flow: "empty"
     },
     {
         e:false,
@@ -96,7 +96,7 @@ export const defaultChord = [
         D:false,
         A:false,
         E:false,
-        flow: " "
+        flow: "empty"
     },
     {
         e:false,
@@ -105,7 +105,7 @@ export const defaultChord = [
         D:false,
         A:false,
         E:false,
-        flow: " "
+        flow: "empty"
     },
     {
         e:false,
@@ -114,7 +114,7 @@ export const defaultChord = [
         D:false,
         A:false,
         E:false,
-        flow: " "
+        flow: "empty"
     },
     {
         e:false,
@@ -123,7 +123,7 @@ export const defaultChord = [
         D:false,
         A:false,
         E:false,
-        flow: " "
+        flow: "empty"
     },
     {
         e:false,
@@ -132,7 +132,7 @@ export const defaultChord = [
         D:false,
         A:false,
         E:false,
-        flow: " "
+        flow: "empty"
     },
     {
         e:false,
@@ -141,6 +141,6 @@ export const defaultChord = [
         D:false,
         A:false,
         E:false,
-        flow: " "
+        flow: "empty"
     },
 ]

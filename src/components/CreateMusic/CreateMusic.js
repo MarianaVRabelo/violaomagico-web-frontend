@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
     Body,
     GuitarNeck,
@@ -19,6 +19,12 @@ import { defaultChord } from "../../utils/ChordUtils";
 function CreateMusic() {
 
     const [ chord, setChord ] = useState(defaultChord);
+
+    // const [ rerender, setRerender ] = useState(true);
+
+    // useEffect(() => {
+    //     setRerender(!rerender);
+    // },[rerender]);
 
         return(
             <>
@@ -212,7 +218,7 @@ function CreateMusic() {
                         <OutsideDot setChord={setChord} chord={chord} position={15}/>
                     </OutsideDots>
                 </ContainerOutsideDots>
-                <BotaoNovaBatida onClick={() => console.log(chord)}>NOVA BATIDA</BotaoNovaBatida>
+                <BotaoNovaBatida onClick={() => console.log(chord)}>NOVA LINHA</BotaoNovaBatida>
             </>
         );
 }
