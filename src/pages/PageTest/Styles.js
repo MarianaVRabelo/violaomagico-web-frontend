@@ -2,17 +2,23 @@ import styled from "styled-components";
 
 export const BotaoNovaBatida = styled.button`
   display: flex;
-  padding:0.5%;
-  padding-left: 1%;
-  padding-right: 1%;
   align-items: center;
   justify-content: center;
-  background-color: #78866b;
-  color: white;
-  border-width:1px;
+  background-color: #F4F4F4;
+  color: black;
+  border-width: 1px;
   margin-bottom: 1.5%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: center;
+  height: 44px;
+  width: 164px;
+  border-radius: 9px;
+  padding: 10px 15px 10px 15px;
+
 `;
 
 export const Container = styled.div`
@@ -22,7 +28,7 @@ export const Container = styled.div`
   justify-content: center;
   width: 100%;
   height: 100%;
-  background-color: #302004;
+  background-color: #B99C7A;
 
   @media (max-width: 970px) {
     width: fit-content;

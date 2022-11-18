@@ -1,21 +1,11 @@
 import styled from "styled-components";
 
-// export const Body = styled.div`
-//   display: flex;
-//   align-items: center;
-//   flex-direction: column;
-//   justify-content: center;
-//   width: 100%;
-//   height: 100%;
-//   background-color: #302004;
-// `;
 
 export const GuitarNeck = styled.div`
   display: flex;
   flex-direction: row;
-  width: 944px;
+  width: 1280px;
   margin-top: 2%;
-  margin-bottom: 0.5%;
   
 `;
 
@@ -24,23 +14,28 @@ export const GuitarStrings = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  width: 38px;
-  background-color: #ffffff;
-  border: 3px;
+  width: 80px;
+  background-color: #F5EDE6;
+  border: 4px;
   border-right: 0ch;
   border-style:solid;
 `;
 
 export const String = styled.div`
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 0em;
+  text-align: center;
+
 `;
 
 export const GuitarFrets = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  border-width: 3px;
+  border-width: 4px;
   border-right: 0ch;
   border-style:solid;
 `;
@@ -48,18 +43,18 @@ export const GuitarFrets = styled.div`
 export const Fret = styled.div`
   display: flex;
   flex-direction:column;
-  height: 110px;
+  height: 200px;
   width: 100%;
   border-style:solid;
-  border-width: 3px;
+  border-width: 4px;
   border-top: 0ch;
   border-bottom: 0ch;
   border-left:0ch;
-  background-color: #ffffff;
+  background-color: #F5EDE6;
 
   justify-content: space-between;
-  padding-top: 1.1%;
-  padding-bottom: 1.1%;
+  padding-top: 20px;
+  padding-bottom: 20px;
 `;
 
 export const Line = styled.div`
@@ -72,18 +67,25 @@ export const Line = styled.div`
 export const ContainerOutsideDots = styled.div`
   display: flex;
   flex-direction: row;
-  width: 863px;
+  width: 1197px;
+  height: 36px;
   justify-content: space-between;
   margin-bottom: 2%;
+  background-color: #F5EDE6;
+  border-style:solid;
+  border-width: 4px;
+  border-top: 0px;
+  border-left: 0;
+  margin-left: 78px;
 
 `;
+  
+
 
 export const OutsideDots = styled.div`
   display: flex;
-  width: 152.5px;
-  margin-left: 33px;
-  justify-content: space-between;
-`;
+  width: 100%;
+  `;
 
 export const BotaoNovaBatida = styled.button`
   display: flex;
@@ -92,9 +94,10 @@ export const BotaoNovaBatida = styled.button`
   padding-right: 1%;
   align-items: center;
   justify-content: center;
-  background-color: #78866b;
-  color: white;
+  background-color: #98ADD7;
+  color: black;
   border-width:1px;
+  border-radius: 8px;
   margin-bottom: 1.5%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 500;
