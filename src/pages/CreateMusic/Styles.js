@@ -35,11 +35,31 @@ export const Modal = styled.div`
 `;
 
 export const Batidas = styled.div`
-  background-color: ${Colors.wood};
   display: flex;
+  align-items: center;
   height: 100px;
+  width: 100%;
+  `;
+
+export const Tab = styled.div`
   width: 33%;
-  background-color: ${Colors.wood};
+  height: 80%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${(props) => props.backgroundColor};
+  border: 1px solid black;
+  color: ${(props) => props.color};
+  `;
+
+export const Music = styled.div`
+  background-color: ${Colors.blackwood};
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
 `;
 
 export const Data = styled.div`

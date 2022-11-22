@@ -23,6 +23,7 @@ const Button = styled.button`
   background-color: ${(props) => props.backgroundColor};
   border-color: ${(props) => props.borderColor};
   border-style: solid;
+  border: ${(props) => props.border};
   border-radius: ${(props) => props.borderRadius};
   box-shadow: ${(props) => props.boxShadow};
   cursor: pointer;
