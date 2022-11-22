@@ -26,7 +26,7 @@ function CreateMusic() {
 
     function newbatida() {
         const batidaAdded = { pressed: true };
-        setBatidas([batidaAdded, ...batidas.slice(0,2)]);
+        setBatidas([batidaAdded, ...batidas.slice(0, 2)]);
         setBatidaPressed(true);
     };
 
@@ -63,6 +63,7 @@ function CreateMusic() {
                     batida?.pressed === true ? (
                         <Tab
                             backgroundColor={Colors.darkwood}
+                            onClick={() => (console.log("!"))}
                         >
                             Batida x
                         </Tab>
