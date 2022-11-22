@@ -10,6 +10,8 @@ import {
     Tab,
 } from "./Styles";
 
+import Plus from '../../assets/Plus.png';
+
 import Button from '../../styles/Button';
 import { useState } from "react";
 import { useEffect } from "react";
@@ -64,8 +66,10 @@ function CreateMusic() {
                         <Tab
                             backgroundColor={Colors.darkwood}
                             onClick={() => (console.log("!"))}
+                            color="white"  
+                            fontWeight="100"
                         >
-                            Batida x
+                            Batida {batidas.findIndex((b)=> b === batida) + 1}
                         </Tab>
                     ) : (
                         batida?.add === true ? (
@@ -74,12 +78,17 @@ function CreateMusic() {
                             >
                                 <Button
                                     onClick={() => newbatida()}
+                                    width = "60%"
                                     backgroundColor="transparent"
                                     border="1px solid black"
                                     color="white"
                                     fontWeight="700"
+                                    columnGap= "10px"
+                                    fontSize="20px"
+                                    fontSizeMedia1080="14px"
+                                    fontSizeMedia950="10px"
                                 >
-                                    {/* <img src="../../Plus.png" className="plus" alt="plusSymbol"></img> */}
+                                    <img src={Plus} className="plus" alt="plusSymbol"></img>
                                     NOVA BATIDA
                                 </Button>
                             </Tab>
@@ -95,17 +104,17 @@ function CreateMusic() {
             <Music>
                 {batidaPressed ? (
                     <Button
-                        width="10%"
+                        width="20%"
+                        backgroundColor="transparent"
+                        border="1px solid white"
+                        color="white"
+                        fontWeight="700"
+                        columnGap= "10px"
+                        padding="5px"
                     >
                         ENCERRAR
                     </Button>
                 ) : console.log("")}
-
-                <Button
-                    width="10%"
-                >
-                    NOVO MOVIMENTO
-                </Button>
             </Music>
         </Paginao >
     )

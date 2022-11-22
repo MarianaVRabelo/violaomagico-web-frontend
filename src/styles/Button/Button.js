@@ -12,12 +12,15 @@ const Button = styled.button`
   margin-top: ${(props) => props.marginTop?? "2%"};
   margin-left: ${(props) => props.marginLeft};
   min-width: ${(props) => props.minWidth};
+
+  padding: ${(props) => props.padding};
   padding-top: ${(props) => props.paddingTop};
   padding-left: ${(props) => props.paddingLeft};
   padding-right: ${(props) => props.paddingRight};
   height: ${(props) => props.height};
   gap: ${(props) => props.gap};
   width: ${(props) => props.width};
+  column-gap: ${(props) => props.columnGap};
   /*cor e estilo do botão*/
   color: ${(props) => props.color};
   background-color: ${(props) => props.backgroundColor};
@@ -35,12 +38,9 @@ const Button = styled.button`
   font-weight: ${(props) => props.fontWeight};
 
 
-  @media (max-width: 560px) {
+  @media (max-width: 700px) {
     width: 100%;
     height: ${(props) => props.heightMedia560};
-  }
-  @media (max-width: 920px) and (min-width: 560px){
-    width: ${(props) => props.widthMedia ?? props.width};
   }
 
   @media (max-width: 600px){ 

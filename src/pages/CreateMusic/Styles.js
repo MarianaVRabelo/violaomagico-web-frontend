@@ -2,12 +2,11 @@ import styled from "styled-components";
 import { Colors, Fonts } from '../../variables';
 
 export const Paginao = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  row-gap: 10vh;
   font-family: ${Fonts.quicksand};
   font-weight: 600;
   flex-direction: column;
@@ -18,8 +17,9 @@ export const Paginao = styled.div`
 
 
 export const Modal = styled.div`
-  height: 350px;
-  width: 33%;
+  min-height: 370px;
+  width: 40%;
+  margin-bottom:40px;
   background-color: ${Colors.wood};
   display: flex;
   flex-direction: column;
@@ -28,29 +28,36 @@ export const Modal = styled.div`
   border: 1px solid black;
   border-radius: 10px;
   
-  @media (max-width: 900px){
+  @media (max-width: 1280px){
     width: 50%;
   }
   
+  @media (max-width: 960px){
+    width: 60%;
+  }
+
+  @media (max-width: 700px){
+    width: 80%;
+  }
 `;
 
 export const Batidas = styled.div`
   display: flex;
   align-items: center;
-  height: 100px;
   width: 100%;
   `;
 
 export const Tab = styled.div`
-  width: 33%;
-  height: 80%;
-
+  padding:10px;
+  height: 40px;
+  width: 33.3%;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: ${(props) => props.backgroundColor};
-  border: 1px solid black;
   color: ${(props) => props.color};
+  font-weight: ${(props) => props.fontWeight};
+  border: 1px solid black;
   `;
 
 export const Music = styled.div`
@@ -63,13 +70,15 @@ export const Music = styled.div`
 `;
 
 export const Data = styled.div`
-  font-size: 20px;
+  font-size: 32px;
   height: 100px;
   width: 80%;
+  row-gap:10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  
   
   input {
     width: 100%;
@@ -80,6 +89,13 @@ export const Data = styled.div`
   input:focus {
     box-shadow: 0 0 0 0;
     outline: 0;
+    @media (max-width: 1280px){
+      font-size: 18px;
+    }
+  }
+
+  label{
+    font-family: ${Fonts.quicksand}
   }
   
   form {
@@ -92,17 +108,41 @@ export const Data = styled.div`
     width: 100%;
     border-bottom: 0.1px solid black;
   }
+
+  @media (max-width: 1280px){
+    font-size: 24px;
+  }
+  
+  @media (max-width: 600px){
+    font-size: 18px;
+  }
+
 `;
 
 export const Title = styled.div`
-  font-size: 30px;
-`;
+  font-size: 40px;
+
+  @media (max-width: 1280px){
+    font-size: 32px;
+  }
+  
+  @media (max-width: 500px){
+    font-size: 24px;
+  }
+  
+  @media (max-width: 360px){
+    font-size: 18px;
+  }
+  `;
 
 export const BpmSelector = styled.select`
 
-
-  option {
-
+font-size: 24px;
+padding: 12px;
+@media (max-width: 1280px){
+  font-size: 16px;
+}
+option {
   }
 `;
 
