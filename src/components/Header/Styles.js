@@ -41,12 +41,23 @@ export const LogoContainer = styled(NavLink)`
 	cursor: pointer;
 	color: white;
 	text-decoration: none;
+
+	@media screen and (max-width: 438px){
+		gap: 16px;
+	}
+	@media screen and (max-width: 350px){
+		font-size:25px;
+	}
+	@media screen and (max-width: 300px){
+		font-size:22px;
+	}
+
 `;
 export const LinksList = styled.ul`
 	display: flex;
 	list-style: none;
 	text-align: center;
-	margin-right: 2em;
+	margin-right: 0;
 
 	font-size: 1.5em;
 
