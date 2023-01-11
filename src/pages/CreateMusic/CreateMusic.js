@@ -25,12 +25,14 @@ function CreateMusic() {
 
     const [batidas, setBatidas] = useState([first, second, third]);
     const [batidaPressed, setBatidaPressed] = useState(false);
+    const [tabBackgroundColor, setTabBackgroundColor] = useState("");
 
     function newbatida() {
         const batidaAdded = { pressed: true };
         setBatidas([batidaAdded, ...batidas.slice(0, 2)]);
         setBatidaPressed(true);
     };
+
 
     useEffect(() => {
         // console.log(batidas);
@@ -64,10 +66,10 @@ function CreateMusic() {
                 {batidas.map((batida) => (
                     batida?.pressed === true ? (
                         <Tab
-                            backgroundColor={Colors.darkwood}
-                            onClick={() => (console.log("!"))}
-                            color="white"  
-                            fontWeight="100"
+                            backgroundColor = {Colors.darkwood}
+                            onClick={() => (console.log("yes"))}
+                            color="black"  
+                            fontWeight="700"
                         >
                             Batida {batidas.findIndex((b)=> b === batida) + 1}
                         </Tab>
@@ -84,7 +86,7 @@ function CreateMusic() {
                                     color="white"
                                     fontWeight="700"
                                     columnGap= "10px"
-                                    fontSize="20px"
+                                    fontSize="18px"
                                     fontSizeMedia1080="14px"
                                     fontSizeMedia950="10px"
                                 >

@@ -13,6 +13,7 @@ export const Paginao = styled.div`
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgba(245,237,230,1);
 `;
 
 
@@ -20,7 +21,7 @@ export const Modal = styled.div`
   min-height: 370px;
   width: 40%;
   margin-bottom:40px;
-  background-color: ${Colors.wood};
+  background-color: rgba(185, 156, 122, 1);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -58,6 +59,11 @@ export const Tab = styled.div`
   color: ${(props) => props.color};
   font-weight: ${(props) => props.fontWeight};
   border: 1px solid black;
+
+  @media (max-width: 309px){
+      font-size: 14px;
+      font-weight: bold;
+    }
   `;
 
 export const Music = styled.div`
@@ -121,6 +127,9 @@ export const Data = styled.div`
 
 export const Title = styled.div`
   font-size: 40px;
+  font-family: ${Fonts.quicksand};
+  font-style: normal;
+  font-weight: 700;
 
   @media (max-width: 1280px){
     font-size: 32px;
@@ -137,6 +146,8 @@ export const Title = styled.div`
 
 export const BpmSelector = styled.select`
 
+font-family: ${Fonts.roboto};
+font-weight: 500;
 font-size: 24px;
 padding: 12px;
 @media (max-width: 1280px){
