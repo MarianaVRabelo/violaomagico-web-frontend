@@ -1,11 +1,12 @@
 import React from "react";
+import RoutesPage from "./routes";
 
 function App() {
-    return (
-        <div>
-            ola
-        </div>
-    )
+	return (
+		<div>
+			<RoutesPage />
+		</div>
+	);
 }
 
 export default App;
