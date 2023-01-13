@@ -67,7 +67,7 @@ export const Tab = styled.div`
   `;
 
 export const Music = styled.div`
-  background-color: ${Colors.blackwood};
+  background-color: ${Colors.darkwood};
   display: flex;
   align-items: center;
   flex-direction: column;

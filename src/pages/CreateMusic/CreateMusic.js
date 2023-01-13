@@ -66,9 +66,9 @@ function CreateMusic() {
                 {batidas.map((batida) => (
                     batida?.pressed === true ? (
                         <Tab
-                            backgroundColor = {Colors.darkwood}
+                            backgroundColor = {Colors.blackwood}
                             onClick={() => (console.log("yes"))}
-                            color="black"  
+                            color="white"  
                             fontWeight="700"
                         >
                             Batida {batidas.findIndex((b)=> b === batida) + 1}
@@ -76,14 +76,14 @@ function CreateMusic() {
                     ) : (
                         batida?.add === true ? (
                             <Tab
-                                backgroundColor={Colors.musg}
+                                backgroundColor={Colors.darkwood}
                             >
                                 <Button
                                     onClick={() => newbatida()}
                                     width = "60%"
-                                    backgroundColor="transparent"
+                                    backgroundColor="#F4F4F4"
                                     border="1px solid black"
-                                    color="white"
+                                    color="black"
                                     fontWeight="700"
                                     columnGap= "10px"
                                     fontSize="18px"
@@ -107,12 +107,13 @@ function CreateMusic() {
                 {batidaPressed ? (
                     <Button
                         width="20%"
-                        backgroundColor="transparent"
-                        border="1px solid white"
-                        color="white"
+                        backgroundColor="#F4F4F4"
+                        border="1px solid black"
+                        color="black"
                         fontWeight="700"
                         columnGap= "10px"
                         padding="5px"
+                        fontSize="14px"
                     >
                         ENCERRAR
                     </Button>
