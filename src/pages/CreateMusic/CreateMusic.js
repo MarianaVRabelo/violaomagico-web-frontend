@@ -33,6 +33,18 @@ function CreateMusic() {
         setBatidaPressed(true);
     };
 
+    // function handleColorChange () {
+    //     const batidaClicked = { pressed: true };
+    //     if(batidaClicked === true){
+    //         setTabBackgroundColor(`${Colors.darkwood}`);
+    //     }
+    //     if(batidaClicked === false){
+    //         setTabBackgroundColor(`${Colors.blackwood}`);
+    //     }
+
+
+    // }
+
 
     useEffect(() => {
         // console.log(batidas);
@@ -67,7 +79,7 @@ function CreateMusic() {
                     batida?.pressed === true ? (
                         <Tab
                             backgroundColor = {Colors.blackwood}
-                            onClick={() => (console.log("yes"))}
+                            onClick={() => (console.log(batidas.findIndex((b)=> b === batida) + 1))}
                             color="white"  
                             fontWeight="700"
                         >
@@ -88,7 +100,7 @@ function CreateMusic() {
                                     columnGap= "10px"
                                     fontSize="18px"
                                     fontSizeMedia1080="14px"
-                                    fontSizeMedia950="10px"
+                                    fontSizeMedia950="14px"
                                 >
                                     <img src={Plus} className="plus" alt="plusSymbol"></img>
                                     NOVA BATIDA
@@ -114,6 +126,9 @@ function CreateMusic() {
                         columnGap= "10px"
                         padding="5px"
                         fontSize="14px"
+                        widthMedia700="20%"
+                        widthMedia281="60%"
+                        widthMedia415="40%"
                     >
                         ENCERRAR
                     </Button>

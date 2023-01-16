@@ -82,5 +82,14 @@ const Button = styled.button`
   @media (max-width: 571px) {
     width: ${(props) => props.widthres};
   }
+  @media (max-width: 700px) {
+    width: ${(props) => props.widthMedia700};
+  }
+  @media (max-width: 281px) {
+    width: ${(props) => props.widthMedia281};
+  }
+  @media (max-width: 415px) {
+    width: ${(props) => props.widthMedia415};
+  }
 `;
 export default Button;
