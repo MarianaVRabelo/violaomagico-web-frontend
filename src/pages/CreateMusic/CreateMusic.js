@@ -34,7 +34,7 @@ function CreateMusic() {
         setBatidaPressed(true);
         setSelected(index);
     };
-    
+
     //console.log(selected)
 
     // function handleColorChange () {
@@ -88,6 +88,7 @@ function CreateMusic() {
                             fontWeight="700"
                             selected= {index === selected}
                             style= {{cursor : "pointer" }}
+                            key={index}
                         >
                             Batida {batidas.findIndex((b)=> b === batida) + 1}
                         </Tab>
@@ -96,26 +97,29 @@ function CreateMusic() {
                             <Tab
                                 backgroundColor={Colors.darkwood}
                                 selected= {false}
+                                key={index}
                             >
                                 <Button
                                     onClick={() => newbatida(index)}
                                     width = "60%"
+                                    height = "80%"
                                     backgroundColor="#F4F4F4"
                                     border="1px solid black"
                                     color="black"
                                     fontWeight="700"
                                     columnGap= "10px"
                                     fontSize="18px"
-                                    fontSizeMedia1080="14px"
-                                    fontSizeMedia950="14px"
+                                    fontSizeMedia1080="12px"
+                                    fontSizeMedia950="12px"
                                 >
-                                    <img src={Plus} className="plus" alt="plusSymbol"></img>
+                                    <img src={Plus} className="plus" alt="plusSymbol" width="15" height="15"></img>
                                     NOVA BATIDA
                                 </Button>
                             </Tab>
                         ) : (
                             <Tab
                                 backgroundColor={Colors.darkwood}
+                                key={index}
                             />
                         )
                     )

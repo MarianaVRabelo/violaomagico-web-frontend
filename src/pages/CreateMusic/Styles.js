@@ -21,6 +21,7 @@ export const Modal = styled.div`
   min-height: 370px;
   width: 40%;
   margin-bottom:40px;
+  margin-top:50px;
   background-color: rgba(185, 156, 122, 1);
   display: flex;
   flex-direction: column;
