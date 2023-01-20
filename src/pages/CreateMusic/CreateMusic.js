@@ -26,13 +26,15 @@ function CreateMusic() {
     const [batidas, setBatidas] = useState([first, second, third]);
     const [batidaPressed, setBatidaPressed] = useState(false);
     const [tabBackgroundColor, setTabBackgroundColor] = useState("");
+    const [selected, setSelected] = useState(null)
 
-    function newbatida() {
+    function newbatida(index) {
         const batidaAdded = { pressed: true };
         setBatidas([batidaAdded, ...batidas.slice(0, 2)]);
         setBatidaPressed(true);
+        setSelected(index);
     };
-
+console.log(selected)
     // function handleColorChange () {
     //     const batidaClicked = { pressed: true };
     //     if(batidaClicked === true){
@@ -75,13 +77,15 @@ function CreateMusic() {
                 </BpmSelector>
             </Modal>
             <Batidas>
-                {batidas.map((batida) => (
+                {batidas.map((batida, index) => (
                     batida?.pressed === true ? (
                         <Tab
-                            backgroundColor = {Colors.blackwood}
-                            onClick={() => (console.log(batidas.findIndex((b)=> b === batida) + 1))}
+                            backgroundColor = {index === selected ? Colors.darkwood : Colors.blackwood}
+                            onClick={() => setSelected(index)}
                             color="white"  
                             fontWeight="700"
+                            selected= {index === selected}
+                            style= {{cursor : "pointer" }}
                         >
                             Batida {batidas.findIndex((b)=> b === batida) + 1}
                         </Tab>
@@ -91,7 +95,7 @@ function CreateMusic() {
                                 backgroundColor={Colors.darkwood}
                             >
                                 <Button
-                                    onClick={() => newbatida()}
+                                    onClick={() => newbatida(index)}
                                     width = "60%"
                                     backgroundColor="#F4F4F4"
                                     border="1px solid black"

@@ -58,7 +58,11 @@ export const Tab = styled.div`
   background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.color};
   font-weight: ${(props) => props.fontWeight};
-  border: 1px solid black;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+
+  ${(props) => props.selected ? "border-bottom: ${Colors.darkwood}" :   "border-bottom: 1px solid black"}
 
   @media (max-width: 309px){
       font-size: 14px;
