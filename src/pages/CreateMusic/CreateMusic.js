@@ -93,6 +93,7 @@ console.log(selected)
                         batida?.add === true ? (
                             <Tab
                                 backgroundColor={Colors.darkwood}
+                                selected= {false}
                             >
                                 <Button
                                     onClick={() => newbatida(index)}
