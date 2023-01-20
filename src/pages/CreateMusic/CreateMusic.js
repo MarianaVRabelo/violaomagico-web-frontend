@@ -34,7 +34,9 @@ function CreateMusic() {
         setBatidaPressed(true);
         setSelected(index);
     };
-console.log(selected)
+    
+    //console.log(selected)
+
     // function handleColorChange () {
     //     const batidaClicked = { pressed: true };
     //     if(batidaClicked === true){
