@@ -46,6 +46,7 @@ export const Batidas = styled.div`
 	display: flex;
 	align-items: center;
 	width: 100%;
+	background-color: #033323;
 `;
 
 export const Tab = styled.div`
@@ -78,6 +79,7 @@ export const Music = styled.div`
 	flex-direction: column;
 	height: 100%;
 	width: 100%;
+	background-color: #80000f;
 `;
 
 export const Data = styled.div`
@@ -157,4 +159,11 @@ export const BpmSelector = styled.select`
 	}
 	option {
 	}
+`;
+
+export const CreateMusicComponent = styled.select`
+
+background-color: #232323;
+
+
 `;

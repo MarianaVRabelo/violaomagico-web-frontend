@@ -13,6 +13,7 @@ import Plus from "../../assets/Plus.png";
 import Button from "../../styles/Button";
 import { useState } from "react";
 import { Colors } from "../../variables";
+import CreateMusicComponent from "../../components/CreateMusic/CreateMusic"
 
 function CreateMusic() {
 	const batidasQuantity = 3;
@@ -56,7 +57,7 @@ function CreateMusic() {
 					</div>
 				</Data>
 				<BpmSelector>
-					<option value=""> Tamanho do passo </option>
+					<option value=""> Tamanho do compasso </option>
 					<option value="3"> 3 divisões </option>
 					<option value="4"> 4 divisões </option>
 				</BpmSelector>
@@ -66,6 +67,7 @@ function CreateMusic() {
 					const isAddNewBatida = index === addNewBatidaIndex;
 					const isSelected = index === selectedBatidaIndex;
 
+					
 					if (isAddNewBatida)
 						return (
 							<AddNewBatidaComponent
@@ -74,22 +76,27 @@ function CreateMusic() {
 							/>
 						);
 
+
 					if (isCreated)
 						return (
+							<div>
 							<CreatedBatidaComponent
 								backgroundColor={
-									isSelected ? Colors.darkwood : Colors.blackwood
+									isSelected ? Colors.musg : Colors.musg
 								}
 								onClick={() => setSelectedBatidaIndex(index)}
 								index={index}
 								isSelected={isSelected}
 							/>
+							<CreateMusicComponent />
+							</div>
 						);
-
+							
 					return <Tab backgroundColor={Colors.darkwood} key={index} />;
 				})}
 			</Batidas>
 			<Music>
+				
 				{hasCreatedBatida && (
 					<Button
 						width="20%"
@@ -106,13 +113,15 @@ function CreateMusic() {
 					>
 						ENCERRAR
 					</Button>
+					
 				)}
+				
 			</Music>
 		</Paginao>
 	);
 }
 
-export default CreateMusic;
+
 
 const CreatedBatidaComponent = ({
 	backgroundColor,
@@ -133,7 +142,7 @@ const CreatedBatidaComponent = ({
 );
 
 const AddNewBatidaComponent = ({ onClick, key }) => (
-	<Tab backgroundColor={Colors.darkwood} selectedBatidaIndex={false} key={key}>
+	<Tab backgroundColor={Colors.darkwood} selectedBatidaIndex={true} key={key}>
 		{" "}
 		<Button
 			onClick={onClick}
@@ -159,3 +168,5 @@ const AddNewBatidaComponent = ({ onClick, key }) => (
 		</Button>
 	</Tab>
 );
+
+export default CreateMusic;
