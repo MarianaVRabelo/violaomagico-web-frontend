@@ -3,7 +3,7 @@ import { Colors, Fonts } from "../../variables";
 
 export const Paginao = styled.div`
 	width: 100%;
-	height: 100vh;
+	height: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -44,6 +44,7 @@ export const Modal = styled.div`
 
 export const Batidas = styled.div`
 	display: flex;
+	//flex-direction: column;
 	align-items: center;
 	width: 100%;
 `;
@@ -53,9 +54,12 @@ export const Tab = styled.div`
 	height: 40px;
 	width: 33.3%;
 	display: flex;
+	//display: inline;
+	//flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	background-color: ${(props) => props.backgroundColor};
+	//background-color: ${(props) => props.backgroundColor};
+	background-color: yellow;
 	color: ${(props) => props.color};
 	font-weight: ${(props) => props.fontWeight};
 	border-top: 1px solid black;
@@ -72,7 +76,8 @@ export const Tab = styled.div`
 `;
 
 export const Music = styled.div`
-	background-color: ${Colors.darkwood};
+	//background-color: ${Colors.darkwood};
+	background-color: blue;
 	display: flex;
 	align-items: center;
 	flex-direction: column;

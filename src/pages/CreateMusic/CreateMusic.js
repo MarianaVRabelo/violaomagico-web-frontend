@@ -13,6 +13,7 @@ import Plus from "../../assets/Plus.png";
 import Button from "../../styles/Button";
 import { useState } from "react";
 import { Colors } from "../../variables";
+import CreateMusicComponent from "../../components/CreateMusic/CreateMusic";
 
 function CreateMusic() {
 	const batidasQuantity = 3;
@@ -76,14 +77,17 @@ function CreateMusic() {
 
 					if (isCreated)
 						return (
-							<CreatedBatidaComponent
-								backgroundColor={
-									isSelected ? Colors.darkwood : Colors.blackwood
-								}
-								onClick={() => setSelectedBatidaIndex(index)}
-								index={index}
-								isSelected={isSelected}
-							/>
+							<div>
+								<CreatedBatidaComponent
+									backgroundColor={
+										isSelected ? Colors.darkwood : Colors.blackwood
+									}
+									onClick={() => setSelectedBatidaIndex(index)}
+									index={index}
+									isSelected={isSelected}
+								/>
+								<CreateMusicComponent/>
+							</div>
 						);
 
 					return <Tab backgroundColor={Colors.darkwood} key={index} />;
@@ -123,7 +127,7 @@ const CreatedBatidaComponent = ({
 	<Tab
 		backgroundColor={backgroundColor}
 		onClick={onClick}
-		color="white"
+		color="red"
 		fontWeight="700"
 		isSelected={isSelected}
 		key={index}

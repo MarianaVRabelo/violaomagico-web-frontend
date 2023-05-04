@@ -15,7 +15,7 @@ import {
 } from "./Styles";
 import WeirdButton from "../WeirdButton/WeirdButton";
 
-function CreateMusic() {
+function CreateMusicComponent() {
 	const [chord, setChord] = useState([]);
 
 	return (
@@ -215,4 +215,4 @@ function CreateMusic() {
 	);
 }
 
-export default CreateMusic;
+export default CreateMusicComponent;
