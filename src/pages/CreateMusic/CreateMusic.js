@@ -127,7 +127,7 @@ const CreatedBatidaComponent = ({
 	<Tab
 		backgroundColor={backgroundColor}
 		onClick={onClick}
-		color="red"
+		color="white"
 		fontWeight="700"
 		isSelected={isSelected}
 		key={index}
