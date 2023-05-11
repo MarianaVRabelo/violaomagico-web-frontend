@@ -3,7 +3,7 @@ import { Colors, Fonts } from "../../variables";
 
 export const Paginao = styled.div`
 	width: 100%;
-	height: 100vh;
+	height: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -14,6 +14,7 @@ export const Paginao = styled.div`
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	background-color: rgba(245, 237, 230, 1);
+	
 `;
 
 export const Modal = styled.div`
@@ -43,7 +44,8 @@ export const Modal = styled.div`
 `;
 
 export const Batidas = styled.div`
-	display: flex;
+	//display: flex;
+	//background-color: green;
 	align-items: center;
 	width: 100%;
 `;
@@ -53,9 +55,12 @@ export const Tab = styled.div`
 	height: 40px;
 	width: 33.3%;
 	display: flex;
+	//display: inline;
+	flex-direction: row;
 	align-items: center;
 	justify-content: center;
 	background-color: ${(props) => props.backgroundColor};
+	//background-color: yellow;
 	color: ${(props) => props.color};
 	font-weight: ${(props) => props.fontWeight};
 	border-top: 1px solid black;
@@ -73,6 +78,7 @@ export const Tab = styled.div`
 
 export const Music = styled.div`
 	background-color: ${Colors.darkwood};
+	//background-color: blue;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
@@ -83,7 +89,7 @@ export const Music = styled.div`
 export const Data = styled.div`
 	font-size: 32px;
 	height: 100px;
-	width: 80%;
+	width: 100%;
 	row-gap: 10px;
 	display: flex;
 	flex-direction: column;
