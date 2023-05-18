@@ -1,4 +1,4 @@
-import { useState } from "react";
+//import { useState } from "react";
 import {
 	Body,
 	GuitarNeck,
@@ -6,7 +6,6 @@ import {
 	String,
 	GuitarFrets,
 	Fret,
-	Dots,
 	BotaoNovaBatida,
 	Line,
 	OutsideDots,
@@ -14,9 +13,10 @@ import {
 	ContainerOutsideDots,
 } from "./Styles";
 import WeirdButton from "../WeirdButton/WeirdButton";
+import Dots from "../Dots/Dots";
 
 function CreateMusicComponent() {
-	const [chord, setChord] = useState([]);
+	//const [chord, setChord] = useState([]);
 
 	return (
 		<Body>

@@ -44,8 +44,8 @@ export const Modal = styled.div`
 `;
 
 export const Batidas = styled.div`
-	//display: flex;
 	//background-color: green;
+	//background-color: #231709;
 	align-items: center;
 	width: 100%;
 `;
@@ -55,7 +55,6 @@ export const Tab = styled.div`
 	height: 40px;
 	width: 33.3%;
 	display: flex;
-	//display: inline;
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;

@@ -68,16 +68,17 @@ export const Line = styled.div`
 	background-color: #000000;
 `;
 
-export const Dots = styled.div`
-	width: 10px;
-	height: 10px;
-	background-color: aliceblue;
-	margin-left: 34px;
-	align-self: center;
-	border-radius: 50%;
-	border-style: solid;
-	border-width: 1px;
-`;
+// export const Dots = styled.div`
+// 	width: 10px;
+// 	height: 10px;
+// 	//background-color: aliceblue;
+// 	background-color: greenyellow;
+// 	margin-left: 34px;
+// 	align-self: center;
+// 	border-radius: 50%;
+// 	border-style: solid;
+// 	border-width: 1px;
+// `;
 
 export const ContainerOutsideDots = styled.div`
 	display: flex;
