@@ -14,6 +14,7 @@ import Button from "../../styles/Button";
 import { useState } from "react";
 import { Colors } from "../../variables";
 import CreateMusicComponent from "../../components/CreateMusic/CreateMusic";
+import BpmChange from "../../components/BpmSelector/BpmSelector";
 
 function CreateMusic() {
 	const batidasQuantity = 3;
@@ -61,6 +62,9 @@ function CreateMusic() {
 					<option value="3"> 3 divisões </option>
 					<option value="4"> 4 divisões </option>
 				</BpmSelector>
+				<BpmChange>
+					
+				</BpmChange>
 			</Modal>
 			<Batidas>
 				{batidas.map(({ isCreated }, index) => {
