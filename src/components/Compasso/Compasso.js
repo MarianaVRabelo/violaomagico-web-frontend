@@ -1,47 +1,14 @@
-import { Fret, Line} from "./Styles";
-import Dots  from "../Dots/Dots";
+import { Fret} from "./Styles";
+import Column from "../Column/Column";
 
 function Compasso(){
 
     return(
-
         <Fret>
-            <Line>
-                <Dots />
-                <Dots />
-                <Dots />
-                <Dots />
-            </Line>
-            <Line>
-                <Dots />
-                <Dots />
-                <Dots />
-                <Dots />
-            </Line>
-            <Line>
-                <Dots />
-                <Dots />
-                <Dots />
-                <Dots />
-            </Line>
-            <Line>
-                <Dots />
-                <Dots />
-                <Dots />
-                <Dots />
-            </Line>
-            <Line>
-                <Dots />
-                <Dots />
-                <Dots />
-                <Dots />
-            </Line>
-            <Line>
-                <Dots />
-                <Dots />
-                <Dots />
-                <Dots />
-            </Line>
+            <Column></Column>
+            <Column></Column>
+            <Column></Column>
+            <Column></Column>
         </Fret>
     );
 

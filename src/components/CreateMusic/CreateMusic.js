@@ -28,7 +28,7 @@ function CreateMusicComponent() {
 					<String>E</String>
 				</GuitarStrings>
 				<GuitarFrets>
-					
+					<Compasso />
 					<Compasso />
 					<Compasso />
 					<Compasso />
@@ -60,7 +60,7 @@ function CreateMusicComponent() {
 					<WeirdButton />
 				</OutsideDots>
 			</ContainerOutsideDots>
-			<BotaoNovoCompasso>NOVO COMPASSO</BotaoNovoCompasso>
+			<BotaoNovoCompasso>NOVA LINHA</BotaoNovoCompasso>
 		</Body>
 	);
 }

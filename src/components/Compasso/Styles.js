@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Fret = styled.div`
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	height: 110px;
 	width: 25%; //cada compasso ocupar 1/4 do braço
 	border-style: solid; // coloca a divisão entre os compassos
@@ -12,14 +12,7 @@ export const Fret = styled.div`
 	border-left: 0ch;
 	background-color: #ffffff;
 
-	justify-content: space-between;
+	//justify-content: space-between;
 	padding-top: 1.1%;
 	padding-bottom: 1.1%;
-`;
-
-export const Line = styled.div`
-	width: 100%;
-	display: flex;
-	height: 1px;
-	background-color: #000000;
 `;

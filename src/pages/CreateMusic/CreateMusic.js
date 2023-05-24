@@ -87,6 +87,7 @@ function CreateMusic() {
 									isSelected={isSelected}
 								/>
 								<CreateMusicComponent/>
+								<CreateMusicComponent/>
 							</div>
 						);
 
