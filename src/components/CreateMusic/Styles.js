@@ -70,17 +70,4 @@ export const OutsideDot = styled.div`
 	border-width: 1px;
 `;
 
-export const BotaoNovoCompasso = styled.button`
-	display: flex;
-	padding: 0.5%;
-	padding-left: 1%;
-	padding-right: 1%;
-	align-items: center;
-	justify-content: center;
-	background-color: #78866b;
-	color: white;
-	border-width: 1px;
-	margin-bottom: 1.5%;
-	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-	font-weight: 500;
-`;
+

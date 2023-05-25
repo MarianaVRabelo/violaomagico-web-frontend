@@ -60,7 +60,7 @@ function CreateMusicComponent() {
 					<WeirdButton />
 				</OutsideDots>
 			</ContainerOutsideDots>
-			<BotaoNovoCompasso>NOVA LINHA</BotaoNovoCompasso>
+			
 		</Body>
 	);
 }
