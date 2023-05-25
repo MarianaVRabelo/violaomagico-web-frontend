@@ -1,22 +1,20 @@
-import { useState } from "react";
+//import { useState } from "react";
 import {
 	Body,
 	GuitarNeck,
 	GuitarStrings,
 	String,
 	GuitarFrets,
-	Fret,
-	Dots,
-	BotaoNovaBatida,
-	Line,
+	BotaoNovoCompasso,
 	OutsideDots,
 	OutsideDot,
 	ContainerOutsideDots,
 } from "./Styles";
 import WeirdButton from "../WeirdButton/WeirdButton";
+import Compasso from "../Compasso/Compasso";
 
 function CreateMusicComponent() {
-	const [chord, setChord] = useState([]);
+	//const [chord, setChord] = useState([]);
 
 	return (
 		<Body>
@@ -30,158 +28,10 @@ function CreateMusicComponent() {
 					<String>E</String>
 				</GuitarStrings>
 				<GuitarFrets>
-					<Fret>
-						<Line>
-							<Dots />
-							<Dots />
-							<Dots />
-							<Dots />
-						</Line>
-						<Line>
-							<Dots />
-							<Dots />
-							<Dots />
-							<Dots />
-						</Line>
-						<Line>
-							<Dots />
-							<Dots />
-							<Dots />
-							<Dots />
-						</Line>
-						<Line>
-							<Dots />
-							<Dots />
-							<Dots />
-							<Dots />
-						</Line>
-						<Line>
-							<Dots />
-							<Dots />
-							<Dots />
-							<Dots />
-						</Line>
-						<Line>
-							<Dots />
-							<Dots />
-							<Dots />
-							<Dots />
-						</Line>
-					</Fret>
-					<Fret>
-						<Line>
-							<Dots />
-							<Dots />
-							<Dots />
-							<Dots />
-						</Line>
-						<Line>
-							<Dots />
-							<Dots />
-							<Dots />
-							<Dots />
-						</Line>
-						<Line>
-							<Dots />
-							<Dots />
-							<Dots />
-							<Dots />
-						</Line>
-						<Line>
-							<Dots />
-							<Dots />
-							<Dots />
-							<Dots />
-						</Line>
-						<Line>
-							<Dots />
-							<Dots />
-							<Dots />
-							<Dots />
-						</Line>
-						<Line>
-							<Dots />
-							<Dots />
-							<Dots />
-							<Dots />
-						</Line>
-					</Fret>
-					<Fret>
-						<Line>
-							<Dots />
-							<Dots />
-							<Dots />
-							<Dots />
-						</Line>
-						<Line>
-							<Dots />
-							<Dots />
-							<Dots />
-							<Dots />
-						</Line>
-						<Line>
-							<Dots />
-							<Dots />
-							<Dots />
-							<Dots />
-						</Line>
-						<Line>
-							<Dots />
-							<Dots />
-							<Dots />
-							<Dots />
-						</Line>
-						<Line>
-							<Dots />
-							<Dots />
-							<Dots />
-							<Dots />
-						</Line>
-						<Line>
-							<Dots />
-							<Dots />
-							<Dots />
-							<Dots />
-						</Line>
-					</Fret>
-					<Fret>
-						<Line>
-							<Dots />
-							<Dots />
-							<Dots />
-							<Dots />
-						</Line>
-						<Line>
-							<Dots />
-							<Dots />
-							<Dots />
-							<Dots />
-						</Line>
-						<Line>
-							<Dots />
-							<Dots />
-							<Dots />
-							<Dots />
-						</Line>
-						<Line>
-							<Dots />
-							<Dots />
-							<Dots />
-							<Dots />
-						</Line>
-						<Line>
-							<Dots />
-							<Dots />
-							<Dots />
-							<Dots />
-						</Line>
-						<Line>
-							<Dots />
-							<Dots />
-							<Dots />
-							<Dots />
-						</Line>
-					</Fret>
+					<Compasso />
+					<Compasso />
+					<Compasso />
+					<Compasso />
 				</GuitarFrets>
 			</GuitarNeck>
 			<ContainerOutsideDots>
@@ -210,7 +60,7 @@ function CreateMusicComponent() {
 					<WeirdButton />
 				</OutsideDots>
 			</ContainerOutsideDots>
-			<BotaoNovaBatida>NOVA BATIDA</BotaoNovaBatida>
+			
 		</Body>
 	);
 }

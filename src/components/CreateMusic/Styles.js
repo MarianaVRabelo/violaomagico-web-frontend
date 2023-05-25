@@ -16,6 +16,7 @@ export const GuitarNeck = styled.div`
 	width: 70%;
 	margin-top: 2%;
 	margin-bottom: 0.5%;
+	//background-color: green;
 `;
 
 export const GuitarStrings = styled.div`
@@ -42,49 +43,16 @@ export const GuitarFrets = styled.div`
 	border-width: 3px;
 	border-right: none;
 	border-style: solid;
-`;
-
-export const Fret = styled.div`
-	display: flex;
-	flex-direction: column;
-	height: 110px;
-	width: 100%;
-	border-style: solid;
-	border-width: 3px;
-	border-top: 0ch;
-	border-bottom: 0ch;
-	border-left: 0ch;
-	background-color: #ffffff;
-
-	justify-content: space-between;
-	padding-top: 1.1%;
-	padding-bottom: 1.1%;
-`;
-
-export const Line = styled.div`
-	width: 100%;
-	display: flex;
-	height: 1px;
-	background-color: #000000;
-`;
-
-export const Dots = styled.div`
-	width: 10px;
-	height: 10px;
-	background-color: aliceblue;
-	margin-left: 34px;
-	align-self: center;
-	border-radius: 50%;
-	border-style: solid;
-	border-width: 1px;
+	//background-color: red;
 `;
 
 export const ContainerOutsideDots = styled.div`
 	display: flex;
 	flex-direction: row;
-	width: 63.75%;
+	width: 65%;
 	justify-content: space-between;
 	margin-bottom: 2%;
+	margin-left: 1.5%;
 `;
 
 export const OutsideDots = styled.div`
@@ -102,17 +70,4 @@ export const OutsideDot = styled.div`
 	border-width: 1px;
 `;
 
-export const BotaoNovaBatida = styled.button`
-	display: flex;
-	padding: 0.5%;
-	padding-left: 1%;
-	padding-right: 1%;
-	align-items: center;
-	justify-content: center;
-	background-color: #78866b;
-	color: white;
-	border-width: 1px;
-	margin-bottom: 1.5%;
-	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-	font-weight: 500;
-`;
+
