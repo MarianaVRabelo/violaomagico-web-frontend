@@ -165,7 +165,7 @@ export const BpmSelector = styled.select`
   }
 `;
 
-export const BotaoNovoCompasso = styled.button`
+export const BotaoNovaLinha = styled.button`
   display: flex;
   padding: 0.5%;
   padding-left: 1%;

@@ -8,7 +8,7 @@ import {
   Music,
   Paginao,
   Tab,
-  BotaoNovoCompasso,
+  BotaoNovaLinha,
 } from "./Styles";
 import Plus from "../../assets/Plus.png";
 import Button from "../../styles/Button";
@@ -79,10 +79,10 @@ function CreateMusic() {
           <option value="3"> 3 divisões </option>
           <option value="4"> 4 divisões </option>
         </BpmSelector>
-        <BpmChange/>
-        <TitleChange/>
-        <AuthorChange/>
-        <InputComponent/>
+        <BpmChange />
+        <TitleChange />
+        <AuthorChange />
+        <InputComponent />
       </Modal>
       <Batidas>
         {batidas.map(({ isCreated }, index) => {
@@ -118,9 +118,9 @@ function CreateMusic() {
           <>
             {selectedMusicComponents}
             {selectedMusicComponents.length < 5 && (
-              <BotaoNovoCompasso type="button" onClick={addMusicComponent}>
+              <BotaoNovaLinha type="button" onClick={addMusicComponent}>
                 NOVA LINHA
-              </BotaoNovoCompasso>
+              </BotaoNovaLinha>
             )}
             <Button
               width="20%"
