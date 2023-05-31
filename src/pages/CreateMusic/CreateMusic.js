@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import {
   Title,
   Data,
@@ -12,8 +12,7 @@ import {
 } from "./Styles";
 import Plus from "../../assets/Plus.png";
 import Button from "../../styles/Button";
-import { useState } from "react";
-import { Colors } from "../../variables";
+import { Colors } from "../../styles/variables";
 import CreateMusicComponent from "../../components/CreateMusic/CreateMusic";
 import BpmChange from "../../components/BpmChange/BpmChange";
 import TitleChange from "../../components/TitleChange/TitleChange";
