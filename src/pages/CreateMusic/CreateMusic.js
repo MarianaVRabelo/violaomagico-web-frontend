@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from "react";
 import {
   Title,
-  Data,
+  /*Data,*/
   Modal,
   Batidas,
   BpmSelector,
@@ -17,7 +17,7 @@ import CreateMusicComponent from "../../components/CreateMusic/CreateMusic";
 import BpmChange from "../../components/BpmChange/BpmChange";
 import TitleChange from "../../components/TitleChange/TitleChange";
 import AuthorChange from "../../components/AuthorChange/AuthorChange";
-import InputComponent from "../../components/InputComponent/InputComponent";
+/*import InputComponent from "../../components/InputComponent/InputComponent";*/
 
 function CreateMusic() {
   const batidasQuantity = 3;
@@ -57,31 +57,18 @@ function CreateMusic() {
     <Paginao>
       <Modal>
         <Title> CRIAÇÃO DA MÚSICA </Title>
-        <Data>
-          <div id="fields">
-            <label>Título: </label>
-            <input type="text" className="título"></input>
-            <br />
-          </div>
-          <div id="fields">
-            <label>Autor: </label>
-            <input type="text" className="autor"></input>
-            <br />
-          </div>
-          <div id="fields">
-            <label>BPM: </label>
-            <input type="text" className="bpm"></input>
-          </div>
-        </Data>
+        <BpmChange />       
+        <TitleChange />
+        <AuthorChange />
+        {/*<InputComponent />*/}
+        <h1/>
         <BpmSelector>
           <option value=""> Tamanho do passo </option>
           <option value="3"> 3 divisões </option>
           <option value="4"> 4 divisões </option>
         </BpmSelector>
-        <BpmChange />
-        <TitleChange />
-        <AuthorChange />
-        <InputComponent />
+        <h1/>
+        
       </Modal>
       <Batidas>
         {batidas.map(({ isCreated }, index) => {

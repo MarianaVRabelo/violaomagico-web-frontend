@@ -90,34 +90,10 @@ export const Data = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-
-  input {
-    width: 100%;
-    border: none;
-    background-color: transparent;
-  }
-
-  input:focus {
-    box-shadow: 0 0 0 0;
-    outline: 0;
-    @media (max-width: 1280px) {
-      font-size: 18px;
-    }
-  }
+  background-color: red;
 
   label {
     font-family: ${Fonts.quicksand};
-  }
-
-  form {
-    width: 80%;
-    font-size: large;
-  }
-
-  #fields {
-    display: flex;
-    width: 100%;
-    border-bottom: 0.1px solid black;
   }
 
   @media (max-width: 1280px) {

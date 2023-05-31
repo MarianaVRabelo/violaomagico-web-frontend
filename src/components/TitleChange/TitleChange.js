@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import InputComponent from "../../components/InputComponent/InputComponent";
+import { Container, TitleText, TitleInput } from "./Styles";
 
 function TitleChange() {
   const [titleName, setTitleName] = useState("");
@@ -9,11 +9,11 @@ function TitleChange() {
   };
 
   return (
-    <div>
-      <p>Nome: {titleName}</p>
-      <input className="inputTitle" type="text" value={titleName} onChange={handleTitleChange} /> 
-      <p></p>  
-    </div>
+    <Container>
+      <TitleText>Nome: {titleName}</TitleText>
+      <TitleInput type="text" value={titleName} onChange={handleTitleChange} /> 
+      {/* Adicione o texto adicional desejado aqui */}
+    </Container>
   );
 }
 
