@@ -15,12 +15,12 @@ function CreateMusicComponent() {
     <BodyMusic>
       <GuitarNeck>
         <GuitarStrings>
-          <String>e</String>
-          <String>B</String>
-          <String>G</String>
-          <String>D</String>
-          <String>A</String>
           <String>E</String>
+          <String>A</String>
+          <String>D</String>
+          <String>G</String>
+          <String>B</String>
+          <String>e</String>
         </GuitarStrings>
         <GuitarCompass>
           <Compass />
