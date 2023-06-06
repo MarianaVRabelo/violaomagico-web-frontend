@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Container, BpmValueText, BpmInput } from "./Styles";
 
 function BpmChange() {
   const [BpmValue, setBpmValue] = useState();
@@ -12,10 +13,10 @@ function BpmChange() {
   };
 
   return (
-    <div>
-      <p>Valor do BPM: {BpmValue}</p>
-      <input type="text" value={BpmValue} onChange={handleBpmChange}/>
-    </div>
+    <Container>
+      <BpmValueText>Valor do BPM: {BpmValue}</BpmValueText>
+      <BpmInput type="text" value={BpmValue} onChange={handleBpmChange} />
+    </Container>
   );
 }
 

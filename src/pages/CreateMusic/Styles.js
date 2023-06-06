@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Colors, Fonts } from "../../variables";
+import { Colors, Fonts } from "../../styles/variables";
 
 export const Paginao = styled.div`
   width: 100%;
@@ -43,9 +43,6 @@ export const Modal = styled.div`
 `;
 
 export const Batidas = styled.div`
-  //background-color: green;
-  //background-color: #231709;
-
   display: flex;
   align-items: center;
   width: 100%;
@@ -60,7 +57,6 @@ export const Tab = styled.div`
   align-items: center;
   justify-content: center;
   background-color: ${(props) => props.backgroundColor};
-  //background-color: yellow;
   color: ${(props) => props.color};
   font-weight: ${(props) => props.fontWeight};
   border-top: 1px solid black;
@@ -78,7 +74,6 @@ export const Tab = styled.div`
 
 export const Music = styled.div`
   background-color: ${Colors.darkwood};
-  //background-color: blue;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -95,34 +90,10 @@ export const Data = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-
-  input {
-    width: 100%;
-    border: none;
-    background-color: transparent;
-  }
-
-  input:focus {
-    box-shadow: 0 0 0 0;
-    outline: 0;
-    @media (max-width: 1280px) {
-      font-size: 18px;
-    }
-  }
+  background-color: red;
 
   label {
     font-family: ${Fonts.quicksand};
-  }
-
-  form {
-    width: 80%;
-    font-size: large;
-  }
-
-  #fields {
-    display: flex;
-    width: 100%;
-    border-bottom: 0.1px solid black;
   }
 
   @media (max-width: 1280px) {
@@ -165,7 +136,7 @@ export const BpmSelector = styled.select`
   }
 `;
 
-export const BotaoNovoCompasso = styled.button`
+export const BotaoNovaLinha = styled.button`
   display: flex;
   padding: 0.5%;
   padding-left: 1%;

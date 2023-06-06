@@ -1,22 +1,19 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { Container, AuthorText, AuthorInput } from "./Styles";
 
-function AuthorChange(){
+function AuthorChange() {
+  const [author, setAuthor] = useState(""); 
 
-    const [author, setAuthor] = useState(""); 
+  const handleAuthorChange = (event) => {
+    setAuthor(event.target.value);
+  };
 
-    const handleAuthorChange = (event) => {
-        setAuthor(event.target.value);
-      };
-
-
-    return(
-        <div>
-            <p>
-                Autor: {author}
-            </p>
-            <input className="inputAuthor" type="text" value={author} onChange={handleAuthorChange} />
-        </div>
-    )
+  return (
+    <Container>
+      <AuthorText>Autor: {author}</AuthorText>
+      <AuthorInput type="text" value={author} onChange={handleAuthorChange} />
+    </Container>
+  );
 }
 
 export default AuthorChange;

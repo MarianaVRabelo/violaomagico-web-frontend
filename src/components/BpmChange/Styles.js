@@ -1,29 +1,32 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  /* Estilos para o contêiner principal */
-  //background-color: #445564;
+  //conteiner
   display: flex; 
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
+  //background-color:red;
+
+
 `;
 
-export const AuthorText = styled.p`
-  /* Estilos para o texto do autor */
-  //background-color: crimson; 
-  font-size:30px;
+export const BpmValueText = styled.p`
+  //texto valor BPM 
+  //background-color:green; 
+  font-size: 30px;
 `;
 
-export const AuthorInput = styled.input`
-  /* Estilos para o input do autor */
-  //background-color: chocolate;
+export const BpmInput = styled.input`
+  //input BPM 
+  //background-color:blue; 
+  width: 50px;
+  border-radius:5px;
   border-radius:5px;
   height:100px;
   //background-color: rgba(185, 156, 122, 1);
   color: #000;
   font-size: 28px;
-  width: 100%;
-  padding: 10px 15px 5px;
+  padding: 10px 20px 5px;
   background-color: #fff;
   border: solid 1px #000000;
   border-radius: 4px;

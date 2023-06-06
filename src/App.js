@@ -4,7 +4,6 @@ import RoutesPage from "./routes";
 function App() {
     return (
         <div>
-            
         </div>
     )
 }

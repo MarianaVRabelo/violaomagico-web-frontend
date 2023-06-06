@@ -1,22 +1,23 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  /* Estilos para o contêiner principal */
-  //background-color: #445564;
-  display: flex; 
+  //conteiner
+  //background-color:cyan; 
+  display:flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
 `;
 
-export const AuthorText = styled.p`
-  /* Estilos para o texto do autor */
-  //background-color: crimson; 
+export const TitleText = styled.p`
+  //texto do título 
+  //background-color:yellow;
   font-size:30px;
 `;
 
-export const AuthorInput = styled.input`
-  /* Estilos para o input do autor */
-  //background-color: chocolate;
+export const TitleInput = styled.input`
+  //input do título
+  //background-color: blue;
+  width: 150px;
   border-radius:5px;
   height:100px;
   //background-color: rgba(185, 156, 122, 1);
