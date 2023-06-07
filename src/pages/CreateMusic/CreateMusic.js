@@ -17,6 +17,7 @@ import CreateMusicComponent from "../../components/CreateMusic/CreateMusic";
 import BpmChange from "../../components/BpmChange/BpmChange";
 import TitleChange from "../../components/TitleChange/TitleChange";
 import AuthorChange from "../../components/AuthorChange/AuthorChange";
+import GuitarIcon from "../../assets/GuitarIcon"
 /*import InputComponent from "../../components/InputComponent/InputComponent";*/
 
 function CreateMusic() {
@@ -68,7 +69,10 @@ function CreateMusic() {
           <option value="4"> 4 divisões </option>
         </BpmSelector>
         <h1/>
-        
+        <GuitarIcon />
+        <h1 />
+
+
       </Modal>
       <Batidas>
         {batidas.map(({ isCreated }, index) => {

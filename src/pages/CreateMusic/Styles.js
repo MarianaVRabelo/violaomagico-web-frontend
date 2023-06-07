@@ -13,7 +13,9 @@ export const Paginao = styled.div`
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgba(245, 237, 230, 1);
+  //background-color: rgba(245, 237, 230, 1);
+  background-image:url("../../assets/guitarbackground-1952x1412-upscaled.png");
+  background-size:90%;
 `;
 
 export const Modal = styled.div`
