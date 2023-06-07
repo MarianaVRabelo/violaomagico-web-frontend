@@ -8,10 +8,9 @@ import {
   ContainerOutsideDots,
 } from "./Styles";
 import WeirdButton from "../WeirdButton/WeirdButton";
-import Compass from "../Compass/Compass";
 import Colcheia from "../Compass/Colcheia";
 
-function CreateMusicComponent() {
+function CreateMusicColcheia() {
   return (
     <BodyMusic>
       <GuitarNeck>
@@ -24,11 +23,10 @@ function CreateMusicComponent() {
           <String>e</String>
         </GuitarStrings>
         <GuitarCompass>
-          <Compass />
-          <Compass />
-          <Compass />
-          <Compass />
-          {/* <Colcheia /> */}
+          <Colcheia />
+          <Colcheia />
+          <Colcheia />
+          <Colcheia />
         </GuitarCompass>
       </GuitarNeck>
       <ContainerOutsideDots>
@@ -37,8 +35,6 @@ function CreateMusicComponent() {
           <WeirdButton />
           <WeirdButton />
           <WeirdButton />
-        </OutsideDots>
-        <OutsideDots>
           <WeirdButton />
           <WeirdButton />
           <WeirdButton />
@@ -49,8 +45,26 @@ function CreateMusicComponent() {
           <WeirdButton />
           <WeirdButton />
           <WeirdButton />
+          <WeirdButton />
+          <WeirdButton />
+          <WeirdButton />
+          <WeirdButton />
         </OutsideDots>
         <OutsideDots>
+          <WeirdButton />
+          <WeirdButton />
+          <WeirdButton />
+          <WeirdButton />
+          <WeirdButton />
+          <WeirdButton />
+          <WeirdButton />
+          <WeirdButton />
+        </OutsideDots>
+        <OutsideDots>
+          <WeirdButton />
+          <WeirdButton />
+          <WeirdButton />
+          <WeirdButton />
           <WeirdButton />
           <WeirdButton />
           <WeirdButton />
@@ -61,4 +75,4 @@ function CreateMusicComponent() {
   );
 }
 
-export default CreateMusicComponent;
+export default CreateMusicColcheia;

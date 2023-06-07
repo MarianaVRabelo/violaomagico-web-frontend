@@ -18,6 +18,7 @@ import BpmChange from "../../components/BpmChange/BpmChange";
 import TitleChange from "../../components/TitleChange/TitleChange";
 import AuthorChange from "../../components/AuthorChange/AuthorChange";
 /*import InputComponent from "../../components/InputComponent/InputComponent";*/
+import CreateMusicColcheia from "../../components/CreateMusicColcheia/CreateMusicColcheia";
 
 function CreateMusic() {
   const batidasQuantity = 3;
@@ -27,7 +28,7 @@ function CreateMusic() {
   const [selectedBatidaIndex, setSelectedBatidaIndex] = useState(null);
   const [addNewBatidaIndex, setAddNewBatidaIndex] = useState(0);
   const [musicComponents, setMusicComponents] = useState(
-    Array(batidasQuantity).fill([<CreateMusicComponent />])
+    Array(batidasQuantity).fill([<CreateMusicColcheia />])
   );
 
   function newBatida(index) {
@@ -57,18 +58,17 @@ function CreateMusic() {
     <Paginao>
       <Modal>
         <Title> CRIAÇÃO DA MÚSICA </Title>
-        <BpmChange />       
+        <BpmChange />
         <TitleChange />
         <AuthorChange />
         {/*<InputComponent />*/}
-        <h1/>
+        <h1 />
         <BpmSelector>
           <option value=""> Tamanho do passo </option>
           <option value="3"> 3 divisões </option>
           <option value="4"> 4 divisões </option>
         </BpmSelector>
-        <h1/>
-        
+        <h1 />
       </Modal>
       <Batidas>
         {batidas.map(({ isCreated }, index) => {
