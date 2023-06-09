@@ -6,8 +6,8 @@ export const Fonts = {
 
 export const Colors = {
   wood: "#EFE5DD",
-  blackwood: "#3E2010",
-  darkwood: "#B99C7A",
+  blackwood: "#00000",
+  darkwood: "#FFFFFF",
   musg: "#626133",
   gray: "#626133",
 };

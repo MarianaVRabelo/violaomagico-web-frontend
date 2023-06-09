@@ -72,7 +72,7 @@ export const LinksList = styled.ul`
 		transition: all 0.5s ease;
 
 		&.active {
-			background: #231709;
+			background: white;
 			left: 0px;
 			z-index: 1;
 		}

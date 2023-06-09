@@ -17,6 +17,7 @@ import CreateMusicComponent from "../../components/CreateMusic/CreateMusic";
 import BpmChange from "../../components/BpmChange/BpmChange";
 import TitleChange from "../../components/TitleChange/TitleChange";
 import AuthorChange from "../../components/AuthorChange/AuthorChange";
+import GuitarIcon from "../../assets/GuitarIcon"
 /*import InputComponent from "../../components/InputComponent/InputComponent";*/
 import CreateMusicColcheia from "../../components/CreateMusicColcheia/CreateMusicColcheia";
 
@@ -31,6 +32,17 @@ function CreateMusic() {
     Array(batidasQuantity).fill([<CreateMusicColcheia />])
   );
 
+  const addMusicComponent = () => {
+    setMusicComponents((prevValue) =>
+      prevValue.map((batidaMusicComponents, index) =>
+        selectedBatidaIndex === index
+          ? [...batidaMusicComponents, <CreateMusicComponent />]
+          : batidaMusicComponents
+      )
+    );
+  };
+  
+
   function newBatida(index) {
     const newBatidas = batidas.map((batida, i) =>
       i === index ? { isCreated: true } : batida
@@ -44,31 +56,30 @@ function CreateMusic() {
     () => batidas.some(({ isCreated }) => isCreated),
     [batidas]
   );
-  const addMusicComponent = () =>
-    setMusicComponents((valorAnterior) =>
-      valorAnterior.map((batidaMusicComponents, index) =>
-        selectedBatidaIndex === index
-          ? [...batidaMusicComponents, <CreateMusicComponent />]
-          : batidaMusicComponents
-      )
-    );
 
-  const selectedMusicComponents = musicComponents[selectedBatidaIndex];
+const selectedMusicComponents = useMemo(() => {
+  if (selectedBatidaIndex >= 0 && selectedBatidaIndex < musicComponents.length) {
+    return musicComponents[selectedBatidaIndex];
+  }
+  return [];
+}, [selectedBatidaIndex, musicComponents]);
+
   return (
     <Paginao>
-      <Modal>
-        <Title> CRIAÇÃO DA MÚSICA </Title>
+      <Modal> 
         <BpmChange />
         <TitleChange />
         <AuthorChange />
         {/*<InputComponent />*/}
         <h1 />
         <BpmSelector>
-          <option value=""> Tamanho do passo </option>
+          <option value=""> Tamanho do compasso </option>
           <option value="3"> 3 divisões </option>
           <option value="4"> 4 divisões </option>
         </BpmSelector>
-        <h1 />
+        <h3/>
+
+
       </Modal>
       <Batidas>
         {batidas.map(({ isCreated }, index) => {
@@ -100,14 +111,17 @@ function CreateMusic() {
         })}
       </Batidas>
       <Music>
-        {hasCreatedBatida && (
-          <>
-            {selectedMusicComponents}
-            {selectedMusicComponents.length < 5 && (
-              <BotaoNovaLinha type="button" onClick={addMusicComponent}>
-                NOVA LINHA
-              </BotaoNovaLinha>
-            )}
+      {hasCreatedBatida && (
+        <>
+        {selectedMusicComponents.map((component, index) => (
+            <React.Fragment key={index}>{component}</React.Fragment>
+          ))}
+          {selectedMusicComponents}
+          {selectedMusicComponents.length < 5 && (
+            <BotaoNovaLinha type="button" onClick={addMusicComponent}>
+              Nova linha
+            </BotaoNovaLinha>
+          )}
             <Button
               width="20%"
               backgroundColor="#F4F4F4"
@@ -139,7 +153,7 @@ const CreatedBatidaComponent = ({
   index,
 }) => (
   <Tab
-    backgroundColor={backgroundColor}
+    backgroundColor="{backgroundColor}"
     onClick={onClick}
     color="white"
     fontWeight="700"
@@ -150,13 +164,13 @@ const CreatedBatidaComponent = ({
 );
 
 const AddNewBatidaComponent = ({ onClick }) => (
-  <Tab backgroundColor={Colors.darkwood} selectedBatidaIndex={false}>
+  <Tab backgroundColor={Colors.blackwood} selectedBatidaIndex={false}>
     {" "}
     <Button
       onClick={onClick}
       width="60%"
       height="80%"
-      backgroundColor="#F4F4F4"
+      backgroundColor="white"
       border="1px solid black"
       color="black"
       fontWeight="700"
@@ -164,6 +178,7 @@ const AddNewBatidaComponent = ({ onClick }) => (
       fontSize="18px"
       fontSizeMedia1080="12px"
       fontSizeMedia950="12px"
+      fontFamily="inter"
     >
       <img
         src={Plus}
@@ -172,7 +187,7 @@ const AddNewBatidaComponent = ({ onClick }) => (
         width="15"
         height="15"
       ></img>
-      NOVA BATIDA
+      Nova batida
     </Button>
   </Tab>
 );

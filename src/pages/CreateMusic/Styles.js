@@ -13,7 +13,7 @@ export const Paginao = styled.div`
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgba(245, 237, 230, 1);
+  background-color: #181818;
 `;
 
 export const Modal = styled.div`
@@ -21,12 +21,12 @@ export const Modal = styled.div`
   width: 40%;
   margin-bottom: 40px;
   margin-top: 50px;
-  background-color: rgba(185, 156, 122, 1);
+  background-color: gray;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  border: 1px solid black;
+  border: 3px solid white;
   border-radius: 10px;
 
   @media (max-width: 1280px) {
@@ -56,8 +56,8 @@ export const Tab = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  background-color: ${(props) => props.backgroundColor};
-  color: ${(props) => props.color};
+  background-color: gray;
+  color: white;
   font-weight: ${(props) => props.fontWeight};
   border-top: 1px solid black;
   border-left: 1px solid black;
@@ -73,7 +73,7 @@ export const Tab = styled.div`
 `;
 
 export const Music = styled.div`
-  background-color: ${Colors.darkwood};
+  background-color: #181818;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -90,7 +90,7 @@ export const Data = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  background-color: red;
+  background-color: white;
 
   label {
     font-family: ${Fonts.quicksand};
@@ -143,9 +143,9 @@ export const BotaoNovaLinha = styled.button`
   padding-right: 1%;
   align-items: center;
   justify-content: center;
-  background-color: #78866b;
+  background-color: gray;
   color: white;
-  border-width: 1px;
+  border-width: 2px white;
   margin-bottom: 1.5%;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 500;

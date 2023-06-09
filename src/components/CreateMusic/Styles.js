@@ -7,7 +7,7 @@ export const BodyMusic = styled.div`
   justify-content: center;
   width: 100%;
   height: 100%;
-  background-color: #231709;
+  background-color: red;
 `;
 
 export const GuitarNeck = styled.div`

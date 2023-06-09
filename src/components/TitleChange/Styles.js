@@ -6,12 +6,12 @@ export const Container = styled.div`
   display:flex;
   flex-direction: column;
   align-items: center;
-`;
+`; 
 
 export const TitleText = styled.p`
   //texto do título 
   //background-color:yellow;
-  font-size:30px;
+  font-size:20px;
 `;
 
 export const TitleInput = styled.input`
