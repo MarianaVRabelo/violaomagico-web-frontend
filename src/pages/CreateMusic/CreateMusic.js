@@ -37,7 +37,7 @@ function CreateMusic() {
     setMusicComponents((prevValue) =>
       prevValue.map((batidaMusicComponents, index) =>
         selectedBatidaIndex === index
-          ? [...batidaMusicComponents, <CreateMusicComponent />]
+          ? [...batidaMusicComponents, <CreateMusicColcheia />]
           : batidaMusicComponents
       )
     );

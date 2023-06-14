@@ -5,9 +5,11 @@ export const BodyMusic = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+  width: 110%;
+  height: 110%;
+  margin-left: -22%;
   background-color: #181818;
+  overflow-x: scroll;
 `;
 
 export const GuitarNeck = styled.div`
