@@ -12,12 +12,15 @@ import {
 } from "./Styles";
 import Plus from "../../assets/Plus.png";
 import Button from "../../styles/Button";
+import { saveAs } from "file-saver";
 import { Colors } from "../../styles/variables";
 import CreateMusicComponent from "../../components/CreateMusic/CreateMusic";
 import BpmChange from "../../components/BpmChange/BpmChange";
 import TitleChange from "../../components/TitleChange/TitleChange";
 import AuthorChange from "../../components/AuthorChange/AuthorChange";
+import GuitarIcon from "../../assets/GuitarIcon"
 /*import InputComponent from "../../components/InputComponent/InputComponent";*/
+import CreateMusicColcheia from "../../components/CreateMusicColcheia/CreateMusicColcheia";
 
 function CreateMusic() {
   const batidasQuantity = 3;
@@ -27,8 +30,34 @@ function CreateMusic() {
   const [selectedBatidaIndex, setSelectedBatidaIndex] = useState(null);
   const [addNewBatidaIndex, setAddNewBatidaIndex] = useState(0);
   const [musicComponents, setMusicComponents] = useState(
-    Array(batidasQuantity).fill([<CreateMusicComponent />])
+    Array(batidasQuantity).fill([<CreateMusicColcheia />])
   );
+
+  const addMusicComponent = () => {
+    setMusicComponents((prevValue) =>
+      prevValue.map((batidaMusicComponents, index) =>
+        selectedBatidaIndex === index
+          ? [...batidaMusicComponents, <CreateMusicColcheia />]
+          : batidaMusicComponents
+      )
+    );
+  };
+  
+  const [titleName, setTitleName] = useState("");
+  const [BpmValue, setBpmValue] = useState("");
+  const [author, setAuthor] = useState(""); 
+  
+
+  console.log(TitleChange.titleName);
+  
+  const handleDownload = () => {
+    const blob = new Blob([
+      "V<" , titleName, ">", 
+      "\nS<" , BpmValue, ">", 
+      "\nN< " , author, ">"], 
+      { type: "text/plain;charset=utf-8" });
+    saveAs(blob, "musica.txt");
+  };
 
   function newBatida(index) {
     const newBatidas = batidas.map((batida, i) =>
@@ -43,33 +72,44 @@ function CreateMusic() {
     () => batidas.some(({ isCreated }) => isCreated),
     [batidas]
   );
-  const addMusicComponent = () =>
-    setMusicComponents((valorAnterior) =>
-      valorAnterior.map((batidaMusicComponents, index) =>
-        selectedBatidaIndex === index
-          ? [...batidaMusicComponents, <CreateMusicComponent />]
-          : batidaMusicComponents
-      )
-    );
 
-  const selectedMusicComponents = musicComponents[selectedBatidaIndex];
+
+const selectedMusicComponents = useMemo(() => {
+  if (selectedBatidaIndex >= 0 && selectedBatidaIndex < musicComponents.length) {
+    return musicComponents[selectedBatidaIndex];
+  }
+  return [];
+}, [selectedBatidaIndex, musicComponents]);
+
   return (
     <Paginao>
-      <Modal>
-        <Title> CRIAÇÃO DA MÚSICA </Title>
-        <BpmChange />       
-        <TitleChange />
-        <AuthorChange />
+      <Modal> 
+        <BpmChange BpmValue={BpmValue} setBpmValue={setBpmValue} />
+        <TitleChange titleName={titleName} setTitleName={setTitleName} />
+        <AuthorChange author={author} setAuthor={setAuthor} />
         {/*<InputComponent />*/}
-        <h1/>
+        <h6 />
         <BpmSelector>
-          <option value=""> Tamanho do passo </option>
+          <option value=""> Tamanho do compasso </option>
           <option value="3"> 3 divisões </option>
           <option value="4"> 4 divisões </option>
         </BpmSelector>
-        <h1/>
-        
+        <h5/>
+      
       </Modal>
+      <Button 
+        width="200px"
+        height="60px"
+        fontFamily="Inter"
+        fontSize="20px"
+        backgroundColor="white"
+        onClick={handleDownload}
+
+      >
+      Download
+     </Button>
+     
+     <h6/>
       <Batidas>
         {batidas.map(({ isCreated }, index) => {
           const isAddNewBatida = index === addNewBatidaIndex;
@@ -100,14 +140,17 @@ function CreateMusic() {
         })}
       </Batidas>
       <Music>
-        {hasCreatedBatida && (
-          <>
-            {selectedMusicComponents}
-            {selectedMusicComponents.length < 5 && (
-              <BotaoNovaLinha type="button" onClick={addMusicComponent}>
-                NOVA LINHA
-              </BotaoNovaLinha>
-            )}
+      {hasCreatedBatida && (
+        <>
+        {selectedMusicComponents.map((component, index) => (
+            <React.Fragment key={index}>{component}</React.Fragment>
+          ))}
+          {selectedMusicComponents}
+          {selectedMusicComponents.length < 5 && (
+            <BotaoNovaLinha type="button" onClick={addMusicComponent}>
+              Nova linha
+            </BotaoNovaLinha>
+          )}
             <Button
               width="20%"
               backgroundColor="#F4F4F4"
@@ -123,6 +166,8 @@ function CreateMusic() {
             >
               ENCERRAR
             </Button>
+            
+
           </>
         )}
       </Music>
@@ -139,7 +184,7 @@ const CreatedBatidaComponent = ({
   index,
 }) => (
   <Tab
-    backgroundColor={backgroundColor}
+    backgroundColor="{backgroundColor}"
     onClick={onClick}
     color="white"
     fontWeight="700"
@@ -150,13 +195,13 @@ const CreatedBatidaComponent = ({
 );
 
 const AddNewBatidaComponent = ({ onClick }) => (
-  <Tab backgroundColor={Colors.darkwood} selectedBatidaIndex={false}>
+  <Tab backgroundColor={Colors.blackwood} selectedBatidaIndex={false}>
     {" "}
     <Button
       onClick={onClick}
       width="60%"
       height="80%"
-      backgroundColor="#F4F4F4"
+      backgroundColor="white"
       border="1px solid black"
       color="black"
       fontWeight="700"
@@ -164,6 +209,7 @@ const AddNewBatidaComponent = ({ onClick }) => (
       fontSize="18px"
       fontSizeMedia1080="12px"
       fontSizeMedia950="12px"
+      fontFamily="inter"
     >
       <img
         src={Plus}
@@ -172,7 +218,7 @@ const AddNewBatidaComponent = ({ onClick }) => (
         width="15"
         height="15"
       ></img>
-      NOVA BATIDA
+      Nova batida
     </Button>
   </Tab>
 );

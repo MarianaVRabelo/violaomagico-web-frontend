@@ -7,13 +7,13 @@ export const Container = styled.div`
   align-items: center;
   //background-color:red;
 
-
+ 
 `;
 
 export const BpmValueText = styled.p`
   //texto valor BPM 
   //background-color:green; 
-  font-size: 30px;
+  font-size: 20px;
 `;
 
 export const BpmInput = styled.input`

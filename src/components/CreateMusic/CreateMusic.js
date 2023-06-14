@@ -9,6 +9,7 @@ import {
 } from "./Styles";
 import WeirdButton from "../WeirdButton/WeirdButton";
 import Compass from "../Compass/Compass";
+import Colcheia from "../Compass/Colcheia";
 
 function CreateMusicComponent() {
   return (
@@ -27,6 +28,7 @@ function CreateMusicComponent() {
           <Compass />
           <Compass />
           <Compass />
+          {/* <Colcheia /> */}
         </GuitarCompass>
       </GuitarNeck>
       <ContainerOutsideDots>

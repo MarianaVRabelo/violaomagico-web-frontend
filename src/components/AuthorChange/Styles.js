@@ -6,12 +6,12 @@ export const Container = styled.div`
   display: flex; 
   flex-direction: column;
   align-items: center; 
-`;
+`; 
 
 export const AuthorText = styled.p`
   /* Estilos para o texto do autor */
   //background-color: crimson; 
-  font-size:30px;
+  font-size:20px;
 `;
 
 export const AuthorInput = styled.input`
