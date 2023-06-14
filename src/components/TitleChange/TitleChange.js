@@ -10,7 +10,7 @@ function TitleChange() {
 
   return (
     <Container>
-      <TitleText>Nome: {titleName}</TitleText>
+      <TitleText>Nome da Musica: {titleName}</TitleText>
       <TitleInput type="text" value={titleName} onChange={handleTitleChange} /> 
       {/* Adicione o texto adicional desejado aqui */}
     </Container>
