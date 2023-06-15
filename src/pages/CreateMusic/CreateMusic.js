@@ -12,6 +12,7 @@ import {
 } from "./Styles";
 import Plus from "../../assets/Plus.png";
 import Button from "../../styles/Button";
+import { saveAs } from "file-saver";
 import { Colors } from "../../styles/variables";
 import CreateMusicComponent from "../../components/CreateMusic/CreateMusic";
 import BpmChange from "../../components/BpmChange/BpmChange";
@@ -36,12 +37,27 @@ function CreateMusic() {
     setMusicComponents((prevValue) =>
       prevValue.map((batidaMusicComponents, index) =>
         selectedBatidaIndex === index
-          ? [...batidaMusicComponents, <CreateMusicComponent />]
+          ? [...batidaMusicComponents, <CreateMusicColcheia />]
           : batidaMusicComponents
       )
     );
   };
   
+  const [titleName, setTitleName] = useState("");
+  const [BpmValue, setBpmValue] = useState("");
+  const [author, setAuthor] = useState(""); 
+  
+
+  console.log(TitleChange.titleName);
+  
+  const handleDownload = () => {
+    const blob = new Blob([
+      "V<" , titleName, ">", 
+      "\nS<" , BpmValue, ">", 
+      "\nN< " , author, ">"], 
+      { type: "text/plain;charset=utf-8" });
+    saveAs(blob, "musica.txt");
+  };
 
   function newBatida(index) {
     const newBatidas = batidas.map((batida, i) =>
@@ -57,6 +73,7 @@ function CreateMusic() {
     [batidas]
   );
 
+
 const selectedMusicComponents = useMemo(() => {
   if (selectedBatidaIndex >= 0 && selectedBatidaIndex < musicComponents.length) {
     return musicComponents[selectedBatidaIndex];
@@ -67,20 +84,32 @@ const selectedMusicComponents = useMemo(() => {
   return (
     <Paginao>
       <Modal> 
-        <BpmChange />
-        <TitleChange />
-        <AuthorChange />
+        <BpmChange BpmValue={BpmValue} setBpmValue={setBpmValue} />
+        <TitleChange titleName={titleName} setTitleName={setTitleName} />
+        <AuthorChange author={author} setAuthor={setAuthor} />
         {/*<InputComponent />*/}
-        <h1 />
+        <h6 />
         <BpmSelector>
           <option value=""> Tamanho do compasso </option>
           <option value="3"> 3 divisões </option>
           <option value="4"> 4 divisões </option>
         </BpmSelector>
-        <h3/>
-
-
+        <h5/>
+      
       </Modal>
+      <Button 
+        width="200px"
+        height="60px"
+        fontFamily="Inter"
+        fontSize="20px"
+        backgroundColor="white"
+        onClick={handleDownload}
+
+      >
+      Download
+     </Button>
+     
+     <h6/>
       <Batidas>
         {batidas.map(({ isCreated }, index) => {
           const isAddNewBatida = index === addNewBatidaIndex;
@@ -137,6 +166,8 @@ const selectedMusicComponents = useMemo(() => {
             >
               ENCERRAR
             </Button>
+            
+
           </>
         )}
       </Music>

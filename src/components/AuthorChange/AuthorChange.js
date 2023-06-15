@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Container, AuthorText, AuthorInput } from "./Styles";
 
-function AuthorChange() {
-  const [author, setAuthor] = useState(""); 
+function AuthorChange({author, setAuthor}) {
+  
 
   const handleAuthorChange = (event) => {
     setAuthor(event.target.value);

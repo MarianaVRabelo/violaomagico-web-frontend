@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Container, BpmValueText, BpmInput } from "./Styles";
 
-function BpmChange() {
-  const [BpmValue, setBpmValue] = useState();
+function BpmChange({BpmValue, setBpmValue}) {
+  
 
   const handleBpmChange = (event) => {
     setBpmValue(event.target.value);

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Container, TitleText, TitleInput } from "./Styles";
 
-function TitleChange() {
-  const [titleName, setTitleName] = useState("");
-
+ const TitleChange = ({ titleName, setTitleName }) => {
+  
   const handleTitleChange = (event) => {
-    setTitleName(event.target.value);
+    const value = event.target.value;
+    setTitleName(value);
+    
   };
 
   return (
@@ -15,6 +16,6 @@ function TitleChange() {
       {/* Adicione o texto adicional desejado aqui */}
     </Container>
   );
-}
+};
 
 export default TitleChange;
