@@ -56,7 +56,7 @@ function CreateMusic() {
       "\nS<" , BpmValue, ">", 
       "\nN< " , author, ">"], 
       { type: "text/plain;charset=utf-8" });
-    saveAs(blob, "musica.txt");
+    saveAs(blob, titleName);
   };
 
   function newBatida(index) {

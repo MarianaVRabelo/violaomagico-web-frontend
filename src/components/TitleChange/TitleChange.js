@@ -11,8 +11,9 @@ import { Container, TitleText, TitleInput } from "./Styles";
 
   return (
     <Container>
-      <TitleText>Nome: {titleName}</TitleText>
-      <TitleInput type="text" value={titleName} onChange={handleTitleChange} />
+      <TitleText>Nome da Musica: {titleName}</TitleText>
+      <TitleInput type="text" value={titleName} onChange={handleTitleChange} /> 
+      {/* Adicione o texto adicional desejado aqui */}
     </Container>
   );
 };
