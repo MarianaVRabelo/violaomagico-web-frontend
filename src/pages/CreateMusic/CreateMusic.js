@@ -20,10 +20,10 @@ import BpmChange from "../../components/BpmChange/BpmChange";
 import TitleChange from "../../components/TitleChange/TitleChange";
 import AuthorChange from "../../components/AuthorChange/AuthorChange";
 import CreateMusicColcheia34 from "../../components/CreateMusicColcheia34/CreateMusicColcheia34";
-import GuitarIcon from "../../assets/GuitarIcon"
+import GuitarIcon from "../../assets/GuitarIcon";
 /*import InputComponent from "../../components/InputComponent/InputComponent";*/
 import CreateMusicColcheia from "../../components/CreateMusicColcheia/CreateMusicColcheia";
-import { Backdrop } from "@mui/material";
+// import { Backdrop } from "@mui/material";
 
 function CreateMusic() {
   const batidasQuantity = 3;
@@ -36,7 +36,7 @@ function CreateMusic() {
     Array(batidasQuantity).fill([<CreateMusicColcheia34 />])
   );
 
-  const addMusicComponent = () => {
+  const addMusicComponent = () =>
     setMusicComponents((prevValue) =>
       prevValue.map((batidaMusicComponents, index) =>
         selectedBatidaIndex === index
@@ -44,21 +44,18 @@ function CreateMusic() {
           : batidaMusicComponents
       )
     );
-  };
-  
+
   const [titleName, setTitleName] = useState("");
   const [BpmValue, setBpmValue] = useState("");
-  const [author, setAuthor] = useState(""); 
-  
+  const [author, setAuthor] = useState("");
 
   console.log(TitleChange.titleName);
-  
+
   const handleDownload = () => {
-    const blob = new Blob([
-      "V<" , titleName, ">", 
-      "\nS<" , BpmValue, ">", 
-      "\nN< " , author, ">"], 
-      { type: "text/plain;charset=utf-8" });
+    const blob = new Blob(
+      ["V<", titleName, ">", "\nS<", BpmValue, ">", "\nN< ", author, ">"],
+      { type: "text/plain;charset=utf-8" }
+    );
     saveAs(blob, titleName);
   };
 
@@ -76,61 +73,69 @@ function CreateMusic() {
     [batidas]
   );
 
-
   const [compasso, setCompasso] = useState("3/4");
 
   const handleSelecionarCompasso = (tipoCompasso) => {
     setCompasso(tipoCompasso);
   };
 
-const selectedMusicComponents = useMemo(() => {
-  if (selectedBatidaIndex >= 0 && selectedBatidaIndex < musicComponents.length) {
-    return musicComponents[selectedBatidaIndex];
-  }
-  return [];
-}, [selectedBatidaIndex, musicComponents]);
+  const selectedMusicComponents = useMemo(() => {
+    if (
+      selectedBatidaIndex >= 0 &&
+      selectedBatidaIndex < musicComponents.length
+    ) {
+      return musicComponents[selectedBatidaIndex];
+    }
+    return [];
+  }, [selectedBatidaIndex, musicComponents]);
+
+  //const selectedMusicComponents = musicComponents[selectedBatidaIndex];
 
   return (
     <Paginao>
-      <Modal> 
+      <Modal>
         <BpmChange BpmValue={BpmValue} setBpmValue={setBpmValue} />
         <TitleChange titleName={titleName} setTitleName={setTitleName} />
         <AuthorChange author={author} setAuthor={setAuthor} />
         {/*<InputComponent />*/}
         <h1>Selecione o tipo de compasso</h1>
         <ButtonContainer>
-        <Button onClick={() => handleSelecionarCompasso("3/4")}
-                width="70px"
-                height="40px"
-                fontFamily="Inter"
-                fontSize="20px"
-                
-                backgroundColor="white">3/4</Button>
-      <Button 
-      width="70px"
-      height="40px"
-      fontFamily="Inter"
-      fontSize="20px"
-      backgroundColor="white"
-      onClick={() => handleSelecionarCompasso("4/4")}>4/4</Button>
-      </ButtonContainer>
-        <h5/>
-      
+          <Button
+            onClick={() => handleSelecionarCompasso("3/4")}
+            width="70px"
+            height="40px"
+            fontFamily="Inter"
+            fontSize="20px"
+            backgroundColor="white"
+          >
+            3/4
+          </Button>
+          <Button
+            width="70px"
+            height="40px"
+            fontFamily="Inter"
+            fontSize="20px"
+            backgroundColor="white"
+            onClick={() => handleSelecionarCompasso("4/4")}
+          >
+            4/4
+          </Button>
+        </ButtonContainer>
+        <h5 />
       </Modal>
-      {compasso === "3/4" ? <CreateMusicColcheia34 /> : <CreateMusicColcheia />}
-      <Button 
+      {/* {compasso === "3/4" ? <CreateMusicColcheia34 /> : <CreateMusicColcheia />} */}
+      <Button
         width="200px"
         height="60px"
         fontFamily="Inter"
         fontSize="20px"
         backgroundColor="white"
         onClick={handleDownload}
-
       >
-      Download
-     </Button>
-     
-     <h6/>
+        Download
+      </Button>
+
+      <h6 />
       <Batidas>
         {batidas.map(({ isCreated }, index) => {
           const isAddNewBatida = index === addNewBatidaIndex;
@@ -161,17 +166,17 @@ const selectedMusicComponents = useMemo(() => {
         })}
       </Batidas>
       <Music>
-      {hasCreatedBatida && (
-        <>
-        {selectedMusicComponents.map((component, index) => (
-            <React.Fragment key={index}>{component}</React.Fragment>
-          ))}
-          {selectedMusicComponents}
-          {selectedMusicComponents.length < 5 && (
-            <BotaoNovaLinha type="button" onClick={addMusicComponent}>
-              Nova linha
-            </BotaoNovaLinha>
-          )}
+        {hasCreatedBatida && (
+          <>
+            {/* {selectedMusicComponents.map((component, index) => (
+              <React.Fragment key={index}>{component}</React.Fragment>
+            ))} */}
+            {selectedMusicComponents}
+            {selectedMusicComponents.length < 5 && (
+              <BotaoNovaLinha type="button" onClick={addMusicComponent}>
+                Nova linha
+              </BotaoNovaLinha>
+            )}
             <Button
               width="20%"
               backgroundColor="#F4F4F4"
@@ -187,8 +192,6 @@ const selectedMusicComponents = useMemo(() => {
             >
               ENCERRAR
             </Button>
-            
-
           </>
         )}
       </Music>
