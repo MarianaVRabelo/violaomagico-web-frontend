@@ -5,7 +5,7 @@ import Dots  from "../Dots/Dots";
 function Column() {
     return(
         <ContainerColumn>
-            <Line>
+            <Line> 
                 <Dots />
             </Line>
             <Line>

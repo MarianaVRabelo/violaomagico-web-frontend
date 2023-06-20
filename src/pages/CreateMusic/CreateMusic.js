@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import {
   Title,
   /*Data,*/
@@ -23,7 +23,7 @@ import CreateMusicColcheia34 from "../../components/CreateMusicColcheia34/Create
 import GuitarIcon from "../../assets/GuitarIcon";
 /*import InputComponent from "../../components/InputComponent/InputComponent";*/
 import CreateMusicColcheia from "../../components/CreateMusicColcheia/CreateMusicColcheia";
-// import { Backdrop } from "@mui/material";
+
 
 function CreateMusic() {
   const batidasQuantity = 3;
@@ -31,10 +31,19 @@ function CreateMusic() {
     Array(batidasQuantity).fill({ isCreated: false })
   );
   const [selectedBatidaIndex, setSelectedBatidaIndex] = useState(null);
+  const [compasso, setCompasso] = useState("3/4");
   const [addNewBatidaIndex, setAddNewBatidaIndex] = useState(0);
   const [musicComponents, setMusicComponents] = useState(
-    Array(batidasQuantity).fill([<CreateMusicColcheia34 />])
+    
+    Array(batidasQuantity).fill([compasso === "3/4" ? <CreateMusicColcheia34 /> : <CreateMusicColcheia />])
   );
+  useEffect(()=>{
+    setBatidas(Array(batidasQuantity).fill({ isCreated: false }))
+    setMusicComponents(Array(batidasQuantity).fill([compasso === "3/4" ? <CreateMusicColcheia34 /> : <CreateMusicColcheia />]))
+    setAddNewBatidaIndex(0);
+    setSelectedBatidaIndex(null);
+  },[compasso])
+  
 
   const addMusicComponent = () =>
     setMusicComponents((prevValue) =>
@@ -73,7 +82,7 @@ function CreateMusic() {
     [batidas]
   );
 
-  const [compasso, setCompasso] = useState("3/4");
+
 
   const handleSelecionarCompasso = (tipoCompasso) => {
     setCompasso(tipoCompasso);
@@ -107,6 +116,7 @@ function CreateMusic() {
             fontFamily="Inter"
             fontSize="20px"
             backgroundColor="white"
+            selected={compasso === "3/4"}
           >
             3/4
           </Button>
@@ -117,13 +127,14 @@ function CreateMusic() {
             fontSize="20px"
             backgroundColor="white"
             onClick={() => handleSelecionarCompasso("4/4")}
+            selected={compasso === "4/4"}
           >
             4/4
           </Button>
         </ButtonContainer>
         <h5 />
       </Modal>
-      {/* {compasso === "3/4" ? <CreateMusicColcheia34 /> : <CreateMusicColcheia />} */}
+ 
       <Button
         width="200px"
         height="60px"

@@ -31,44 +31,12 @@ function CreateMusicColcheia() {
       </GuitarNeck>
       <ContainerOutsideDots>
         <OutsideDots>
-          <WeirdButton />
-          <WeirdButton />
-          <WeirdButton />
-          <WeirdButton />
-          <WeirdButton />
-          <WeirdButton />
-          <WeirdButton />
-          <WeirdButton />
         </OutsideDots>
         <OutsideDots>
-          <WeirdButton />
-          <WeirdButton />
-          <WeirdButton />
-          <WeirdButton />
-          <WeirdButton />
-          <WeirdButton />
-          <WeirdButton />
-          <WeirdButton />
         </OutsideDots>
         <OutsideDots>
-          <WeirdButton />
-          <WeirdButton />
-          <WeirdButton />
-          <WeirdButton />
-          <WeirdButton />
-          <WeirdButton />
-          <WeirdButton />
-          <WeirdButton />
         </OutsideDots>
         <OutsideDots>
-          <WeirdButton />
-          <WeirdButton />
-          <WeirdButton />
-          <WeirdButton />
-          <WeirdButton />
-          <WeirdButton />
-          <WeirdButton />
-          <WeirdButton />
         </OutsideDots>
       </ContainerOutsideDots>
     </BodyMusic>
