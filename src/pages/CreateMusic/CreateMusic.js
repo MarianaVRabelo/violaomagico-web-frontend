@@ -11,6 +11,7 @@ import {
   BotaoNovaLinha,
 } from "./Styles";
 import Plus from "../../assets/Plus.png";
+import styled from "styled-components";
 import Button from "../../styles/Button";
 import { saveAs } from "file-saver";
 import { Colors } from "../../styles/variables";
@@ -22,6 +23,7 @@ import CreateMusicColcheia34 from "../../components/CreateMusicColcheia34/Create
 import GuitarIcon from "../../assets/GuitarIcon"
 /*import InputComponent from "../../components/InputComponent/InputComponent";*/
 import CreateMusicColcheia from "../../components/CreateMusicColcheia/CreateMusicColcheia";
+import { Backdrop } from "@mui/material";
 
 function CreateMusic() {
   const batidasQuantity = 3;
@@ -95,12 +97,8 @@ const selectedMusicComponents = useMemo(() => {
         <TitleChange titleName={titleName} setTitleName={setTitleName} />
         <AuthorChange author={author} setAuthor={setAuthor} />
         {/*<InputComponent />*/}
-        <h6 />
-        <BpmSelector>
-          <option value=""> Tamanho do compasso </option>
-          <option value="3"> 3 divisões </option>
-          <option value="4"> 4 divisões </option>
-        </BpmSelector>
+        <h1>Selecione o tipo de compasso</h1>
+        <ButtonContainer>
         <Button onClick={() => handleSelecionarCompasso("3/4")}
                 width="70px"
                 height="40px"
@@ -115,7 +113,7 @@ const selectedMusicComponents = useMemo(() => {
       fontSize="20px"
       backgroundColor="white"
       onClick={() => handleSelecionarCompasso("4/4")}>4/4</Button>
-      
+      </ButtonContainer>
         <h5/>
       
       </Modal>
@@ -216,6 +214,11 @@ const CreatedBatidaComponent = ({
     Batida {index + 1}
   </Tab>
 );
+
+const ButtonContainer = styled.div`
+  display: flex;
+  gap: 10px; /* Espaçamento entre os botões */
+`;
 
 const AddNewBatidaComponent = ({ onClick }) => (
   <Tab backgroundColor={Colors.blackwood} selectedBatidaIndex={false}>
