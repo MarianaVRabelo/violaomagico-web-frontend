@@ -33,7 +33,9 @@ function CreateMusic() {
   const [selectedBatidaIndex, setSelectedBatidaIndex] = useState(null);
   const [addNewBatidaIndex, setAddNewBatidaIndex] = useState(0);
   const [musicComponents, setMusicComponents] = useState(
-    Array(batidasQuantity).fill([<CreateMusicColcheia34 />])
+    Array(batidasQuantity).fill(
+      new Array(React.cloneElement(<CreateMusicColcheia34 />))
+    )
   );
 
   const addMusicComponent = () =>
