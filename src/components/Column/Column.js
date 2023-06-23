@@ -6,22 +6,22 @@ function Column() {
     return(
         <ContainerColumn>
             <Line> 
-                <Dots />
+                <Dots id={E} />
             </Line>
             <Line>
-                <Dots />
+                <Dots id={A} />
             </Line>
             <Line>
-                <Dots />
+                <Dots id={D} />
             </Line>
             <Line>
-                <Dots />
+                <Dots id={G} />
             </Line>
             <Line>
-                <Dots />
+                <Dots id={B} />
             </Line>
             <Line>
-                <Dots />
+                <Dots id={e} />
             </Line>
         </ContainerColumn>
 

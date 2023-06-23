@@ -5,8 +5,14 @@ function Dots() {
   const [buttonState, setButtonState] = useState("empty");
 
   function handleButtonChange() {
-    if (buttonState === "empty") setButtonState("selected");
-    else if (buttonState === "selected") setButtonState("empty");
+    if (buttonState === "empty") {
+    setButtonState("selected");
+    console.log("Button 1 pressed: Hello");
+    }
+    else if (buttonState === "selected") {
+      setButtonState("empty");
+      console.log("Button 2 pressed: Hello");
+    }
   }
 
   return (

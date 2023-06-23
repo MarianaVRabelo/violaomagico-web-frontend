@@ -24,7 +24,6 @@ import GuitarIcon from "../../assets/GuitarIcon";
 /*import InputComponent from "../../components/InputComponent/InputComponent";*/
 import CreateMusicColcheia from "../../components/CreateMusicColcheia/CreateMusicColcheia";
 
-
 function CreateMusic() {
   const batidasQuantity = 3;
   const [batidas, setBatidas] = useState(
@@ -34,16 +33,24 @@ function CreateMusic() {
   const [compasso, setCompasso] = useState("3/4");
   const [addNewBatidaIndex, setAddNewBatidaIndex] = useState(0);
   const [musicComponents, setMusicComponents] = useState(
-    
-    Array(batidasQuantity).fill([compasso === "3/4" ? <CreateMusicColcheia34 /> : <CreateMusicColcheia />])
+    Array(batidasQuantity).fill([
+      compasso === "3/4" ? <CreateMusicColcheia34 /> : <CreateMusicColcheia />,
+    ])
   );
-  useEffect(()=>{
-    setBatidas(Array(batidasQuantity).fill({ isCreated: false }))
-    setMusicComponents(Array(batidasQuantity).fill([compasso === "3/4" ? <CreateMusicColcheia34 /> : <CreateMusicColcheia />]))
+  useEffect(() => {
+    setBatidas(Array(batidasQuantity).fill({ isCreated: false }));
+    setMusicComponents(
+      Array(batidasQuantity).fill([
+        compasso === "3/4" ? (
+          <CreateMusicColcheia34 />
+        ) : (
+          <CreateMusicColcheia />
+        ),
+      ])
+    );
     setAddNewBatidaIndex(0);
     setSelectedBatidaIndex(null);
-  },[compasso])
-  
+  }, [compasso]);
 
   const addMusicComponent = () =>
     setMusicComponents((prevValue) =>
@@ -81,8 +88,6 @@ function CreateMusic() {
     () => batidas.some(({ isCreated }) => isCreated),
     [batidas]
   );
-
-
 
   const handleSelecionarCompasso = (tipoCompasso) => {
     setCompasso(tipoCompasso);
@@ -134,7 +139,7 @@ function CreateMusic() {
         </ButtonContainer>
         <h5 />
       </Modal>
- 
+
       <Button
         width="200px"
         height="60px"
