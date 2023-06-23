@@ -75,6 +75,8 @@ function CreateMusic() {
     saveAs(blob, titleName);
   };
 
+  
+
   function newBatida(index) {
     const newBatidas = batidas.map((batida, i) =>
       i === index ? { isCreated: true } : batida
@@ -104,7 +106,6 @@ function CreateMusic() {
   }, [selectedBatidaIndex, musicComponents]);
 
   //const selectedMusicComponents = musicComponents[selectedBatidaIndex];
-
   return (
     <Paginao>
       <Modal>
