@@ -8,9 +8,9 @@ import {
   ContainerOutsideDots,
 } from "./Styles";
 import WeirdButton from "../WeirdButton/WeirdButton";
-import Colcheia from "../Compass/Colcheia";
+import Colcheia34 from "../Compass/Colcheia34";
 
-function CreateMusicColcheia() {
+function CreateMusicColcheia34() {
   return (
     <BodyMusic>
       <GuitarNeck>
@@ -23,24 +23,26 @@ function CreateMusicColcheia() {
           <String>e</String>
         </GuitarStrings>
         <GuitarCompass>
-          <Colcheia />
-          <Colcheia />
-          <Colcheia />
-          <Colcheia />
+          <Colcheia34 />
+          <Colcheia34 />
+          <Colcheia34 />
+          <Colcheia34 />
         </GuitarCompass>
       </GuitarNeck>
       <ContainerOutsideDots>
         <OutsideDots>
+ 
         </OutsideDots>
         <OutsideDots>
+
         </OutsideDots>
         <OutsideDots>
+
         </OutsideDots>
-        <OutsideDots>
-        </OutsideDots>
+
       </ContainerOutsideDots>
     </BodyMusic>
   );
 }
 
-export default CreateMusicColcheia;
+export default CreateMusicColcheia34;

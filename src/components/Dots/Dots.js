@@ -1,12 +1,17 @@
 import { useState } from "react";
 import { ButtonDots } from "./Styles";
 
-function Dots() {
+function Dots({ id, onDotClick }) {
   const [buttonState, setButtonState] = useState("empty");
 
   function handleButtonChange() {
-    if (buttonState === "empty") setButtonState("selected");
-    else if (buttonState === "selected") setButtonState("empty");
+    if (buttonState === "empty") {
+      setButtonState("selected");
+      onDotClick(id, true);
+    } else if (buttonState === "selected") {
+      setButtonState("empty");
+      onDotClick(id, false);
+    }
   }
 
   return (

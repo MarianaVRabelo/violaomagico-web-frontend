@@ -136,6 +136,7 @@ export const BpmSelector = styled.select`
   }
 `;
 
+
 export const BotaoNovaLinha = styled.button`
   display: flex;
   padding: 0.5%;
