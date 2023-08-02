@@ -56,7 +56,7 @@ export const Tab = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  background-color: gray;
+  background-color: ${(props) => (props.isSelected ? "#4b4a4a" : "gray")};
   color: white;
   font-weight: ${(props) => props.fontWeight};
   border-top: 1px solid black;
@@ -135,7 +135,6 @@ export const BpmSelector = styled.select`
   option {
   }
 `;
-
 
 export const BotaoNovaLinha = styled.button`
   display: flex;
