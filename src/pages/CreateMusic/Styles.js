@@ -150,3 +150,7 @@ export const BotaoNovaLinha = styled.button`
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 500;
 `;
+
+export const CompassChange = styled.p`
+  font-size: 20px;
+`;
