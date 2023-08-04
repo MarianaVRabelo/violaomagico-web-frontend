@@ -12,7 +12,7 @@ const Button = styled.button`
   margin-top: ${(props) => props.marginTop ?? "2%"};
   margin-left: ${(props) => props.marginLeft};
   min-width: ${(props) => props.minWidth};
-  
+
   padding: ${(props) => props.padding};
   padding-top: ${(props) => props.paddingTop};
   padding-left: ${(props) => props.paddingLeft};
@@ -31,13 +31,13 @@ const Button = styled.button`
   box-shadow: ${(props) => props.boxShadow};
   cursor: pointer;
   /*características do texto*/
-  font-family: ${Fonts.roboto};
+  font-family: ${Fonts.quicksand};
   font-size: ${(props) => props.fontSize};
   text-decoration: ${(props) => props.textDecoration};
   text-align: center;
   font-weight: ${(props) => props.fontWeight};
-  background-color: ${ (props) => props.selected ? "#181818" : "white" };
-  color: ${ (props) => props.selected ? "white" : "black" };
+  background-color: ${(props) => (props.selected ? "#4B4A4A" : "white")};
+  color: ${(props) => (props.selected ? "white" : "black")};
 
   @media (max-width: 700px) {
     width: 100%;

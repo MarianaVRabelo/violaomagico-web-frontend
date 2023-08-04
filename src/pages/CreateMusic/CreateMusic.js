@@ -9,6 +9,7 @@ import {
   Paginao,
   Tab,
   BotaoNovaLinha,
+  CompassChange,
 } from "./Styles";
 import Plus from "../../assets/Plus.png";
 import styled from "styled-components";
@@ -23,6 +24,7 @@ import CreateMusicColcheia34 from "../../components/CreateMusicColcheia34/Create
 import GuitarIcon from "../../assets/GuitarIcon";
 /*import InputComponent from "../../components/InputComponent/InputComponent";*/
 import CreateMusicColcheia from "../../components/CreateMusicColcheia/CreateMusicColcheia";
+import Compass from "../../components/Compass/Compass";
 
 function CreateMusic() {
   const batidasQuantity = 3;
@@ -75,8 +77,6 @@ function CreateMusic() {
     saveAs(blob, titleName);
   };
 
-  
-
   function newBatida(index) {
     const newBatidas = batidas.map((batida, i) =>
       i === index ? { isCreated: true } : batida
@@ -113,27 +113,33 @@ function CreateMusic() {
         <TitleChange titleName={titleName} setTitleName={setTitleName} />
         <AuthorChange author={author} setAuthor={setAuthor} />
         {/*<InputComponent />*/}
-        <h1>Selecione o tipo de compasso</h1>
+        <CompassChange>Selecione o tipo de compasso:</CompassChange>
         <ButtonContainer>
           <Button
             onClick={() => handleSelecionarCompasso("3/4")}
             width="70px"
             height="40px"
-            fontFamily="Inter"
+            fontFamily="Quicksand"
             fontSize="20px"
             backgroundColor="white"
             selected={compasso === "3/4"}
+            border="1px solid #000"
+            borderRadius="4px"
+            fontWeight="bold"
           >
             3/4
           </Button>
           <Button
             width="70px"
             height="40px"
-            fontFamily="Inter"
+            fontFamily="Quicksand"
             fontSize="20px"
             backgroundColor="white"
             onClick={() => handleSelecionarCompasso("4/4")}
             selected={compasso === "4/4"}
+            border="1px solid #000"
+            borderRadius="4px"
+            fontWeight="bold"
           >
             4/4
           </Button>

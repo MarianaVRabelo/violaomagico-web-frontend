@@ -56,7 +56,7 @@ export const Tab = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  background-color: gray;
+  background-color: ${(props) => (props.isSelected ? "#4b4a4a" : "gray")};
   color: white;
   font-weight: ${(props) => props.fontWeight};
   border-top: 1px solid black;
@@ -136,7 +136,6 @@ export const BpmSelector = styled.select`
   }
 `;
 
-
 export const BotaoNovaLinha = styled.button`
   display: flex;
   padding: 0.5%;
@@ -150,4 +149,8 @@ export const BotaoNovaLinha = styled.button`
   margin-bottom: 1.5%;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 500;
+`;
+
+export const CompassChange = styled.p`
+  font-size: 20px;
 `;
