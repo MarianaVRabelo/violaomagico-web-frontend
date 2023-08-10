@@ -34,34 +34,41 @@ function CreateMusic() {
   const [selectedBatidaIndex, setSelectedBatidaIndex] = useState(null);
   const [compasso, setCompasso] = useState("3/4");
   const [addNewBatidaIndex, setAddNewBatidaIndex] = useState(0);
-  const [musicComponents, setMusicComponents] = useState(
-    Array(batidasQuantity).fill([
-      compasso === "3/4" ? <CreateMusicColcheia34 /> : <CreateMusicColcheia />,
-    ])
+  const initialMusicComponents = Array(batidasQuantity).fill(
+    compasso === "3/4" ? [<CreateMusicColcheia34 />] : [<CreateMusicColcheia />]
   );
-  useEffect(() => {
-    setBatidas(Array(batidasQuantity).fill({ isCreated: false }));
-    setMusicComponents(
-      Array(batidasQuantity).fill([
-        compasso === "3/4" ? (
-          <CreateMusicColcheia34 />
-        ) : (
-          <CreateMusicColcheia />
-        ),
-      ])
-    );
-    setAddNewBatidaIndex(0);
-    setSelectedBatidaIndex(null);
-  }, [compasso]);
+  const [batidaComponents, setBatidaComponents] = useState(
+    Array(batidasQuantity)
+      .fill([])
+      .map(() => [])
+  );
 
-  const addMusicComponent = () =>
-    setMusicComponents((prevValue) =>
-      prevValue.map((batidaMusicComponents, index) =>
+  const [musicComponents, setMusicComponents] = useState(
+    Array(batidasQuantity)
+      .fill([])
+      .map(() =>
+        compasso === "3/4"
+          ? [<CreateMusicColcheia34 />]
+          : [<CreateMusicColcheia />]
+      )
+  );
+
+  const addMusicComponent = () => {
+    setBatidaComponents((prevComponents) =>
+      prevComponents.map((batidaMusicComponents, index) =>
         selectedBatidaIndex === index
-          ? [...batidaMusicComponents, <CreateMusicColcheia34 />]
+          ? [...batidaMusicComponents, createNewMusicComponent(compasso)]
           : batidaMusicComponents
       )
     );
+  };
+  const createNewMusicComponent = (compasso) => {
+    return compasso === "3/4" ? (
+      <CreateMusicColcheia34 key={Math.random()} />
+    ) : (
+      <CreateMusicColcheia key={Math.random()} />
+    );
+  };
 
   const [titleName, setTitleName] = useState("");
   const [BpmValue, setBpmValue] = useState("");
@@ -191,30 +198,15 @@ function CreateMusic() {
       <Music>
         {hasCreatedBatida && (
           <>
-            {/* {selectedMusicComponents.map((component, index) => (
+            {batidaComponents[selectedBatidaIndex].map((component, index) => (
               <React.Fragment key={index}>{component}</React.Fragment>
-            ))} */}
-            {selectedMusicComponents}
-            {selectedMusicComponents.length < 5 && (
+            ))}
+            {batidaComponents[selectedBatidaIndex].length < 5 && (
               <BotaoNovaLinha type="button" onClick={addMusicComponent}>
                 Nova linha
               </BotaoNovaLinha>
             )}
-            <Button
-              width="20%"
-              backgroundColor="#F4F4F4"
-              border="1px solid black"
-              color="black"
-              fontWeight="700"
-              columnGap="10px"
-              padding="5px"
-              fontSize="14px"
-              widthMedia700="20%"
-              widthMedia281="60%"
-              widthMedia415="40%"
-            >
-              ENCERRAR
-            </Button>
+            {/* ... */}
           </>
         )}
       </Music>
