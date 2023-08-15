@@ -51,7 +51,7 @@ export const Batidas = styled.div`
 export const Tab = styled.div`
   padding: 10px;
   height: 40px;
-  width: 33.3%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -149,6 +149,49 @@ export const BotaoNovaLinha = styled.button`
   margin-bottom: 1.5%;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 500;
+  cursor: pointer;
+`;
+
+export const DivBotoesBatida = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 4rem;
+`;
+
+export const BotaoSalvar = styled.button`
+  display: flex;
+  padding: 0.5%;
+  padding-left: 1%;
+  padding-right: 1%;
+  align-items: center;
+  justify-content: center;
+  background-color: green;
+  color: white;
+  border-width: 2px white;
+  width: 10rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+`;
+
+export const BotaoDeletar = styled.button`
+  display: flex;
+  padding: 0.5%;
+  padding-left: 1%;
+  padding-right: 1%;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+  color: white;
+  border-width: 2px white;
+  width: 10rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+`;
+
+export const SelectBatida = styled.select`
+  width: 10rem;
 `;
 
 export const CompassChange = styled.p`
