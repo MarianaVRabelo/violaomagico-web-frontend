@@ -4,7 +4,7 @@ import {
   /*Data,*/
   Modal,
   Batidas,
-  BpmSelector,
+  // BpmSelector,
   Music,
   Paginao,
   Tab,
@@ -16,22 +16,31 @@ import styled from "styled-components";
 import Button from "../../styles/Button";
 import { saveAs } from "file-saver";
 import { Colors } from "../../styles/variables";
-import CreateMusicComponent from "../../components/CreateMusic/CreateMusic";
+// import CreateMusicComponent from "../../components/CreateMusic/CreateMusic";
 import BpmChange from "../../components/BpmChange/BpmChange";
 import TitleChange from "../../components/TitleChange/TitleChange";
 import AuthorChange from "../../components/AuthorChange/AuthorChange";
 import CreateMusicColcheia34 from "../../components/CreateMusicColcheia34/CreateMusicColcheia34";
-import GuitarIcon from "../../assets/GuitarIcon";
+// import GuitarIcon from "../../assets/GuitarIcon";
 /*import InputComponent from "../../components/InputComponent/InputComponent";*/
 import CreateMusicColcheia from "../../components/CreateMusicColcheia/CreateMusicColcheia";
-import Compass from "../../components/Compass/Compass";
+// import Compass from "../../components/Compass/Compass";
 
 function CreateMusic() {
   const batidasQuantity = 3;
   const [batidas, setBatidas] = useState(
     Array(batidasQuantity).fill({ isCreated: false })
   );
+  const [batidas2, setBatidas2] = useState(
+    Array(batidasQuantity).fill({ isCreated: false })
+  );
+  const [batidas3, setBatidas3] = useState(
+    Array(batidasQuantity).fill({ isCreated: false })
+  );
   const [selectedBatidaIndex, setSelectedBatidaIndex] = useState(null);
+  const [selectedBatidaIndex2, setSelectedBatidaIndex2] = useState(null);
+  const [selectedBatidaIndex3, setSelectedBatidaIndex3] = useState(null);
+
   const [compasso, setCompasso] = useState("3/4");
   const [addNewBatidaIndex, setAddNewBatidaIndex] = useState(0);
   const [addNewBatidaIndex2, setAddNewBatidaIndex2] = useState(0);
@@ -57,9 +66,18 @@ function CreateMusic() {
   }, [compasso]);
 
   const [batidaNumber, setBatidaNumber] = useState(0);
-  const handleBatidaNumber = () => {
-    setBatidaNumber(batidaNumber + 1);
+
+  const handleBatidaNumber = (index) => {
+    setBatidaNumber(index + 1);
+    if (index === 0) {
+      newBatida(index);
+    } else if (index === 1) {
+      newBatida2(index);
+    } else if (index === 2) {
+      newBatida3(index);
+    }
   };
+
   console.log(batidaNumber);
 
   const addMusicComponent = () =>
@@ -92,6 +110,28 @@ function CreateMusic() {
     setAddNewBatidaIndex(index + 1);
   }
 
+  // Batida 2
+
+  function newBatida2(index) {
+    const newBatidas = batidas2.map((batida, i) =>
+      i === index ? { isCreated: true } : batida
+    );
+    setBatidas2(newBatidas);
+    setSelectedBatidaIndex2(index);
+    setAddNewBatidaIndex2(index + 1);
+  }
+
+  // Batida 3
+
+  function newBatida3(index) {
+    const newBatidas = batidas3.map((batida, i) =>
+      i === index ? { isCreated: true } : batida
+    );
+    setBatidas3(newBatidas);
+    setSelectedBatidaIndex3(index);
+    setAddNewBatidaIndex3(index + 1);
+  }
+
   const hasCreatedBatida = useMemo(
     () => batidas.some(({ isCreated }) => isCreated),
     [batidas]
@@ -111,7 +151,6 @@ function CreateMusic() {
     return [];
   }, [selectedBatidaIndex, musicComponents]);
 
-  //const selectedMusicComponents = musicComponents[selectedBatidaIndex];
   return (
     <Paginao>
       <Modal>
@@ -165,23 +204,25 @@ function CreateMusic() {
       </Button>
 
       <h6 />
+
       <Batidas>
         {batidas.map(({ isCreated }, index) => {
           const isAddNewBatida = index === addNewBatidaIndex;
           const isSelected = index === selectedBatidaIndex;
 
-          if (isAddNewBatida)
+          if (isAddNewBatida) {
             return (
               <AddNewBatidaComponent
                 onClick={() => {
                   newBatida(index);
-                  handleBatidaNumber();
                 }}
-                handleBatidaNumber={handleBatidaNumber}
+                handleBatidaNumber={(index) => handleBatidaNumber(index)}
+                index={index} // Passa o índice para o componente
               />
             );
+          }
 
-          if (isCreated)
+          if (isCreated) {
             return (
               <CreatedBatidaComponent
                 backgroundColor={
@@ -193,16 +234,14 @@ function CreateMusic() {
                 isSelected={isSelected}
               />
             );
+          }
 
-          return <Tab backgroundColor={Colors.darkwood} key={index} />;
+          return <Tab key={index} />;
         })}
       </Batidas>
       <Music>
         {hasCreatedBatida && (
           <>
-            {/* {selectedMusicComponents.map((component, index) => (
-              <React.Fragment key={index}>{component}</React.Fragment>
-            ))} */}
             {selectedMusicComponents}
             {selectedMusicComponents.length < 5 && (
               <BotaoNovaLinha type="button" onClick={addMusicComponent}>
@@ -249,12 +288,12 @@ const ButtonContainer = styled.div`
   gap: 10px; /* Espaçamento entre os botões */
 `;
 
-const AddNewBatidaComponent = ({ onClick, handleBatidaNumber }) => (
+const AddNewBatidaComponent = ({ onClick, handleBatidaNumber, index }) => (
   <Tab selectedBatidaIndex={false}>
     <Button
       onClick={() => {
         onClick();
-        handleBatidaNumber();
+        handleBatidaNumber(index); // Passa o índice para a função
       }}
       width="60%"
       height="80%"
