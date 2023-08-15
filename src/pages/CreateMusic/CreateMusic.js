@@ -34,47 +34,46 @@ function CreateMusic() {
   const [selectedBatidaIndex, setSelectedBatidaIndex] = useState(null);
   const [compasso, setCompasso] = useState("3/4");
   const [addNewBatidaIndex, setAddNewBatidaIndex] = useState(0);
-  const initialMusicComponents = Array(batidasQuantity).fill(
-    compasso === "3/4" ? [<CreateMusicColcheia34 />] : [<CreateMusicColcheia />]
-  );
-  const [batidaComponents, setBatidaComponents] = useState(
-    Array(batidasQuantity)
-      .fill([])
-      .map(() => [])
-  );
-
+  const [addNewBatidaIndex2, setAddNewBatidaIndex2] = useState(0);
+  const [addNewBatidaIndex3, setAddNewBatidaIndex3] = useState(0);
   const [musicComponents, setMusicComponents] = useState(
-    Array(batidasQuantity)
-      .fill([])
-      .map(() =>
-        compasso === "3/4"
-          ? [<CreateMusicColcheia34 />]
-          : [<CreateMusicColcheia />]
-      )
+    Array(batidasQuantity).fill([
+      compasso === "3/4" ? <CreateMusicColcheia34 /> : <CreateMusicColcheia />,
+    ])
   );
+  useEffect(() => {
+    setBatidas(Array(batidasQuantity).fill({ isCreated: false }));
+    setMusicComponents(
+      Array(batidasQuantity).fill([
+        compasso === "3/4" ? (
+          <CreateMusicColcheia34 />
+        ) : (
+          <CreateMusicColcheia />
+        ),
+      ])
+    );
+    setAddNewBatidaIndex(0);
+    setSelectedBatidaIndex(null);
+  }, [compasso]);
 
-  const addMusicComponent = () => {
-    setBatidaComponents((prevComponents) =>
-      prevComponents.map((batidaMusicComponents, index) =>
+  const [batidaNumber, setBatidaNumber] = useState(0);
+  const handleBatidaNumber = () => {
+    setBatidaNumber(batidaNumber + 1);
+  };
+  console.log(batidaNumber);
+
+  const addMusicComponent = () =>
+    setMusicComponents((prevValue) =>
+      prevValue.map((batidaMusicComponents, index) =>
         selectedBatidaIndex === index
-          ? [...batidaMusicComponents, createNewMusicComponent(compasso)]
+          ? [...batidaMusicComponents, <CreateMusicColcheia34 />]
           : batidaMusicComponents
       )
     );
-  };
-  const createNewMusicComponent = (compasso) => {
-    return compasso === "3/4" ? (
-      <CreateMusicColcheia34 key={Math.random()} />
-    ) : (
-      <CreateMusicColcheia key={Math.random()} />
-    );
-  };
 
   const [titleName, setTitleName] = useState("");
   const [BpmValue, setBpmValue] = useState("");
   const [author, setAuthor] = useState("");
-
-  console.log(TitleChange.titleName);
 
   const handleDownload = () => {
     const blob = new Blob(
@@ -174,8 +173,11 @@ function CreateMusic() {
           if (isAddNewBatida)
             return (
               <AddNewBatidaComponent
-                onClick={() => newBatida(index)}
-                key={index}
+                onClick={() => {
+                  newBatida(index);
+                  handleBatidaNumber();
+                }}
+                handleBatidaNumber={handleBatidaNumber}
               />
             );
 
@@ -198,15 +200,30 @@ function CreateMusic() {
       <Music>
         {hasCreatedBatida && (
           <>
-            {batidaComponents[selectedBatidaIndex].map((component, index) => (
+            {/* {selectedMusicComponents.map((component, index) => (
               <React.Fragment key={index}>{component}</React.Fragment>
-            ))}
-            {batidaComponents[selectedBatidaIndex].length < 5 && (
+            ))} */}
+            {selectedMusicComponents}
+            {selectedMusicComponents.length < 5 && (
               <BotaoNovaLinha type="button" onClick={addMusicComponent}>
                 Nova linha
               </BotaoNovaLinha>
             )}
-            {/* ... */}
+            <Button
+              width="20%"
+              backgroundColor="#F4F4F4"
+              border="1px solid black"
+              color="black"
+              fontWeight="700"
+              columnGap="10px"
+              padding="5px"
+              fontSize="14px"
+              widthMedia700="20%"
+              widthMedia281="60%"
+              widthMedia415="40%"
+            >
+              ENCERRAR
+            </Button>
           </>
         )}
       </Music>
@@ -215,13 +232,7 @@ function CreateMusic() {
 }
 
 export default CreateMusic;
-
-const CreatedBatidaComponent = ({
-  backgroundColor,
-  onClick,
-  isSelected,
-  index,
-}) => (
+const CreatedBatidaComponent = ({ onClick, isSelected, index }) => (
   <Tab
     backgroundColor="{backgroundColor}"
     onClick={onClick}
@@ -238,11 +249,13 @@ const ButtonContainer = styled.div`
   gap: 10px; /* Espaçamento entre os botões */
 `;
 
-const AddNewBatidaComponent = ({ onClick }) => (
-  <Tab backgroundColor={Colors.blackwood} selectedBatidaIndex={false}>
-    {" "}
+const AddNewBatidaComponent = ({ onClick, handleBatidaNumber }) => (
+  <Tab selectedBatidaIndex={false}>
     <Button
-      onClick={onClick}
+      onClick={() => {
+        onClick();
+        handleBatidaNumber();
+      }}
       width="60%"
       height="80%"
       backgroundColor="white"
@@ -261,7 +274,7 @@ const AddNewBatidaComponent = ({ onClick }) => (
         alt="plusSymbol"
         width="15"
         height="15"
-      ></img>
+      />
       Nova batida
     </Button>
   </Tab>
