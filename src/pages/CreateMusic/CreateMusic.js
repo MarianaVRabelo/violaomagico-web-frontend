@@ -9,6 +9,10 @@ import {
   Paginao,
   Tab,
   BotaoNovaLinha,
+  DivBotoesBatida,
+  BotaoSalvar,
+  BotaoDeletar,
+  SelectBatida,
   CompassChange,
 } from "./Styles";
 import Plus from "../../assets/Plus.png";
@@ -27,7 +31,46 @@ import CreateMusicColcheia from "../../components/CreateMusicColcheia/CreateMusi
 // import Compass from "../../components/Compass/Compass";
 
 function CreateMusic() {
-  const batidasQuantity = 3;
+  const [selectedBatida, setSelectedBatida] = useState("Batida 1");
+  const [salvarLabel, setSalvarLabel] = useState("Salvar Batida 1");
+  const [deletarLabel, setDeletarLabel] = useState("Deletar Batida 1");
+
+  const [batida1, setBatida1] = useState("< A B C D E >");
+  const [batida2, setBatida2] = useState("< F G H I J >");
+  const [batida3, setBatida3] = useState("< K L M N O >");
+
+  const handleSalvarBatida = () => {
+    if (selectedBatida === "Batida 1") {
+      console.log("O valor da Batida 1 é:", batida1);
+    } else if (selectedBatida === "Batida 2") {
+      console.log("O valor da Batida 2 é:", batida2);
+    } else if (selectedBatida === "Batida 3") {
+      console.log("O valor da Batida 3 é:", batida3);
+    }
+  };
+
+  const handleDeletar = () => {
+    if (selectedBatida === "Batida 1") {
+      setBatida1(" ");
+    } else if (selectedBatida === "Batida 2") {
+      setBatida2(" ");
+    } else if (selectedBatida === "Batida 3") {
+      setBatida3(" ");
+    }
+  };
+
+  useEffect(() => {
+    updateButtonLabels();
+  }, [selectedBatida]);
+
+  const updateButtonLabels = () => {
+    const salvarLabel = `Salvar ${selectedBatida}`;
+    const deletarLabel = `Deletar ${selectedBatida}`;
+    setSalvarLabel(salvarLabel);
+    setDeletarLabel(deletarLabel);
+  };
+
+  const batidasQuantity = 1;
   const [batidas, setBatidas] = useState(
     Array(batidasQuantity).fill({ isCreated: false })
   );
@@ -78,7 +121,7 @@ function CreateMusic() {
     }
   };
 
-  console.log(batidaNumber);
+  // console.log(batidaNumber);
 
   const addMusicComponent = () =>
     setMusicComponents((prevValue) =>
@@ -139,6 +182,7 @@ function CreateMusic() {
 
   const handleSelecionarCompasso = (tipoCompasso) => {
     setCompasso(tipoCompasso);
+    setSelectedBatida("Batida 1");
   };
 
   const selectedMusicComponents = useMemo(() => {
@@ -239,6 +283,7 @@ function CreateMusic() {
           return <Tab key={index} />;
         })}
       </Batidas>
+
       <Music>
         {hasCreatedBatida && (
           <>
@@ -248,6 +293,33 @@ function CreateMusic() {
                 Nova linha
               </BotaoNovaLinha>
             )}
+            <DivBotoesBatida>
+              <SelectBatida
+                id="selectBatida"
+                value={selectedBatida}
+                onChange={(e) => setSelectedBatida(e.target.value)}
+              >
+                <option value="Batida 1">Batida 1</option>
+                <option value="Batida 2">Batida 2</option>
+                <option value="Batida 3">Batida 3</option>
+              </SelectBatida>
+
+              <BotaoSalvar
+                type="button"
+                id="botaoSalvar"
+                onClick={handleSalvarBatida}
+              >
+                {salvarLabel}
+              </BotaoSalvar>
+              <BotaoDeletar
+                type="button"
+                id="botaoDeletar"
+                onClick={handleDeletar}
+              >
+                {deletarLabel}
+              </BotaoDeletar>
+            </DivBotoesBatida>
+
             <Button
               width="20%"
               backgroundColor="#F4F4F4"
@@ -261,7 +333,7 @@ function CreateMusic() {
               widthMedia281="60%"
               widthMedia415="40%"
             >
-              ENCERRAR
+              Resetar
             </Button>
           </>
         )}
@@ -269,8 +341,8 @@ function CreateMusic() {
     </Paginao>
   );
 }
-
 export default CreateMusic;
+
 const CreatedBatidaComponent = ({ onClick, isSelected, index }) => (
   <Tab
     backgroundColor="{backgroundColor}"
@@ -279,7 +351,7 @@ const CreatedBatidaComponent = ({ onClick, isSelected, index }) => (
     fontWeight="700"
     isSelected={isSelected}
   >
-    Batida {index + 1}
+    Batida
   </Tab>
 );
 
