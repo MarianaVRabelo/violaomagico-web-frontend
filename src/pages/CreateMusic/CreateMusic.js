@@ -35,21 +35,24 @@ function CreateMusic() {
   const [salvarLabel, setSalvarLabel] = useState("Salvar Batida 1");
   const [deletarLabel, setDeletarLabel] = useState("Deletar Batida 1");
 
-  const [batida1, setBatida1] = useState("< A B C D E >");
-  const [batida2, setBatida2] = useState("< F G H I J >");
-  const [batida3, setBatida3] = useState("< K L M N O >");
+  const [batida1, setBatida1] = useState();
+  const [batida2, setBatida2] = useState();
+  const [batida3, setBatida3] = useState();
 
   const handleSalvarBatida = () => {
     if (selectedBatida === "Batida 1") {
+      setBatida1("< A B C D E >");
       console.log("O valor da Batida 1 é:", batida1);
     } else if (selectedBatida === "Batida 2") {
+      setBatida1("< F G H I J >");
       console.log("O valor da Batida 2 é:", batida2);
     } else if (selectedBatida === "Batida 3") {
+      setBatida1("< K L M N O >");
       console.log("O valor da Batida 3 é:", batida3);
     }
   };
 
-  const handleDeletar = () => {
+  const handleDeletarBatida = () => {
     if (selectedBatida === "Batida 1") {
       setBatida1(" ");
     } else if (selectedBatida === "Batida 2") {
@@ -314,7 +317,7 @@ function CreateMusic() {
               <BotaoDeletar
                 type="button"
                 id="botaoDeletar"
-                onClick={handleDeletar}
+                onClick={handleDeletarBatida}
               >
                 {deletarLabel}
               </BotaoDeletar>
@@ -343,7 +346,7 @@ function CreateMusic() {
 }
 export default CreateMusic;
 
-const CreatedBatidaComponent = ({ onClick, isSelected, index }) => (
+const CreatedBatidaComponent = ({ onClick, isSelected }) => (
   <Tab
     backgroundColor="{backgroundColor}"
     onClick={onClick}
