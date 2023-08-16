@@ -8,6 +8,7 @@ import {
   Music,
   Paginao,
   Tab,
+  ValorBatidaText,
   BotaoNovaLinha,
   DivBotoesBatida,
   BotaoSalvar,
@@ -42,13 +43,10 @@ function CreateMusic() {
   const handleSalvarBatida = () => {
     if (selectedBatida === "Batida 1") {
       setBatida1("< A B C D E >");
-      console.log("O valor da Batida 1 é:", batida1);
     } else if (selectedBatida === "Batida 2") {
-      setBatida1("< F G H I J >");
-      console.log("O valor da Batida 2 é:", batida2);
+      setBatida2("< F G H I J >");
     } else if (selectedBatida === "Batida 3") {
-      setBatida1("< K L M N O >");
-      console.log("O valor da Batida 3 é:", batida3);
+      setBatida3("< K L M N O >");
     }
   };
 
@@ -290,6 +288,9 @@ function CreateMusic() {
       <Music>
         {hasCreatedBatida && (
           <>
+            <ValorBatidaText>Valor da Batida 1: {batida1}</ValorBatidaText>
+            <ValorBatidaText>Valor da Batida 2: {batida2}</ValorBatidaText>
+            <ValorBatidaText>Valor da Batida 3: {batida3}</ValorBatidaText>
             {selectedMusicComponents}
             {selectedMusicComponents.length < 5 && (
               <BotaoNovaLinha type="button" onClick={addMusicComponent}>

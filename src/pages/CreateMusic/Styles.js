@@ -72,6 +72,10 @@ export const Tab = styled.div`
   }
 `;
 
+export const ValorBatidaText = styled.p`
+  color: white;
+`;
+
 export const Music = styled.div`
   background-color: #181818;
   display: flex;
