@@ -44,16 +44,33 @@ function CreateMusic() {
   };
 
   const handleSalvarBatida = () => {
+    const selectedButtonIds = Object.keys(selectedButtons).filter(
+      (buttonId) => selectedButtons[buttonId]
+    );
+
+    const selectedButtonString = selectedButtonIds.join(" ");
+
     if (selectedBatida === "Batida 1") {
-      setBatida1("< A B C D E >");
+      setBatida1(`< ${selectedButtonString} >`);
     } else if (selectedBatida === "Batida 2") {
-      setBatida2("< F G H I J >");
+      setBatida2(`< ${selectedButtonString} >`);
     } else if (selectedBatida === "Batida 3") {
-      setBatida3("< K L M N O >");
+      setBatida3(`< ${selectedButtonString} >`);
     }
   };
 
   const handleDeletarBatida = () => {
+    // Crie um novo objeto com todas as chaves definidas como isSelected = false
+    const updatedSelectedButtons = Object.keys(selectedButtons).reduce(
+      (updatedButtons, buttonId) => {
+        updatedButtons[buttonId] = false;
+        return updatedButtons;
+      },
+      {}
+    );
+
+    setSelectedButtons(updatedSelectedButtons);
+
     if (selectedBatida === "Batida 1") {
       setBatida1(" ");
     } else if (selectedBatida === "Batida 2") {
@@ -309,22 +326,6 @@ function CreateMusic() {
                 {deletarLabel}
               </BotaoDeletar>
             </DivBotoesBatida>
-
-            <Button
-              width="20%"
-              backgroundColor="#F4F4F4"
-              border="1px solid black"
-              color="black"
-              fontWeight="700"
-              columnGap="10px"
-              padding="5px"
-              fontSize="14px"
-              widthMedia700="20%"
-              widthMedia281="60%"
-              widthMedia415="40%"
-            >
-              Resetar
-            </Button>
           </>
         )}
       </Music>
