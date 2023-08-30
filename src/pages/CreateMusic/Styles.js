@@ -201,12 +201,6 @@ export const SelectBatida = styled.select`
 export const CompassChange = styled.p`
   font-size: 20px;
 `;
-export const StyledMatrixContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-gap: 10px;
-  margin-top: 20px;
-`;
 
 export const StyledMatrixButton = styled.button`
   width: 40px;

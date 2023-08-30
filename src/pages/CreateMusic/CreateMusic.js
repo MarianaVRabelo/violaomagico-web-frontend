@@ -11,9 +11,8 @@ import {
   BotaoDeletar,
   SelectBatida,
   CompassChange,
-  StyledMatrixButton,
-  ButtonMatrixContainer,
 } from "./Styles";
+import NewLogic from "../../components/NewLogic/NewLogic";
 import Plus from "../../assets/Plus.png";
 import styled from "styled-components";
 import Button from "../../styles/Button";
@@ -26,6 +25,7 @@ import CreateMusicColcheia34 from "../../components/CreateMusicColcheia34/Create
 import CreateMusicColcheia from "../../components/CreateMusicColcheia/CreateMusicColcheia";
 
 function CreateMusic() {
+  const [selectedBatidaString, setSelectedBatidaString] = useState("");
   const [selectedBatida, setSelectedBatida] = useState("Batida 1");
   const [salvarLabel, setSalvarLabel] = useState("Salvar Batida 1");
   const [deletarLabel, setDeletarLabel] = useState("Deletar Batida 1");
@@ -41,47 +41,43 @@ function CreateMusic() {
   });
   const rowLetters = ["E", "A", "D", "G", "B", "e"];
 
-  const handleButtonMatrixClick = (buttonId, rowLetter) => {
-    setSelectedButtons((prevSelectedButtons) => ({
-      ...prevSelectedButtons,
-      [buttonId]: !prevSelectedButtons[buttonId],
-    }));
-
-    setSelectedButtonInfo({ buttonId, rowLetter }); // Atualizar o estado fora do loop
-  };
   const handleSalvarBatida = () => {
     const selectedButtonIds = Object.keys(selectedButtons).filter(
       (buttonId) => selectedButtons[buttonId]
     );
 
     const buttonColumns = Array.from({ length: 24 }, (_, col) =>
-      selectedButtonIds.filter((buttonId) => {
-        const row = Math.floor((buttonId - 1) / 24);
-        return (buttonId - 1) % 24 === col;
-      })
+      selectedButtonIds.filter((buttonId) => (buttonId - 1) % 24 === col)
     );
 
-    const selectedBatidaString = buttonColumns
-      .map((column, colIndex) => {
-        if (column.length === 0) {
-          return " ";
-        }
+    const groupedButtonColumns = [];
+    for (let i = 0; i < buttonColumns.length; i += 6) {
+      const group = buttonColumns.slice(i, i + 6);
+      groupedButtonColumns.push(group);
+    }
 
-        const rowValues = column.map((buttonId) => {
-          const rowLetter = rowLetters[Math.floor((buttonId - 1) / 24)];
-          return rowLetter;
+    const selectedBatidaString = groupedButtonColumns
+      .map((group) => {
+        const groupValues = group.map((column) => {
+          const rowValues = column
+            .map((buttonId) => {
+              if (selectedButtons[buttonId]) {
+                const rowLetter = rowLetters[Math.floor((buttonId - 1) / 24)];
+                return rowLetter;
+              }
+              return null; // Retorna null para botões não selecionados
+            })
+            .filter((value) => value !== null); // Filtra os valores nulos
+
+          return rowValues.join("");
         });
-        return rowValues.join("");
+
+        return `<${groupValues.join(" ")}>`.trim();
       })
       .join(" ");
 
-    if (selectedBatida === "Batida 1") {
-      setBatida1(selectedBatidaString);
-    } else if (selectedBatida === "Batida 2") {
-      setBatida2(selectedBatidaString);
-    } else if (selectedBatida === "Batida 3") {
-      setBatida3(selectedBatidaString);
-    }
+    // Atualize o estado com a saída formatada dos botões selecionados
+    setSelectedBatidaString(selectedBatidaString);
   };
 
   const handleDeletarBatida = () => {
@@ -174,7 +170,18 @@ function CreateMusic() {
 
   const handleDownload = () => {
     const blob = new Blob(
-      ["V<", titleName, ">", "\nS<", BpmValue, ">", "\nN< ", author, ">"],
+      [
+        "V<",
+        titleName,
+        ">",
+        "\nS<",
+        BpmValue,
+        ">",
+        "\nN< ",
+        author,
+        ">",
+        selectedBatidaString,
+      ],
       { type: "text/plain;charset=utf-8" }
     );
     saveAs(blob, titleName);
@@ -275,7 +282,7 @@ function CreateMusic() {
                   newBatida(index);
                 }}
                 // handleBatidaNumber={(index) => handleBatidaNumber(index)}
-                index={index} // Passa o índice para o componente
+                index={index} // Passa o Ã­ndice para o componente
               />
             );
           }
@@ -304,26 +311,7 @@ function CreateMusic() {
             <ValorBatidaText>Valor da Batida 1: {batida1}</ValorBatidaText>
             <ValorBatidaText>Valor da Batida 2: {batida2}</ValorBatidaText>
             <ValorBatidaText>Valor da Batida 3: {batida3}</ValorBatidaText>
-            <ButtonMatrixContainer>
-              {Array.from({ length: 6 }).map((_, row) =>
-                Array.from({ length: 24 }).map((_, col) => {
-                  const buttonId = row * 24 + col + 1;
-                  const rowLetter = rowLetters[row];
-                  return (
-                    <StyledMatrixButton
-                      key={buttonId}
-                      id={`button-${buttonId}`}
-                      isSelected={selectedButtons[buttonId] || false}
-                      onClick={() =>
-                        handleButtonMatrixClick(buttonId, rowLetter)
-                      }
-                    >
-                      {rowLetter}
-                    </StyledMatrixButton>
-                  );
-                })
-              )}
-            </ButtonMatrixContainer>
+            <NewLogic />
 
             {selectedMusicComponents}
 
@@ -375,7 +363,7 @@ const CreatedBatidaComponent = ({ onClick, isSelected }) => (
 
 const ButtonContainer = styled.div`
   display: flex;
-  gap: 10px; /* Espaçamento entre os botões */
+  gap: 10px; /* EspaÃ§amento entre os botÃµes */
 `;
 
 const AddNewBatidaComponent = ({ onClick, handleBatidaNumber, index }) => (
@@ -383,7 +371,7 @@ const AddNewBatidaComponent = ({ onClick, handleBatidaNumber, index }) => (
     <Button
       onClick={() => {
         onClick();
-        handleBatidaNumber(index); // Passa o índice para a função
+        handleBatidaNumber(index); // Passa o Ã­ndice para a funÃ§Ã£o
       }}
       width="60%"
       height="80%"
