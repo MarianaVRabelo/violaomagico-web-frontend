@@ -11,8 +11,9 @@ import {
   BotaoDeletar,
   SelectBatida,
   CompassChange,
+  StyledMatrixButton,
+  ButtonMatrixContainer,
 } from "./Styles";
-import NewLogic from "../../components/NewLogic/NewLogic";
 import Plus from "../../assets/Plus.png";
 import styled from "styled-components";
 import Button from "../../styles/Button";
@@ -41,18 +42,27 @@ function CreateMusic() {
   });
   const rowLetters = ["E", "A", "D", "G", "B", "e"];
 
+  const handleButtonMatrixClick = (buttonId, row) => {
+    setSelectedButtons((prevSelectedButtons) => ({
+      ...prevSelectedButtons,
+      [buttonId]: !prevSelectedButtons[buttonId],
+    }));
+
+    setSelectedButtonInfo({ buttonId, rowLetter: row }); // Atualize o estado fora do loop
+  };
+
   const handleSalvarBatida = () => {
     const selectedButtonIds = Object.keys(selectedButtons).filter(
       (buttonId) => selectedButtons[buttonId]
     );
 
-    const buttonColumns = Array.from({ length: 24 }, (_, col) =>
-      selectedButtonIds.filter((buttonId) => (buttonId - 1) % 24 === col)
+    const buttonColumns = Array.from({ length: 32 }, (_, col) =>
+      selectedButtonIds.filter((buttonId) => (buttonId - 1) % 32 === col)
     );
 
     const groupedButtonColumns = [];
-    for (let i = 0; i < buttonColumns.length; i += 6) {
-      const group = buttonColumns.slice(i, i + 6);
+    for (let i = 0; i < buttonColumns.length; i += 8) {
+      const group = buttonColumns.slice(i, i + 8);
       groupedButtonColumns.push(group);
     }
 
@@ -62,12 +72,12 @@ function CreateMusic() {
           const rowValues = column
             .map((buttonId) => {
               if (selectedButtons[buttonId]) {
-                const rowLetter = rowLetters[Math.floor((buttonId - 1) / 24)];
+                const rowLetter = rowLetters[Math.floor((buttonId - 1) / 32)]; // Use 32 aqui, já que você tem 32 botões por linha
                 return rowLetter;
               }
-              return null; // Retorna null para botões não selecionados
+              return null;
             })
-            .filter((value) => value !== null); // Filtra os valores nulos
+            .filter((value) => value !== null);
 
           return rowValues.join("");
         });
@@ -78,6 +88,16 @@ function CreateMusic() {
 
     // Atualize o estado com a saída formatada dos botões selecionados
     setSelectedBatidaString(selectedBatidaString);
+
+    // Defina os valores das variáveis batida1, batida2 ou batida3
+    if (selectedBatida === "Batida 1") {
+      setBatida1(selectedBatidaString);
+      console.log(selectedBatidaString);
+    } else if (selectedBatida === "Batida 2") {
+      setBatida2(selectedBatidaString);
+    } else if (selectedBatida === "Batida 3") {
+      setBatida3(selectedBatidaString);
+    }
   };
 
   const handleDeletarBatida = () => {
@@ -311,8 +331,29 @@ function CreateMusic() {
             <ValorBatidaText>Valor da Batida 1: {batida1}</ValorBatidaText>
             <ValorBatidaText>Valor da Batida 2: {batida2}</ValorBatidaText>
             <ValorBatidaText>Valor da Batida 3: {batida3}</ValorBatidaText>
-            <NewLogic />
+            <ButtonMatrixContainer>
+              {rowLetters.map((rowLetter, row) =>
+                Array.from({ length: 32 }).map((_, col) => {
+                  const buttonId = row * 32 + col + 1;
 
+                  return (
+                    <StyledMatrixButton
+                      key={buttonId}
+                      id={`button-${buttonId}`}
+                      isSelected={selectedButtons[buttonId] || false}
+                      onClick={() =>
+                        handleButtonMatrixClick(
+                          buttonId,
+                          rowLetter // Usar a letra da linha correta
+                        )
+                      }
+                    >
+                      {rowLetter}
+                    </StyledMatrixButton>
+                  );
+                })
+              )}
+            </ButtonMatrixContainer>
             {selectedMusicComponents}
 
             <DivBotoesBatida>
