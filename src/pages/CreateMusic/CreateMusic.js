@@ -11,8 +11,6 @@ import {
   BotaoDeletar,
   SelectBatida,
   CompassChange,
-  StyledMatrixButton,
-  ButtonMatrixContainer,
 } from "./Styles";
 import Plus from "../../assets/Plus.png";
 import styled from "styled-components";
@@ -24,6 +22,7 @@ import TitleChange from "../../components/TitleChange/TitleChange";
 import AuthorChange from "../../components/AuthorChange/AuthorChange";
 import CreateMusicColcheia34 from "../../components/CreateMusicColcheia34/CreateMusicColcheia34";
 import CreateMusicColcheia from "../../components/CreateMusicColcheia/CreateMusicColcheia";
+import Colcheia44 from "../../components/Colcheia44/Colcheia44";
 
 function CreateMusic() {
   const [selectedBatidaString, setSelectedBatidaString] = useState("");
@@ -319,29 +318,10 @@ function CreateMusic() {
             <ValorBatidaText>Valor da Batida 1: {batida1}</ValorBatidaText>
             <ValorBatidaText>Valor da Batida 2: {batida2}</ValorBatidaText>
             <ValorBatidaText>Valor da Batida 3: {batida3}</ValorBatidaText>
-            <ButtonMatrixContainer>
-              {rowLetters.map((rowLetter, row) =>
-                Array.from({ length: 32 }).map((_, col) => {
-                  const buttonId = row * 32 + col + 1;
-
-                  return (
-                    <StyledMatrixButton
-                      key={buttonId}
-                      id={`button-${buttonId}`}
-                      isSelected={selectedButtons[buttonId] || false}
-                      onClick={() =>
-                        handleButtonMatrixClick(
-                          buttonId,
-                          rowLetter // Usar a letra da linha correta
-                        )
-                      }
-                    >
-                      {rowLetter}
-                    </StyledMatrixButton>
-                  );
-                })
-              )}
-            </ButtonMatrixContainer>
+            <Colcheia44
+              selectedButtons={selectedButtons}
+              handleButtonMatrixClick={handleButtonMatrixClick}
+            />
             {selectedMusicComponents}
 
             <DivBotoesBatida>
