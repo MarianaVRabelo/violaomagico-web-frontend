@@ -56,35 +56,19 @@ function CreateMusic() {
       (buttonId) => selectedButtons[buttonId]
     );
 
-    const buttonColumns = Array.from({ length: 32 }, (_, col) =>
-      selectedButtonIds.filter((buttonId) => (buttonId - 1) % 32 === col)
-    );
+    const buttonColumns = Array.from({ length: 32 }, (_, col) => {
+      const columnValues = selectedButtonIds
+        .filter((buttonId) => (buttonId - 1) % 32 === col)
+        .map((buttonId) => {
+          const rowLetter = rowLetters[Math.floor((buttonId - 1) / 32)];
+          return rowLetter;
+        })
+        .join("");
 
-    const groupedButtonColumns = [];
-    for (let i = 0; i < buttonColumns.length; i += 8) {
-      const group = buttonColumns.slice(i, i + 8);
-      groupedButtonColumns.push(group);
-    }
+      return columnValues.length > 0 ? columnValues : " "; // Use um espaço em branco se a coluna não tiver botões selecionados
+    });
 
-    const selectedBatidaString = groupedButtonColumns
-      .map((group) => {
-        const groupValues = group.map((column) => {
-          const rowValues = column
-            .map((buttonId) => {
-              if (selectedButtons[buttonId]) {
-                const rowLetter = rowLetters[Math.floor((buttonId - 1) / 32)]; // Use 32 aqui, já que você tem 32 botões por linha
-                return rowLetter;
-              }
-              return null;
-            })
-            .filter((value) => value !== null);
-
-          return rowValues.join("");
-        });
-
-        return `<${groupValues.join(" ")}>`.trim();
-      })
-      .join(" ");
+    const selectedBatidaString = `<${buttonColumns.join(" ")}>`;
 
     // Atualize o estado com a saída formatada dos botões selecionados
     setSelectedBatidaString(selectedBatidaString);
@@ -99,7 +83,6 @@ function CreateMusic() {
       setBatida3(selectedBatidaString);
     }
   };
-
   const handleDeletarBatida = () => {
     const updatedSelectedButtons = Object.keys(selectedButtons).reduce(
       (updatedButtons, buttonId) => {
