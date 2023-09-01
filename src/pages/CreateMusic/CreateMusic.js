@@ -62,10 +62,14 @@ function CreateMusic() {
         .map((buttonId) => {
           const rowLetter = rowLetters[Math.floor((buttonId - 1) / 32)];
           return rowLetter;
-        })
-        .join("");
+        });
 
-      return columnValues.length > 0 ? columnValues : " "; // Use um espaço em branco se a coluna não tiver botões selecionados
+      // Preencha com espaços para cada coluna vazia
+      while (columnValues.length < rowLetters.length) {
+        columnValues.push(" ");
+      }
+
+      return columnValues.join(" ");
     });
 
     const selectedBatidaString = `<${buttonColumns.join(" ")}>`;
@@ -83,6 +87,7 @@ function CreateMusic() {
       setBatida3(selectedBatidaString);
     }
   };
+
   const handleDeletarBatida = () => {
     const updatedSelectedButtons = Object.keys(selectedButtons).reduce(
       (updatedButtons, buttonId) => {
