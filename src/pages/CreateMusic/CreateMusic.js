@@ -318,10 +318,14 @@ function CreateMusic() {
             <ValorBatidaText>Valor da Batida 1: {batida1}</ValorBatidaText>
             <ValorBatidaText>Valor da Batida 2: {batida2}</ValorBatidaText>
             <ValorBatidaText>Valor da Batida 3: {batida3}</ValorBatidaText>
-            <Colcheia44
-              selectedButtons={selectedButtons}
-              handleButtonMatrixClick={handleButtonMatrixClick}
-            />
+            {compasso === "4/4" ? (
+              <Colcheia44
+                selectedButtons={selectedButtons}
+                handleButtonMatrixClick={handleButtonMatrixClick}
+              />
+            ) : (
+              <h1>Compasso 3/4</h1>
+            )}
             {selectedMusicComponents}
 
             <DivBotoesBatida>
