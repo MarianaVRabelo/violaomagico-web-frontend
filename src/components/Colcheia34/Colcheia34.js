@@ -1,30 +1,30 @@
 import {
-  ButtonMatrixContainer,
-  StyledMatrixButton,
+  ButtonMatrixContainer34,
+  StyledMatrixButton34,
 } from "../../pages/CreateMusic/Styles";
 
 const RowLetters = ["E", "A", "D", "G", "B", "e"];
 
 function Colcheia34({ selectedButtons, handleButtonMatrixClick }) {
   return (
-    <ButtonMatrixContainer>
-      {RowLetters.map((rowLetter, row) =>
-        Array.from({ length: 32 }).map((_, col) => {
-          const buttonId = row * 32 + col + 1;
-
+    <ButtonMatrixContainer34>
+      {Array.from({ length: 6 }).map((_, row) =>
+        Array.from({ length: 24 }).map((_, col) => {
+          const buttonId = row * 24 + col + 1;
+          const rowLetter = RowLetters[row]; // Correção aqui
           return (
-            <StyledMatrixButton
+            <StyledMatrixButton34
               key={buttonId}
               id={`button-${buttonId}`}
               isSelected={selectedButtons[buttonId] || false}
               onClick={() => handleButtonMatrixClick(buttonId, rowLetter)}
             >
               {rowLetter}
-            </StyledMatrixButton>
+            </StyledMatrixButton34>
           );
         })
       )}
-    </ButtonMatrixContainer>
+    </ButtonMatrixContainer34>
   );
 }
 
