@@ -12,6 +12,7 @@ import {
   SelectBatida,
   CompassChange,
 } from "./Styles";
+import NewLogic from "../../components/NewLogic/NewLogic";
 import Plus from "../../assets/Plus.png";
 import styled from "styled-components";
 import Button from "../../styles/Button";
@@ -22,8 +23,6 @@ import TitleChange from "../../components/TitleChange/TitleChange";
 import AuthorChange from "../../components/AuthorChange/AuthorChange";
 import CreateMusicColcheia34 from "../../components/CreateMusicColcheia34/CreateMusicColcheia34";
 import CreateMusicColcheia from "../../components/CreateMusicColcheia/CreateMusicColcheia";
-import Colcheia44 from "../../components/Colcheia44/Colcheia44";
-import Colcheia34 from "../../components/Colcheia34/Colcheia34";
 
 function CreateMusic() {
   const [selectedBatidaString, setSelectedBatidaString] = useState("");
@@ -42,50 +41,43 @@ function CreateMusic() {
   });
   const rowLetters = ["E", "A", "D", "G", "B", "e"];
 
-  const handleButtonMatrixClick = (buttonId, row) => {
-    setSelectedButtons((prevSelectedButtons) => ({
-      ...prevSelectedButtons,
-      [buttonId]: !prevSelectedButtons[buttonId],
-    }));
-
-    setSelectedButtonInfo({ buttonId, rowLetter: row }); // Atualize o estado fora do loop
-  };
-
   const handleSalvarBatida = () => {
     const selectedButtonIds = Object.keys(selectedButtons).filter(
       (buttonId) => selectedButtons[buttonId]
     );
 
-    const buttonColumns = Array.from({ length: 32 }, (_, col) => {
-      const columnValues = selectedButtonIds
-        .filter((buttonId) => (buttonId - 1) % 32 === col)
-        .map((buttonId) => {
-          const rowLetter = rowLetters[Math.floor((buttonId - 1) / 32)];
-          return rowLetter;
+    const buttonColumns = Array.from({ length: 24 }, (_, col) =>
+      selectedButtonIds.filter((buttonId) => (buttonId - 1) % 24 === col)
+    );
+
+    const groupedButtonColumns = [];
+    for (let i = 0; i < buttonColumns.length; i += 6) {
+      const group = buttonColumns.slice(i, i + 6);
+      groupedButtonColumns.push(group);
+    }
+
+    const selectedBatidaString = groupedButtonColumns
+      .map((group) => {
+        const groupValues = group.map((column) => {
+          const rowValues = column
+            .map((buttonId) => {
+              if (selectedButtons[buttonId]) {
+                const rowLetter = rowLetters[Math.floor((buttonId - 1) / 24)];
+                return rowLetter;
+              }
+              return null; // Retorna null para botões não selecionados
+            })
+            .filter((value) => value !== null); // Filtra os valores nulos
+
+          return rowValues.join("");
         });
 
-      // Preencha com espaços para cada coluna vazia
-      while (columnValues.length < rowLetters.length) {
-        columnValues.push(" ");
-      }
-
-      return columnValues.join(" ");
-    });
-
-    const selectedBatidaString = `<${buttonColumns.join(" ")}>`;
+        return `<${groupValues.join(" ")}>`.trim();
+      })
+      .join(" ");
 
     // Atualize o estado com a saída formatada dos botões selecionados
     setSelectedBatidaString(selectedBatidaString);
-
-    // Defina os valores das variáveis batida1, batida2 ou batida3
-    if (selectedBatida === "Batida 1") {
-      setBatida1(selectedBatidaString);
-      console.log(selectedBatidaString);
-    } else if (selectedBatida === "Batida 2") {
-      setBatida2(selectedBatidaString);
-    } else if (selectedBatida === "Batida 3") {
-      setBatida3(selectedBatidaString);
-    }
   };
 
   const handleDeletarBatida = () => {
@@ -319,14 +311,8 @@ function CreateMusic() {
             <ValorBatidaText>Valor da Batida 1: {batida1}</ValorBatidaText>
             <ValorBatidaText>Valor da Batida 2: {batida2}</ValorBatidaText>
             <ValorBatidaText>Valor da Batida 3: {batida3}</ValorBatidaText>
-            {compasso === "4/4" ? (
-              <Colcheia34
-                selectedButtons={selectedButtons}
-                handleButtonMatrixClick={handleButtonMatrixClick}
-              />
-            ) : (
-              <h1>Compasso 3/4</h1>
-            )}
+            <NewLogic />
+
             {selectedMusicComponents}
 
             <DivBotoesBatida>
