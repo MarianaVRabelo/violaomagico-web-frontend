@@ -11,6 +11,8 @@ import {
   BotaoDeletar,
   SelectBatida,
   CompassChange,
+  StyledMatrixButton,
+  ButtonMatrixContainer,
 } from "./Styles";
 import Plus from "../../assets/Plus.png";
 import styled from "styled-components";
@@ -22,8 +24,6 @@ import TitleChange from "../../components/TitleChange/TitleChange";
 import AuthorChange from "../../components/AuthorChange/AuthorChange";
 import CreateMusicColcheia34 from "../../components/CreateMusicColcheia34/CreateMusicColcheia34";
 import CreateMusicColcheia from "../../components/CreateMusicColcheia/CreateMusicColcheia";
-import Colcheia44 from "../../components/Colcheia44/Colcheia44";
-import Colcheia34 from "../../components/Colcheia34/Colcheia34";
 
 function CreateMusic() {
   const [selectedBatidaString, setSelectedBatidaString] = useState("");
@@ -40,9 +40,9 @@ function CreateMusic() {
     buttonId: null,
     rowLetter: "",
   });
-  //3/4
+  const rowLetters = ["E", "A", "D", "G", "B", "e"];
 
-  const handleButtonMatrixClick3 = (buttonId, rowLetter) => {
+  const handleButtonMatrixClick = (buttonId, rowLetter) => {
     setSelectedButtons((prevSelectedButtons) => ({
       ...prevSelectedButtons,
       [buttonId]: !prevSelectedButtons[buttonId],
@@ -50,7 +50,7 @@ function CreateMusic() {
 
     setSelectedButtonInfo({ buttonId, rowLetter }); // Atualizar o estado fora do loop
   };
-  const handleSalvarBatida3 = () => {
+  const handleSalvarBatida = () => {
     const selectedButtonIds = Object.keys(selectedButtons).filter(
       (buttonId) => selectedButtons[buttonId]
     );
@@ -99,54 +99,6 @@ function CreateMusic() {
     }
   };
 
-  //4/4
-  const rowLetters = ["E", "A", "D", "G", "B", "e"];
-
-  const handleButtonMatrixClick = (buttonId, row) => {
-    setSelectedButtons((prevSelectedButtons) => ({
-      ...prevSelectedButtons,
-      [buttonId]: !prevSelectedButtons[buttonId],
-    }));
-
-    setSelectedButtonInfo({ buttonId, rowLetter: row }); // Atualize o estado fora do loop
-  };
-
-  const handleSalvarBatida = () => {
-    const selectedButtonIds = Object.keys(selectedButtons).filter(
-      (buttonId) => selectedButtons[buttonId]
-    );
-
-    const columns = Array.from({ length: 32 }, (_, col) => {
-      const columnValue = rowLetters
-        .map((rowLetter) => {
-          const buttonId = selectedButtonIds.find(
-            (id) =>
-              (id - 1) % 32 === col &&
-              rowLetter === rowLetters[Math.floor((id - 1) / 32)]
-          );
-
-          return buttonId ? rowLetter : " ";
-        })
-        .join("");
-
-      return columnValue.trim(); // Remova os espaços em branco no início e no final
-    });
-
-    const selectedBatidaString = `<${columns.join(" ")}>`;
-
-    // Atualize o estado com a saída formatada dos botões selecionados
-    setSelectedBatidaString(selectedBatidaString);
-
-    // Defina os valores das variáveis batida1, batida2 ou batida3
-    if (selectedBatida === "Batida 1") {
-      setBatida1(selectedBatidaString);
-      console.log(selectedBatidaString);
-    } else if (selectedBatida === "Batida 2") {
-      setBatida2(selectedBatidaString);
-    } else if (selectedBatida === "Batida 3") {
-      setBatida3(selectedBatidaString);
-    }
-  };
   const handleDeletarBatida = () => {
     const updatedSelectedButtons = Object.keys(selectedButtons).reduce(
       (updatedButtons, buttonId) => {
@@ -378,19 +330,27 @@ function CreateMusic() {
             <ValorBatidaText>Valor da Batida 1: {batida1}</ValorBatidaText>
             <ValorBatidaText>Valor da Batida 2: {batida2}</ValorBatidaText>
             <ValorBatidaText>Valor da Batida 3: {batida3}</ValorBatidaText>
-            {compasso === "4/4" ? (
-              <Colcheia44
-                selectedButtons={selectedButtons}
-                handleButtonMatrixClick={handleButtonMatrixClick}
-              />
-            ) : (
-              <Colcheia34
-                selectedButtons={selectedButtons}
-                handleButtonMatrixClick={(buttonId, rowLetter) =>
-                  handleButtonMatrixClick3(buttonId, rowLetter)
-                }
-              />
-            )}
+            <ButtonMatrixContainer>
+              {Array.from({ length: 6 }).map((_, row) =>
+                Array.from({ length: 24 }).map((_, col) => {
+                  const buttonId = row * 24 + col + 1;
+                  const rowLetter = rowLetters[row];
+                  return (
+                    <StyledMatrixButton
+                      key={buttonId}
+                      id={`button-${buttonId}`}
+                      isSelected={selectedButtons[buttonId] || false}
+                      onClick={() =>
+                        handleButtonMatrixClick(buttonId, rowLetter)
+                      }
+                    >
+                      {rowLetter}
+                    </StyledMatrixButton>
+                  );
+                })
+              )}
+            </ButtonMatrixContainer>
+
             {selectedMusicComponents}
 
             <DivBotoesBatida>
