@@ -11,18 +11,19 @@ import {
   BotaoDeletar,
   SelectBatida,
   CompassChange,
-} from "./Styles";
-import NewLogic from "../../components/NewLogic/NewLogic";
+} from "../Styles";
 import Plus from "../../assets/Plus.png";
 import styled from "styled-components";
-import Button from "../../styles/Button";
+import Button from "../../../styles/Button";
 import { saveAs } from "file-saver";
-import { Colors } from "../../styles/variables";
-import BpmChange from "../../components/BpmChange/BpmChange";
-import TitleChange from "../../components/TitleChange/TitleChange";
-import AuthorChange from "../../components/AuthorChange/AuthorChange";
-import CreateMusicColcheia34 from "../../components/CreateMusicColcheia34/CreateMusicColcheia34";
-import CreateMusicColcheia from "../../components/CreateMusicColcheia/CreateMusicColcheia";
+import { Colors } from "../../../styles/variables";
+import BpmChange from "../../../components/BpmChange/BpmChange";
+import TitleChange from "../../../components/TitleChange/TitleChange";
+import AuthorChange from "../../../components/AuthorChange/AuthorChange";
+import CreateMusicColcheia34 from "../../../components/CreateMusicColcheia34/CreateMusicColcheia34";
+import CreateMusicColcheia from "../../../components/CreateMusicColcheia/CreateMusicColcheia";
+import Colcheia44 from "../../components/Colcheia44/Colcheia44";
+import Colcheia34 from "../../components/Colcheia34/Colcheia34";
 
 function CreateMusic() {
   const [selectedBatidaString, setSelectedBatidaString] = useState("");
@@ -34,75 +35,62 @@ function CreateMusic() {
   const [batida2, setBatida2] = useState();
   const [batida3, setBatida3] = useState();
 
-  const [selectedButtons3, setSelectedButtons3] = useState({});
+  const [selectedButtons, setSelectedButtons] = useState({});
   const [selectedButtonInfo, setSelectedButtonInfo] = useState({
     buttonId: null,
     rowLetter: "",
   });
+
+  //4/4
   const rowLetters = ["E", "A", "D", "G", "B", "e"];
 
-  const handleButtonMatrixClick3 = (buttonId, rowLetter) => {
-    setSelectedButtons3((prevSelectedButtons) => ({
+  const handleButtonMatrixClick = (buttonId, row) => {
+    setSelectedButtons((prevSelectedButtons) => ({
       ...prevSelectedButtons,
       [buttonId]: !prevSelectedButtons[buttonId],
     }));
 
-    setSelectedButtonInfo({ buttonId, rowLetter }); // Atualizar o estado fora do loop
+    setSelectedButtonInfo({ buttonId, rowLetter: row }); // Atualize o estado fora do loop
   };
-  const handleSalvarBatida3 = () => {
-    const selectedButtonIds = Object.keys(selectedButtons3).filter(
-      (buttonId) => selectedButtons3[buttonId]
+
+  const handleSalvarBatida = () => {
+    const selectedButtonIds = Object.keys(selectedButtons).filter(
+      (buttonId) => selectedButtons[buttonId]
     );
 
-    const buttonColumns = Array.from({ length: 24 }, (_, col) =>
-      selectedButtonIds.filter((buttonId) => (buttonId - 1) % 24 === col)
-    );
+    const columns = Array.from({ length: 32 }, (_, col) => {
+      const columnValue = rowLetters
+        .map((rowLetter) => {
+          const buttonId = selectedButtonIds.find(
+            (id) =>
+              (id - 1) % 32 === col &&
+              rowLetter === rowLetters[Math.floor((id - 1) / 32)]
+          );
 
-    const groupedButtonColumns = [];
-    for (let i = 0; i < buttonColumns.length; i += 6) {
-      const group = buttonColumns.slice(i, i + 6);
-      groupedButtonColumns.push(group);
-    }
+          return buttonId ? rowLetter : " ";
+        })
+        .join("");
 
-    const selectedBatidaString = groupedButtonColumns
-      .map((group) => {
-        const groupValues = group.map((column) => {
-          const rowValues = column
-            .map((buttonId) => {
-              if (selectedButtons3[buttonId]) {
-                const rowLetter = rowLetters[Math.floor((buttonId - 1) / 24)];
-                return rowLetter;
-              }
-              return null; // Retorna null para botões não selecionados
-            })
-            .filter((value) => value !== null); // Filtra os valores nulos
+      return columnValue.trim(); // Remova os espaços em branco no início e no final
+    });
 
-          return rowValues.join("");
-        });
-
-        return groupValues.join(" ");
-      })
-      .join(" ");
-
-    // Adicione os símbolos "<>" fora do mapeamento
-    const formattedSelectedBatidaString = `< ${selectedBatidaString} >`;
+    const selectedBatidaString = `<${columns.join(" ")}>`;
 
     // Atualize o estado com a saída formatada dos botões selecionados
-    setSelectedBatidaString(formattedSelectedBatidaString);
+    setSelectedBatidaString(selectedBatidaString);
 
     // Defina os valores das variáveis batida1, batida2 ou batida3
     if (selectedBatida === "Batida 1") {
-      setBatida1(formattedSelectedBatidaString);
-      console.log(formattedSelectedBatidaString);
+      setBatida1(selectedBatidaString);
+      console.log(selectedBatidaString);
     } else if (selectedBatida === "Batida 2") {
-      setBatida2(formattedSelectedBatidaString);
+      setBatida2(selectedBatidaString);
     } else if (selectedBatida === "Batida 3") {
-      setBatida3(formattedSelectedBatidaString);
+      setBatida3(selectedBatidaString);
     }
   };
-
   const handleDeletarBatida = () => {
-    const updatedSelectedButtons = Object.keys(selectedButtons3).reduce(
+    const updatedSelectedButtons = Object.keys(selectedButtons).reduce(
       (updatedButtons, buttonId) => {
         updatedButtons[buttonId] = false;
         return updatedButtons;
@@ -110,7 +98,7 @@ function CreateMusic() {
       {}
     );
 
-    setSelectedButtons3(updatedSelectedButtons);
+    setSelectedButtons(updatedSelectedButtons);
 
     const { rowLetter } = selectedButtonInfo;
     if (selectedBatida === "Batida 1") {
@@ -332,11 +320,19 @@ function CreateMusic() {
             <ValorBatidaText>Valor da Batida 1: {batida1}</ValorBatidaText>
             <ValorBatidaText>Valor da Batida 2: {batida2}</ValorBatidaText>
             <ValorBatidaText>Valor da Batida 3: {batida3}</ValorBatidaText>
-
-            <NewLogic
-              selectedButtons3={selectedButtons3}
-              handleButtonMatrixClick3={handleButtonMatrixClick3}
-            />
+            {compasso === "4/4" ? (
+              <Colcheia44
+                selectedButtons={selectedButtons}
+                handleButtonMatrixClick={handleButtonMatrixClick}
+              />
+            ) : (
+              <Colcheia34
+                selectedButtons={selectedButtons}
+                handleButtonMatrixClick={(buttonId, rowLetter) =>
+                  handleButtonMatrixClick3(buttonId, rowLetter)
+                }
+              />
+            )}
             {selectedMusicComponents}
 
             <DivBotoesBatida>
@@ -352,8 +348,8 @@ function CreateMusic() {
 
               <BotaoSalvar
                 type="button"
-                id="botaoSalvar3"
-                onClick={handleSalvarBatida3}
+                id="botaoSalvar"
+                onClick={handleSalvarBatida}
               >
                 {salvarLabel}
               </BotaoSalvar>
