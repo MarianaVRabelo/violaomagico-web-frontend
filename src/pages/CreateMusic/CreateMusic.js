@@ -34,6 +34,7 @@ function CreateMusic() {
   const [batida1, setBatida1] = useState();
   const [batida2, setBatida2] = useState();
   const [batida3, setBatida3] = useState();
+  const [selectedButtons3, setSelectedButtons3] = useState({});
 
   const [selectedButtons, setSelectedButtons] = useState({});
   const [selectedButtonInfo, setSelectedButtonInfo] = useState({
@@ -41,9 +42,10 @@ function CreateMusic() {
     rowLetter: "",
   });
   //3/4
+  const rowLetters = ["E", "A", "D", "G", "B", "e"];
 
   const handleButtonMatrixClick3 = (buttonId, rowLetter) => {
-    setSelectedButtons((prevSelectedButtons) => ({
+    setSelectedButtons3((prevSelectedButtons) => ({
       ...prevSelectedButtons,
       [buttonId]: !prevSelectedButtons[buttonId],
     }));
@@ -51,8 +53,8 @@ function CreateMusic() {
     setSelectedButtonInfo({ buttonId, rowLetter }); // Atualizar o estado fora do loop
   };
   const handleSalvarBatida3 = () => {
-    const selectedButtonIds = Object.keys(selectedButtons).filter(
-      (buttonId) => selectedButtons[buttonId]
+    const selectedButtonIds = Object.keys(selectedButtons3).filter(
+      (buttonId) => selectedButtons3[buttonId]
     );
 
     const buttonColumns = Array.from({ length: 24 }, (_, col) =>
@@ -64,43 +66,45 @@ function CreateMusic() {
       const group = buttonColumns.slice(i, i + 6);
       groupedButtonColumns.push(group);
     }
-    const selectedBatidaString = `< ${groupedButtonColumns
+
+    const selectedBatidaString = groupedButtonColumns
       .map((group) => {
         const groupValues = group.map((column) => {
           const rowValues = column
             .map((buttonId) => {
-              if (selectedButtons[buttonId]) {
+              if (selectedButtons3[buttonId]) {
                 const rowLetter = rowLetters[Math.floor((buttonId - 1) / 24)];
                 return rowLetter;
               }
-              return ""; // Use uma string vazia em vez de null
+              return null; // Retorna null para botões não selecionados
             })
-            .join(" "); // Adicione um espaço entre as colunas
+            .filter((value) => value !== null); // Filtra os valores nulos
 
-          // Adicione espaços extras entre colunas vazias
-          return rowValues || " "; // Use um espaço em branco se a coluna estiver vazia
+          return rowValues.join("");
         });
 
-        return groupValues.join(" "); // Adicione um espaço entre os grupos de colunas
+        return groupValues.join(" ");
       })
-      .join("  ")} >`; // Adicione um espaço entre os grupos de colunas
+      .join(" ");
+
+    // Adicione os símbolos "<>" fora do mapeamento
+    const formattedSelectedBatidaString = `< ${selectedBatidaString} >`;
 
     // Atualize o estado com a saída formatada dos botões selecionados
-    setSelectedBatidaString(selectedBatidaString);
+    setSelectedBatidaString(formattedSelectedBatidaString);
 
     // Defina os valores das variáveis batida1, batida2 ou batida3
     if (selectedBatida === "Batida 1") {
-      setBatida1(selectedBatidaString);
-      console.log(selectedBatidaString);
+      setBatida1(formattedSelectedBatidaString);
+      console.log(formattedSelectedBatidaString);
     } else if (selectedBatida === "Batida 2") {
-      setBatida2(selectedBatidaString);
+      setBatida2(formattedSelectedBatidaString);
     } else if (selectedBatida === "Batida 3") {
-      setBatida3(selectedBatidaString);
+      setBatida3(formattedSelectedBatidaString);
     }
   };
 
   //4/4
-  const rowLetters = ["E", "A", "D", "G", "B", "e"];
 
   const handleButtonMatrixClick = (buttonId, row) => {
     setSelectedButtons((prevSelectedButtons) => ({
@@ -148,26 +152,28 @@ function CreateMusic() {
     }
   };
   const handleDeletarBatida = () => {
-    const updatedSelectedButtons = Object.keys(selectedButtons).reduce(
-      (updatedButtons, buttonId) => {
-        updatedButtons[buttonId] = false;
-        return updatedButtons;
-      },
-      {}
-    );
-
-    setSelectedButtons(updatedSelectedButtons);
-
-    const { rowLetter } = selectedButtonInfo;
-    if (selectedBatida === "Batida 1") {
+    if (compasso === "3/4") {
+      const updatedSelectedButtons3 = Object.keys(selectedButtons3).reduce(
+        (updatedButtons, buttonId) => {
+          updatedButtons[buttonId] = false;
+          return updatedButtons;
+        },
+        {}
+      );
+      setSelectedButtons3(updatedSelectedButtons3);
       setBatida1(" ");
-    } else if (selectedBatida === "Batida 2") {
-      setBatida2(" ");
-    } else if (selectedBatida === "Batida 3") {
-      setBatida3(" ");
+    } else if (compasso === "4/4") {
+      const updatedSelectedButtons = Object.keys(selectedButtons).reduce(
+        (updatedButtons, buttonId) => {
+          updatedButtons[buttonId] = false;
+          return updatedButtons;
+        },
+        {}
+      );
+      setSelectedButtons(updatedSelectedButtons);
+      setBatida1(" ");
     }
   };
-
   useEffect(() => {
     updateButtonLabels();
   }, [selectedBatida]);
@@ -269,6 +275,18 @@ function CreateMusic() {
   );
 
   const handleSelecionarCompasso = (tipoCompasso) => {
+    if (selectedBatidaIndex !== null) {
+      // Se uma batida estiver selecionada, exclua-a
+      handleDeletarBatida();
+    }
+
+    // Limpar a seleção de botões
+    if (tipoCompasso === "3/4") {
+      setSelectedButtons3({});
+    } else if (tipoCompasso === "4/4") {
+      setSelectedButtons({});
+    }
+
     setCompasso(tipoCompasso);
     setSelectedBatida("Batida 1");
   };
@@ -385,10 +403,8 @@ function CreateMusic() {
               />
             ) : (
               <Colcheia34
-                selectedButtons={selectedButtons}
-                handleButtonMatrixClick={(buttonId, rowLetter) =>
-                  handleButtonMatrixClick3(buttonId, rowLetter)
-                }
+                selectedButtons3={selectedButtons3}
+                handleButtonMatrixClick3={handleButtonMatrixClick3}
               />
             )}
             {selectedMusicComponents}
@@ -403,11 +419,14 @@ function CreateMusic() {
                 <option value="Batida 2">Batida 2</option>
                 <option value="Batida 3">Batida 3</option>
               </SelectBatida>
-
               <BotaoSalvar
                 type="button"
                 id="botaoSalvar"
-                onClick={handleSalvarBatida}
+                onClick={() =>
+                  compasso === "3/4"
+                    ? handleSalvarBatida3()
+                    : handleSalvarBatida()
+                }
               >
                 {salvarLabel}
               </BotaoSalvar>
