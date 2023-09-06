@@ -202,8 +202,9 @@ export const CompassChange = styled.p`
   font-size: 20px;
 `;
 export const StyledMatrixButton = styled.button`
-  width: 40px;
-  height: 40px;
+  width: 10px;
+  height: 10px;
+  margin-right: 2rem;
   background-color: ${(props) => (props.isSelected ? "black" : "white")};
   border: none;
   border-radius: 50%;
@@ -223,9 +224,31 @@ export const ButtonMatrixContainer = styled.div`
   grid-template-columns: repeat(32, 1fr); // Cria 32 colunas iguais
   gap: 4px; // Espaçamento entre os botões
 `;
+export const Container44 = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-top: 2rem;
+`;
+
+export const ContainerLetter = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  background-color: white;
+`;
+export const Letter = styled.div``;
+
+export const Line = styled.div`
+  width: 100rem;
+  color: white;
+  position: absolute;
+  z-index: 5;
+`;
+
 export const StyledMatrixButton34 = styled.button`
-  width: 40px;
-  height: 40px;
+  width: 10px;
+  height: 10px;
+  margin-right: 2rem;
   background-color: ${(props) => (props.isSelected ? "black" : "white")};
   border: none;
   border-radius: 50%; /* Make the buttons round */
@@ -233,6 +256,8 @@ export const StyledMatrixButton34 = styled.button`
   color: ${(props) => (props.isSelected ? "white" : "black")};
   font-weight: bold;
   transition: background-color 0.3s, color 0.3s;
+  position: relative;
+  z-index: 10;
 
   &:hover {
     background-color: black;
@@ -246,4 +271,23 @@ export const ButtonMatrixContainer34 = styled.div`
   grid-template-rows: repeat(6, 1fr);
   gap: 5px;
   margin-top: 20px;
+`;
+
+export const Container34 = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-top: 2rem;
+`;
+
+export const ContainerLetter34 = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  background-color: white;
+`;
+export const Letter34 = styled.div``;
+
+export const Line34 = styled.div`
+  width: 100rem;
+  color: white;
 `;
