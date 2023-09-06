@@ -152,28 +152,26 @@ function CreateMusic() {
     }
   };
   const handleDeletarBatida = () => {
-    if (compasso === "3/4") {
-      const updatedSelectedButtons3 = Object.keys(selectedButtons3).reduce(
-        (updatedButtons, buttonId) => {
-          updatedButtons[buttonId] = false;
-          return updatedButtons;
-        },
-        {}
-      );
-      setSelectedButtons3(updatedSelectedButtons3);
+    const updatedSelectedButtons = Object.keys(selectedButtons).reduce(
+      (updatedButtons, buttonId) => {
+        updatedButtons[buttonId] = false;
+        return updatedButtons;
+      },
+      {}
+    );
+
+    setSelectedButtons(updatedSelectedButtons);
+
+    const { rowLetter } = selectedButtonInfo;
+    if (selectedBatida === "Batida 1") {
       setBatida1(" ");
-    } else if (compasso === "4/4") {
-      const updatedSelectedButtons = Object.keys(selectedButtons).reduce(
-        (updatedButtons, buttonId) => {
-          updatedButtons[buttonId] = false;
-          return updatedButtons;
-        },
-        {}
-      );
-      setSelectedButtons(updatedSelectedButtons);
-      setBatida1(" ");
+    } else if (selectedBatida === "Batida 2") {
+      setBatida2(" ");
+    } else if (selectedBatida === "Batida 3") {
+      setBatida3(" ");
     }
   };
+
   useEffect(() => {
     updateButtonLabels();
   }, [selectedBatida]);
@@ -280,17 +278,9 @@ function CreateMusic() {
       handleDeletarBatida();
     }
 
-    // Limpar a seleção de botões
-    if (tipoCompasso === "3/4") {
-      setSelectedButtons3({});
-    } else if (tipoCompasso === "4/4") {
-      setSelectedButtons({});
-    }
-
     setCompasso(tipoCompasso);
     setSelectedBatida("Batida 1");
   };
-
   const selectedMusicComponents = useMemo(() => {
     if (
       selectedBatidaIndex >= 0 &&
