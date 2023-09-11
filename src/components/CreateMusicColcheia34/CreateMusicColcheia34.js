@@ -30,16 +30,9 @@ function CreateMusicColcheia34() {
         </GuitarCompass>
       </GuitarNeck>
       <ContainerOutsideDots>
-        <OutsideDots>
- 
-        </OutsideDots>
-        <OutsideDots>
-
-        </OutsideDots>
-        <OutsideDots>
-
-        </OutsideDots>
-
+        <OutsideDots></OutsideDots>
+        <OutsideDots></OutsideDots>
+        <OutsideDots></OutsideDots>
       </ContainerOutsideDots>
     </BodyMusic>
   );

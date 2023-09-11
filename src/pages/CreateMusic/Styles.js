@@ -51,7 +51,7 @@ export const Batidas = styled.div`
 export const Tab = styled.div`
   padding: 10px;
   height: 40px;
-  width: 33.3%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -70,6 +70,10 @@ export const Tab = styled.div`
     font-size: 14px;
     font-weight: bold;
   }
+`;
+
+export const ValorBatidaText = styled.p`
+  color: white;
 `;
 
 export const Music = styled.div`
@@ -149,8 +153,97 @@ export const BotaoNovaLinha = styled.button`
   margin-bottom: 1.5%;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 500;
+  cursor: pointer;
+`;
+
+export const DivBotoesBatida = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 4rem;
+`;
+
+export const BotaoSalvar = styled.button`
+  display: flex;
+  padding: 0.5%;
+  padding-left: 1%;
+  padding-right: 1%;
+  align-items: center;
+  justify-content: center;
+  background-color: green;
+  color: white;
+  border-width: 2px white;
+  width: 10rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+`;
+
+export const BotaoDeletar = styled.button`
+  display: flex;
+  padding: 0.5%;
+  padding-left: 1%;
+  padding-right: 1%;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+  color: white;
+  border-width: 2px white;
+  width: 10rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+`;
+
+export const SelectBatida = styled.select`
+  width: 10rem;
 `;
 
 export const CompassChange = styled.p`
   font-size: 20px;
+`;
+export const StyledMatrixButton = styled.button`
+  width: 40px;
+  height: 40px;
+  background-color: ${(props) => (props.isSelected ? "black" : "white")};
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: ${(props) => (props.isSelected ? "white" : "black")};
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+
+  &:hover {
+    background-color: black;
+    color: white;
+  }
+`;
+
+export const ButtonMatrixContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(32, 1fr); // Cria 32 colunas iguais
+  gap: 4px; // Espaçamento entre os botões
+`;
+export const StyledMatrixButton34 = styled.button`
+  width: 40px;
+  height: 40px;
+  background-color: ${(props) => (props.isSelected ? "black" : "white")};
+  border: none;
+  border-radius: 50%; /* Make the buttons round */
+  cursor: pointer;
+  color: ${(props) => (props.isSelected ? "white" : "black")};
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+
+  &:hover {
+    background-color: black;
+    color: white;
+  }
+`;
+
+export const ButtonMatrixContainer34 = styled.div`
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 5px;
+  margin-top: 20px;
 `;

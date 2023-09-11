@@ -3,7 +3,11 @@ import RoutesPage from "./routes";
 import GlobalStyle from "./globalStyles";
 
 function App() {
-  return <div></div>;
+  return (
+    <div>
+      <GlobalStyle />
+    </div>
+  );
 }
 
 export default App;
