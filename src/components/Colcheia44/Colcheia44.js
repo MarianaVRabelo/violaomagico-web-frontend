@@ -4,6 +4,8 @@ import {
   StyledMatrixButton,
   Letter,
   ContainerLetter,
+  ContainerLine,
+  BiggerC,
 } from "../../pages/CreateMusic/Styles";
 import { Line } from "../Column/Styles";
 
@@ -25,19 +27,26 @@ function Colcheia44({ selectedButtons, handleButtonMatrixClick }) {
         {RowLetters.map((rowLetter, row) =>
           Array.from({ length: 32 }).map((_, col) => {
             const buttonId = row * 32 + col + 1;
-
             return (
               <StyledMatrixButton
                 key={buttonId}
                 id={`button-${buttonId}`}
                 isSelected={selectedButtons[buttonId] || false}
                 onClick={() => handleButtonMatrixClick(buttonId, rowLetter)}
-              >
-                <Line />
-              </StyledMatrixButton>
+              ></StyledMatrixButton>
             );
           })
         )}
+        <BiggerC>
+          <ContainerLine>
+            <Line />
+            <Line />
+            <Line />
+            <Line />
+            <Line />
+            <Line />
+          </ContainerLine>
+        </BiggerC>
       </ButtonMatrixContainer>
     </Container44>
   );

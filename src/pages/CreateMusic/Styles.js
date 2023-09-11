@@ -212,6 +212,8 @@ export const StyledMatrixButton = styled.button`
   color: ${(props) => (props.isSelected ? "white" : "black")};
   font-weight: bold;
   transition: background-color 0.3s, color 0.3s;
+  position: relative; /* Adicione position: relative; aqui */
+  z-index: 1;
 
   &:hover {
     background-color: black;
@@ -219,14 +221,36 @@ export const StyledMatrixButton = styled.button`
   }
 `;
 
+export const Line = styled.div`
+  width: 100%;
+  height: 2px; /* Defina a altura desejada para a linha */
+  background-color: white;
+`;
+
+export const ContainerLine = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: absolute; /* Adicione position: absolute; aqui */
+  top: 0.3rem;
+  gap: 1.06rem;
+`;
+export const BiggerC = styled.div``;
 export const ButtonMatrixContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(32, 1fr); // Cria 32 colunas iguais
-  gap: 4px; // Espaçamento entre os botões
+  grid-template-columns: repeat(32, 1fr);
+  gap: 4px;
+  position: relative; /* Adicione position: relative; aqui */
+  z-index: 1rem;
+  background-color: white;
+  bottom: unset;
+  max-height: 7rem;
+  top: 0.3rem;
 `;
 export const Container44 = styled.div`
   display: flex;
   flex-direction: row;
+  gap: 2rem;
   margin-top: 2rem;
 `;
 
@@ -235,15 +259,9 @@ export const ContainerLetter = styled.div`
   flex-direction: column;
   margin-bottom: 1rem;
   background-color: white;
+  max-height: 8rem;
 `;
 export const Letter = styled.div``;
-
-export const Line = styled.div`
-  width: 100rem;
-  color: white;
-  position: absolute;
-  z-index: 5;
-`;
 
 export const StyledMatrixButton34 = styled.button`
   width: 10px;
@@ -269,8 +287,10 @@ export const ButtonMatrixContainer34 = styled.div`
   display: grid;
   grid-template-columns: repeat(24, 1fr);
   grid-template-rows: repeat(6, 1fr);
-  gap: 5px;
-  margin-top: 20px;
+  gap: 4px;
+  position: relative; /* Adicione position: relative; aqui */
+  z-index: 1rem;
+  background-color: white;
 `;
 
 export const Container34 = styled.div`
@@ -285,9 +305,21 @@ export const ContainerLetter34 = styled.div`
   margin-top: 1rem;
   background-color: white;
 `;
+
 export const Letter34 = styled.div``;
 
 export const Line34 = styled.div`
-  width: 100rem;
-  color: white;
+  width: 100%;
+  height: 1px; /* Defina a altura desejada para a linha */
+  background-color: black;
 `;
+
+export const ContainerLine34 = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: absolute; /* Adicione position: absolute; aqui */
+  top: 0.3rem;
+  gap: 1.3rem;
+`;
+export const BiggerC34 = styled.div``;

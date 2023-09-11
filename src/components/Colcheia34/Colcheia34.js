@@ -1,11 +1,14 @@
 import {
+  BiggerC34,
   ButtonMatrixContainer34,
   Container34,
   ContainerLetter34,
+  ContainerLine34,
   Letter34,
   Line34,
   StyledMatrixButton34,
 } from "../../pages/CreateMusic/Styles";
+import { Line } from "../Column/Styles";
 
 function Colcheia34({ handleButtonMatrixClick3, selectedButtons3 }) {
   const rowLetters = ["E", "A", "D", "G", "B", "e"];
@@ -31,12 +34,20 @@ function Colcheia34({ handleButtonMatrixClick3, selectedButtons3 }) {
                 id={`button-${buttonId}`}
                 isSelected={selectedButtons3[buttonId] || false}
                 onClick={() => handleButtonMatrixClick3(buttonId, rowLetter)}
-              >
-                <Line34 />
-              </StyledMatrixButton34>
+              ></StyledMatrixButton34>
             );
           })
         )}
+        <BiggerC34>
+          <ContainerLine34>
+            <Line34 />
+            <Line34 />
+            <Line34 />
+            <Line34 />
+            <Line34 />
+            <Line34 />
+          </ContainerLine34>
+        </BiggerC34>
       </ButtonMatrixContainer34>
     </Container34>
   );
