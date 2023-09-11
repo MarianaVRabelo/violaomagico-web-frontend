@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import { Home, ContactUs } from "./pages";
+import { ContactUs } from "./pages";
 import { Header } from "./components";
 import GlobalStyle from "./globalStyles";
 
@@ -10,7 +10,6 @@ function RoutesPage() {
       <GlobalStyle />
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
         <Route path="/contact" element={<ContactUs />} />
       </Routes>
     </Router>
