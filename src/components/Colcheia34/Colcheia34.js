@@ -50,6 +50,9 @@ function Colcheia34({ handleButtonMatrixClick3, selectedButtons3 }) {
             <Line34 />
           </ContainerLine34>
         </BiggerC34>
+        <div className="vertical-line-1"></div>
+        <div className="vertical-line-2"></div>
+        <div className="vertical-line-3"></div>
       </ButtonMatrixContainer34>
     </Container34>
   );

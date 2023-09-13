@@ -236,6 +236,40 @@ export const ButtonMatrixContainer = styled.div`
   top: 0.3rem;
   border: 3px solid #000;
   gap: 0.5rem;
+
+  .vertical-line-1 {
+    position: absolute;
+    top: 0;
+    right: 25.6rem; /* Coloca a linha vertical no lado direito do contêiner */
+    height: 100%; /* Define a altura para cobrir toda a altura do contêiner */
+    width: 3px; /* Largura da linha vertical */
+    background-color: black; /* Cor da linha */
+  }
+
+  /* Linha vertical 2 */
+  .vertical-line-2 {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 50.6em; /* Coloca a linha vertical no lado direito do contêiner */
+    height: 100%; /* Define a altura para cobrir toda a altura do contêiner */
+    width: 3px; /* Largura da linha vertical */
+    background-color: black;
+    content: "";
+
+    /* Cor da linha */
+  }
+
+  /* Linha vertical 3 */
+
+  .vertical-line-3 {
+    position: absolute;
+    top: 0;
+    right: 75.6rem; /* Coloca a linha vertical no lado direito do contêiner */
+    height: 100%; /* Define a altura para cobrir toda a altura do contêiner */
+    width: 3px; /* Largura da linha vertical */
+    background-color: black;
+  }
 `;
 export const Container44 = styled.div`
   display: flex;
@@ -288,16 +322,49 @@ export const ButtonMatrixContainer34 = styled.div`
   grid-template-columns: repeat(24, 1fr);
   grid-template-rows: repeat(6, 1fr);
   gap: 4px;
-  position: relative; /* Adicione position: relative; aqui */
+  position: relative;
   z-index: 1rem;
   padding-top: 0.5rem;
   padding-left: 1rem;
-  background-color: white;
   bottom: unset;
   max-height: 8rem;
   top: 0.26rem;
   border: 3px solid #000;
   gap: 0.5rem;
+  background-color: white;
+
+  .vertical-line-1 {
+    position: absolute;
+    top: 0;
+    right: 19.5rem; /* Coloca a linha vertical no lado direito do contêiner */
+    height: 100%; /* Define a altura para cobrir toda a altura do contêiner */
+    width: 3px; /* Largura da linha vertical */
+    background-color: black; /* Cor da linha */
+  }
+
+  /* Linha vertical 2 */
+  .vertical-line-2 {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 38rem; /* Coloca a linha vertical no lado direito do contêiner */
+    height: 100%; /* Define a altura para cobrir toda a altura do contêiner */
+    width: 3px; /* Largura da linha vertical */
+    background-color: black;
+    content: "oi";
+
+    /* Cor da linha */
+  }
+
+  /* Linha vertical 3 */
+  .vertical-line-3 {
+    position: absolute;
+    top: 0;
+    right: 57rem; /* Coloca a linha vertical no lado direito do contêiner */
+    height: 100%; /* Define a altura para cobrir toda a altura do contêiner */
+    width: 3px; /* Largura da linha vertical */
+    background-color: black;
+  }
 `;
 
 export const Container34 = styled.div`
@@ -332,3 +399,6 @@ export const ContainerLine34 = styled.div`
   right: 0.1rem;
 `;
 export const BiggerC34 = styled.div``;
+export const LineT = styled.div`
+  color: black;
+`;
