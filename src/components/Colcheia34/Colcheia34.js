@@ -15,6 +15,7 @@ function Colcheia34({ handleButtonMatrixClick3, selectedButtons3 }) {
 
   return (
     <Container34>
+      <Line />
       <ContainerLetter34>
         <Letter34>E</Letter34>
         <Letter34>A</Letter34>
@@ -36,6 +37,7 @@ function Colcheia34({ handleButtonMatrixClick3, selectedButtons3 }) {
                 onClick={() => handleButtonMatrixClick3(buttonId, rowLetter)}
               ></StyledMatrixButton34>
             );
+            <Line34 />;
           })
         )}
         <BiggerC34>
