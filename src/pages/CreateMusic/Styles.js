@@ -214,6 +214,7 @@ export const StyledMatrixButton = styled.button`
   transition: background-color 0.3s, color 0.3s;
   position: relative; /* Adicione position: relative; aqui */
   z-index: 1;
+  border: 0.5px solid black;
 
   &:hover {
     background-color: black;
@@ -240,7 +241,7 @@ export const ButtonMatrixContainer = styled.div`
   .vertical-line-1 {
     position: absolute;
     top: 0;
-    right: 25.6rem; /* Coloca a linha vertical no lado direito do contêiner */
+    right: 26.8rem; /* Coloca a linha vertical no lado direito do contêiner */
     height: 100%; /* Define a altura para cobrir toda a altura do contêiner */
     width: 3px; /* Largura da linha vertical */
     background-color: black; /* Cor da linha */
@@ -251,7 +252,7 @@ export const ButtonMatrixContainer = styled.div`
     content: "";
     position: absolute;
     top: 0;
-    right: 50.6em; /* Coloca a linha vertical no lado direito do contêiner */
+    right: 51.8em; /* Coloca a linha vertical no lado direito do contêiner */
     height: 100%; /* Define a altura para cobrir toda a altura do contêiner */
     width: 3px; /* Largura da linha vertical */
     background-color: black;
@@ -265,7 +266,7 @@ export const ButtonMatrixContainer = styled.div`
   .vertical-line-3 {
     position: absolute;
     top: 0;
-    right: 75.6rem; /* Coloca a linha vertical no lado direito do contêiner */
+    right: 76.8rem; /* Coloca a linha vertical no lado direito do contêiner */
     height: 100%; /* Define a altura para cobrir toda a altura do contêiner */
     width: 3px; /* Largura da linha vertical */
     background-color: black;
@@ -310,6 +311,8 @@ export const StyledMatrixButton34 = styled.button`
   position: relative;
   z-index: 10;
   top: 0.2rem;
+  border: 0.5px solid black;
+  color: black;
 
   &:hover {
     background-color: black;
@@ -336,7 +339,7 @@ export const ButtonMatrixContainer34 = styled.div`
   .vertical-line-1 {
     position: absolute;
     top: 0;
-    right: 19.5rem; /* Coloca a linha vertical no lado direito do contêiner */
+    right: 20.6rem; /* Coloca a linha vertical no lado direito do contêiner */
     height: 100%; /* Define a altura para cobrir toda a altura do contêiner */
     width: 3px; /* Largura da linha vertical */
     background-color: black; /* Cor da linha */
@@ -347,7 +350,7 @@ export const ButtonMatrixContainer34 = styled.div`
     content: "";
     position: absolute;
     top: 0;
-    right: 38rem; /* Coloca a linha vertical no lado direito do contêiner */
+    right: 39.3rem; /* Coloca a linha vertical no lado direito do contêiner */
     height: 100%; /* Define a altura para cobrir toda a altura do contêiner */
     width: 3px; /* Largura da linha vertical */
     background-color: black;
@@ -360,7 +363,7 @@ export const ButtonMatrixContainer34 = styled.div`
   .vertical-line-3 {
     position: absolute;
     top: 0;
-    right: 57rem; /* Coloca a linha vertical no lado direito do contêiner */
+    right: 58.1rem; /* Coloca a linha vertical no lado direito do contêiner */
     height: 100%; /* Define a altura para cobrir toda a altura do contêiner */
     width: 3px; /* Largura da linha vertical */
     background-color: black;
