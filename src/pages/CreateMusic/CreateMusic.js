@@ -26,6 +26,10 @@ import Colcheia44 from "../../components/Colcheia44/Colcheia44";
 import Colcheia34 from "../../components/Colcheia34/Colcheia34";
 
 function CreateMusic() {
+  const [savedBatidas, setSavedBatidas] = useState({
+    "3/4": { batida1: "", batida2: "", batida3: "" },
+    "4/4": { batida1: "", batida2: "", batida3: "" },
+  });
   const [selectedBatidaString, setSelectedBatidaString] = useState("");
   const [selectedBatida, setSelectedBatida] = useState("Batida 1");
   const [salvarLabel, setSalvarLabel] = useState("Salvar Batida 1");
@@ -95,13 +99,22 @@ function CreateMusic() {
 
     // Defina os valores das variáveis batida1, batida2 ou batida3
     if (selectedBatida === "Batida 1") {
-      setBatida1(formattedSelectedBatidaString);
-      console.log(formattedSelectedBatidaString);
+      savedBatidas["3/4"].batida1 = selectedBatidaString;
+      setBatida1(savedBatidas["3/4"].batida1);
     } else if (selectedBatida === "Batida 2") {
       setBatida2(formattedSelectedBatidaString);
+      savedBatidas["3/4"].batida2 = selectedBatidaString;
     } else if (selectedBatida === "Batida 3") {
       setBatida3(formattedSelectedBatidaString);
+      savedBatidas["3/4"].batida3 = selectedBatidaString;
     }
+    setSavedBatidas((prevSavedBatidas) => ({
+      ...prevSavedBatidas,
+      "3/4": {
+        ...prevSavedBatidas["3/4"],
+        [selectedBatida]: formattedSelectedBatidaString,
+      },
+    }));
   };
 
   //4/4
@@ -142,45 +155,70 @@ function CreateMusic() {
     setSelectedBatidaString(selectedBatidaString);
 
     // Defina os valores das variáveis batida1, batida2 ou batida3
+
     if (selectedBatida === "Batida 1") {
       setBatida1(selectedBatidaString);
-      console.log(selectedBatidaString);
+      savedBatidas["4/4"].batida1 = selectedBatidaString;
+      console.log(savedBatidas["4/4"].batida1);
     } else if (selectedBatida === "Batida 2") {
       setBatida2(selectedBatidaString);
+      savedBatidas["4/4"].batida2 = selectedBatidaString;
+      console.log(savedBatidas["4/4"].batida2);
     } else if (selectedBatida === "Batida 3") {
       setBatida3(selectedBatidaString);
+      savedBatidas["4/4"].batida3 = selectedBatidaString;
+      console.log(savedBatidas["4/4"].batida3);
     }
+    setSavedBatidas((prevSavedBatidas) => ({
+      ...prevSavedBatidas,
+      "4/4": {
+        ...prevSavedBatidas["4/4"],
+        [selectedBatida]: selectedBatidaString,
+      },
+    }));
   };
   const handleDeletarBatida = () => {
-    const updatedSelectedButtons = Object.keys(selectedButtons).reduce(
-      (updatedButtons, buttonId) => {
-        updatedButtons[buttonId] = false;
-        return updatedButtons;
-      },
-      {}
-    );
+    if (compasso === "3/4") {
+      const updatedSelectedButtons3 = Object.keys(selectedButtons3).reduce(
+        (updatedButtons, buttonId) => {
+          updatedButtons[buttonId] = false;
+          return updatedButtons;
+        },
+        {}
+      );
+      setSelectedButtons3(updatedSelectedButtons3);
 
-    setSelectedButtons(updatedSelectedButtons);
+      if (selectedBatida === "Batida 1") {
+        setBatida1("");
+        savedBatidas["3/4"].batida1 = "";
+      } else if (selectedBatida === "Batida 2") {
+        setBatida2("");
+        savedBatidas["3/4"].batida2 = "";
+      } else if (selectedBatida === "Batida 3") {
+        setBatida3("");
+        savedBatidas["3/4"].batida3 = "";
+      }
+    } else if (compasso === "4/4") {
+      const updatedSelectedButtons = Object.keys(selectedButtons).reduce(
+        (updatedButtons, buttonId) => {
+          updatedButtons[buttonId] = false;
+          return updatedButtons;
+        },
+        {}
+      );
+      setSelectedButtons(updatedSelectedButtons);
 
-    const { rowLetter } = selectedButtonInfo;
-    if (selectedBatida === "Batida 1") {
-      setBatida1(" ");
-    } else if (selectedBatida === "Batida 2") {
-      setBatida2(" ");
-    } else if (selectedBatida === "Batida 3") {
-      setBatida3(" ");
+      if (selectedBatida === "Batida 1") {
+        setBatida1("");
+        savedBatidas["4/4"].batida1 = "";
+      } else if (selectedBatida === "Batida 2") {
+        setBatida2("");
+        savedBatidas["4/4"].batida2 = "";
+      } else if (selectedBatida === "Batida 3") {
+        setBatida3("");
+        savedBatidas["4/4"].batida3 = "";
+      }
     }
-  };
-
-  useEffect(() => {
-    updateButtonLabels();
-  }, [selectedBatida]);
-
-  const updateButtonLabels = () => {
-    const salvarLabel = `Salvar ${selectedBatida}`;
-    const deletarLabel = `Deletar ${selectedBatida}`;
-    setSalvarLabel(salvarLabel);
-    setDeletarLabel(deletarLabel);
   };
 
   const batidasQuantity = 1;
@@ -226,15 +264,6 @@ function CreateMusic() {
   //   }
   // };
 
-  const addMusicComponent = () =>
-    setMusicComponents((prevValue) =>
-      prevValue.map((batidaMusicComponents, index) =>
-        selectedBatidaIndex === index
-          ? [...batidaMusicComponents, <CreateMusicColcheia34 />]
-          : batidaMusicComponents
-      )
-    );
-
   const [titleName, setTitleName] = useState("");
   const [BpmValue, setBpmValue] = useState("");
   const [author, setAuthor] = useState("");
@@ -278,18 +307,33 @@ function CreateMusic() {
       handleDeletarBatida();
     }
 
+    // Limpar a seleção de botões
+    if (tipoCompasso === "3/4") {
+    } else if (tipoCompasso === "4/4") {
+      if (selectedBatida === "Batida 1") {
+        setBatida1(savedBatidas["3/4"].batida1);
+      } else if (selectedBatida === "Batida 2") {
+        setBatida2(savedBatidas["3/4"].batida2);
+      } else if (selectedBatida === "Batida 3") {
+        setBatida3(savedBatidas["3/4"].batida3);
+      }
+
+      setSelectedButtons3({});
+    } else if (tipoCompasso === "4/4") {
+      if (selectedBatida === "Batida 1") {
+        setBatida1(savedBatidas["4/4"].batida1);
+        console.log(savedBatidas["4/4"].batida1);
+      } else if (selectedBatida === "Batida 2") {
+        setBatida2(savedBatidas["4/4"].batida2);
+      } else if (selectedBatida === "Batida 3") {
+        setBatida3(savedBatidas["4/4"].batida3);
+      }
+      setSelectedButtons({});
+    }
+
     setCompasso(tipoCompasso);
     setSelectedBatida("Batida 1");
   };
-  const selectedMusicComponents = useMemo(() => {
-    if (
-      selectedBatidaIndex >= 0 &&
-      selectedBatidaIndex < musicComponents.length
-    ) {
-      return musicComponents[selectedBatidaIndex];
-    }
-    return [];
-  }, [selectedBatidaIndex, musicComponents]);
 
   return (
     <Paginao>
@@ -397,7 +441,6 @@ function CreateMusic() {
                 handleButtonMatrixClick3={handleButtonMatrixClick3}
               />
             )}
-            {selectedMusicComponents}
 
             <DivBotoesBatida>
               <SelectBatida
