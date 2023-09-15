@@ -99,14 +99,14 @@ function CreateMusic() {
 
     // Defina os valores das variáveis batida1, batida2 ou batida3
     if (selectedBatida === "Batida 1") {
-      savedBatidas["3/4"].batida1 = selectedBatidaString;
+      savedBatidas["3/4"].batida1 = `< ${selectedBatidaString} >`;
       setBatida1(savedBatidas["3/4"].batida1);
     } else if (selectedBatida === "Batida 2") {
-      setBatida2(formattedSelectedBatidaString);
-      savedBatidas["3/4"].batida2 = selectedBatidaString;
+      savedBatidas["3/4"].batida2 = `< ${selectedBatidaString} >`;
+      setBatida2(savedBatidas["3/4"].batida2);
     } else if (selectedBatida === "Batida 3") {
-      setBatida3(formattedSelectedBatidaString);
-      savedBatidas["3/4"].batida3 = selectedBatidaString;
+      savedBatidas["3/4"].batida3 = `< ${selectedBatidaString} >`;
+      setBatida3(savedBatidas["3/4"].batida3);
     }
     setSavedBatidas((prevSavedBatidas) => ({
       ...prevSavedBatidas,
@@ -157,17 +157,14 @@ function CreateMusic() {
     // Defina os valores das variáveis batida1, batida2 ou batida3
 
     if (selectedBatida === "Batida 1") {
-      setBatida1(selectedBatidaString);
       savedBatidas["4/4"].batida1 = selectedBatidaString;
-      console.log(savedBatidas["4/4"].batida1);
+      setBatida1(savedBatidas["4/4"].batida1);
     } else if (selectedBatida === "Batida 2") {
-      setBatida2(selectedBatidaString);
       savedBatidas["4/4"].batida2 = selectedBatidaString;
-      console.log(savedBatidas["4/4"].batida2);
+      setBatida2(savedBatidas["4/4"].batida2);
     } else if (selectedBatida === "Batida 3") {
-      setBatida3(selectedBatidaString);
       savedBatidas["4/4"].batida3 = selectedBatidaString;
-      console.log(savedBatidas["4/4"].batida3);
+      setBatida3(savedBatidas["4/4"].batida3);
     }
     setSavedBatidas((prevSavedBatidas) => ({
       ...prevSavedBatidas,
@@ -190,13 +187,10 @@ function CreateMusic() {
 
       if (selectedBatida === "Batida 1") {
         setBatida1("");
-        savedBatidas["3/4"].batida1 = "";
       } else if (selectedBatida === "Batida 2") {
         setBatida2("");
-        savedBatidas["3/4"].batida2 = "";
       } else if (selectedBatida === "Batida 3") {
         setBatida3("");
-        savedBatidas["3/4"].batida3 = "";
       }
     } else if (compasso === "4/4") {
       const updatedSelectedButtons = Object.keys(selectedButtons).reduce(
@@ -210,13 +204,10 @@ function CreateMusic() {
 
       if (selectedBatida === "Batida 1") {
         setBatida1("");
-        savedBatidas["4/4"].batida1 = "";
       } else if (selectedBatida === "Batida 2") {
         setBatida2("");
-        savedBatidas["4/4"].batida2 = "";
       } else if (selectedBatida === "Batida 3") {
         setBatida3("");
-        savedBatidas["4/4"].batida3 = "";
       }
     }
   };
@@ -308,29 +299,22 @@ function CreateMusic() {
     }
 
     // Limpar a seleção de botões
-    if (tipoCompasso === "3/4") {
-    } else if (tipoCompasso === "4/4") {
-      if (selectedBatida === "Batida 1") {
-        setBatida1(savedBatidas["3/4"].batida1);
-      } else if (selectedBatida === "Batida 2") {
-        setBatida2(savedBatidas["3/4"].batida2);
-      } else if (selectedBatida === "Batida 3") {
-        setBatida3(savedBatidas["3/4"].batida3);
-      }
+
+    if (tipoCompasso === "4/4") {
+      setBatida1(savedBatidas["4/4"].batida1);
+      console.log("savedBatidas");
+      setBatida2(savedBatidas["4/4"].batida2);
+      setBatida3(savedBatidas["4/4"].batida3);
 
       setSelectedButtons3({});
-    } else if (tipoCompasso === "4/4") {
-      if (selectedBatida === "Batida 1") {
-        setBatida1(savedBatidas["4/4"].batida1);
-        console.log(savedBatidas["4/4"].batida1);
-      } else if (selectedBatida === "Batida 2") {
-        setBatida2(savedBatidas["4/4"].batida2);
-      } else if (selectedBatida === "Batida 3") {
-        setBatida3(savedBatidas["4/4"].batida3);
-      }
+    } else {
+      console.log("chegouu");
+      setBatida1(savedBatidas["3/4"].batida1);
+      setBatida2(savedBatidas["3/4"].batida2);
+      setBatida3(savedBatidas["3/4"].batida3);
+
       setSelectedButtons({});
     }
-
     setCompasso(tipoCompasso);
     setSelectedBatida("Batida 1");
   };
